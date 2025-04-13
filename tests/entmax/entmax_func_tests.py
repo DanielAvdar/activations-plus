@@ -33,6 +33,7 @@ def test_entmax15_forward_zero_input():
     expected = torch.tensor([[0.3333, 0.3333, 0.3333], [0.3333, 0.3333, 0.3333]], dtype=torch.float32)
     assert torch.allclose(result, expected, atol=1e-4)
 
+
 @pytest.mark.skip
 def test_entmax15_forward_dim_handling():
     x = torch.tensor([[1.0, 2.0], [3.0, 4.0]], dtype=torch.float32)
@@ -60,8 +61,6 @@ def test_entmax15_backward_parametrized(x):
 
     assert x.grad is not None, "Gradient should not be None"
     assert x.grad.shape == x.shape, "Gradient should have same shape as input"
-
-    # Gradient constraints for entmax, similar to sparsemax, gradients should sum approximately to zero along the dimension
     grad_sum = x.grad.sum(-1)
     assert torch.allclose(grad_sum, torch.zeros_like(grad_sum), atol=1e-4), (
         "Gradients should sum to approximately zero along the projection dimension"

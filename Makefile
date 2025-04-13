@@ -5,7 +5,7 @@ default: install
 
 install:
 	uv sync --all-extras --all-groups --frozen
-	uv tool install pre-commit --with pre-commit-uv --force-reinstall
+	uv pip install pre-commit
 
 install-docs:
 	uv sync --group docs --frozen --no-group dev

@@ -1,4 +1,6 @@
+import os
 import sys
+from unittest.mock import patch
 
 import pytest
 import torch
@@ -30,16 +32,18 @@ if torch.cuda.is_available():
 @pytest.mark.parametrize("backend", compile_backends)
 @pytest.mark.parametrize("activation", [Sparsemax, Entmax])
 def test_sparsemax_torch_compile(input_shape, dim, backend, activation):
-    sparsemax = activation(dim=dim)
-    input_tensor = torch.randn(input_shape, requires_grad=True)
+    with patch.dict(os.environ, {"TORCH_LOGS": "+dynamo", "TORCHDYNAMO_VERBOSE": "1"}):
+        sparsemax = activation(dim=dim)
+        input_tensor = torch.randn(input_shape, requires_grad=True)
+        sparsemax(input_tensor)
 
-    compiled_sparsemax = torch.compile(sparsemax, backend=backend)
-    output: Tensor = compiled_sparsemax(input_tensor)
+        compiled_sparsemax = torch.compile(sparsemax, backend=backend)
+        output: Tensor = compiled_sparsemax(input_tensor)
 
-    # Verify basic properties of output (e.g., shape remains the same)
-    assert output.shape == input_shape, "Output shape mismatch."
-    assert not torch.any(torch.isnan(output)), "Output contains NaN."
+        # Verify basic properties of output (e.g., shape remains the same)
+        assert output.shape == input_shape, "Output shape mismatch."
+        assert not torch.any(torch.isnan(output)), "Output contains NaN."
 
-    # Optional: Check grad compatibility
-    output.sum().backward()
-    assert input_tensor.grad is not None, "Gradients did not compute properly."
+        # Optional: Check grad compatibility
+        output.sum().backward()
+        assert input_tensor.grad is not None, "Gradients did not compute properly."
