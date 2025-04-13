@@ -9,7 +9,9 @@ from activations_plus.sparsemax import Sparsemax
 compile_backends = []
 
 if sys.platform.startswith("linux"):
-    compile_backends += ["inductor", "onnxrt"]
+    compile_backends += [
+        "inductor",
+    ]
 if torch.cuda.is_available():
     compile_backends += ["cudagraphs"]
 
