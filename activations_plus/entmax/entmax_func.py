@@ -1,65 +1,60 @@
 import torch
 
-from activations_plus.sparsemax.utils import flatten_all_but_nth_dim, unflatten_all_but_nth_dim
-
 
 class Entmax15Function(torch.autograd.Function):
-    @staticmethod
-    def forward(ctx, x: torch.Tensor, dim: int = -1):
-        input_dim = x.dim()
-        if input_dim <= dim or dim < -input_dim:
-            raise IndexError(
-                f"Dimension out of range (expected to be in range of [-{input_dim}, {input_dim - 1}], but got {dim})"
-            )
+    """
+    An implementation of exact Entmax with alpha=1.5 (B. Peters, V. Niculae, A. Martins). See
+    :cite:`https://arxiv.org/abs/1905.05702 for detailed description.
+    Source: https://github.com/deep-spin/entmax
+    """
 
-        ctx.needs_reshaping = input_dim > 2
+    @staticmethod
+    def forward(ctx: torch.Tensor, input_: torch.Tensor, dim: int = -1) -> torch.Tensor:
         ctx.dim = dim
 
-        if ctx.needs_reshaping:
-            ctx, x = flatten_all_but_nth_dim(ctx, x)
+        max_val, _ = input_.max(dim=dim, keepdim=True)
+        input_ = input_ - max_val  # same numerical stability trick as for softmax
+        input_ = input_ / 2  # divide by 2 to solve actual Entmax
 
-        max_val, _ = x.max(dim=-1, keepdim=True)
-        x = x - max_val  # Numerical stability
-
-        tau, supp_size = Entmax15Function._threshold_and_support(x)
-        output = torch.clamp((x - tau).pow(2), min=0.0)
-
-        ctx.save_for_backward(output.sqrt(), supp_size)
-
-        output /= output.sum(dim=-1, keepdim=True)  # Normalization
-
-        if ctx.needs_reshaping:
-            ctx, output = unflatten_all_but_nth_dim(ctx, output)
-
+        tau_star, _ = Entmax15Function._threshold_and_support(input_, dim)
+        output = torch.clamp(input_ - tau_star, min=0) ** 2
+        ctx.save_for_backward(output)
         return output
 
     @staticmethod
-    def _threshold_and_support(x):
-        x_sorted, _ = torch.sort(x, descending=True, dim=-1)
-        rho = torch.arange(1, x.shape[-1] + 1, device=x.device, dtype=x.dtype)
-        mean_cumsum = (x_sorted.cumsum(dim=-1) - 1) / rho
-        mean_sq = (x_sorted**2).cumsum(dim=-1)
-        mean_sq = mean_sq / rho
-        ss = rho * (mean_sq - mean_cumsum**2)
-        delta = (1 - ss) / rho
-        support = (delta > 0).type(x.dtype)
-        supp_size = support.sum(dim=-1, keepdim=True).long()
-        tau = mean_cumsum.gather(dim=-1, index=supp_size - 1)
-        return tau, supp_size
+    def backward(ctx: torch.Tensor, grad_output: torch.Tensor) -> tuple[torch.Tensor, None]:
+        (Y,) = ctx.saved_tensors
+        gppr = Y.sqrt()  # = 1 / g'' (Y)
+        dX = grad_output * gppr
+        q = dX.sum(ctx.dim) / gppr.sum(ctx.dim)
+        q = q.unsqueeze(ctx.dim)
+        dX -= q * gppr
+        return dX, None
 
     @staticmethod
-    def backward(ctx, grad_output):
-        y_sqrt, supp_size = ctx.saved_tensors
-        grad_input = grad_output.clone()
+    def _make_ix_like(input_: torch.Tensor, dim: int = 0) -> torch.Tensor:
+        d = input_.size(dim)
+        rho = torch.arange(1, d + 1, device=input_.device, dtype=input_.dtype)
+        view = [1] * input_.dim()
+        view[0] = -1
+        return rho.view(view).transpose(0, dim)
 
-        nonzeros = (y_sqrt > 0).type(grad_output.dtype)
-        sum_grad = (grad_input * y_sqrt).sum(dim=-1, keepdim=True)
-        sum_grad /= y_sqrt.sum(dim=-1, keepdim=True)
+    @staticmethod
+    def _threshold_and_support(input_: torch.Tensor, dim: int = -1) -> tuple[torch.Tensor, torch.Tensor]:
+        Xsrt, _ = torch.sort(input_, descending=True, dim=dim)
 
-        grad_input = 2 * y_sqrt * (grad_input - sum_grad)
-        grad_input = nonzeros * grad_input
+        rho = Entmax15Function._make_ix_like(input_, dim)
+        mean = Xsrt.cumsum(dim) / rho
+        mean_sq = (Xsrt**2).cumsum(dim) / rho
+        ss = rho * (mean_sq - mean**2)
+        delta = (1 - ss) / rho
 
-        if ctx.needs_reshaping:
-            ctx, grad_input = unflatten_all_but_nth_dim(ctx, grad_input)
+        # NOTE this is not exactly the same as in reference algo
+        # Fortunately it seems the clamped values never wrongly
+        # get selected by tau <= sorted_z. Prove this!
+        delta_nz = torch.clamp(delta, 0)
+        tau = mean - torch.sqrt(delta_nz)
 
-        return grad_input, None
+        support_size = (tau <= Xsrt).sum(dim).unsqueeze(dim)
+        tau_star = tau.gather(dim, support_size - 1)
+        return tau_star, support_size
