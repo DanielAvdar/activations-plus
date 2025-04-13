@@ -17,7 +17,7 @@ project = "activations-plus"
 version = version(project)
 release = version
 
-copyright = "2025, DanielAvdar"
+copyright = "2025, DanielAvdar"  # noqa
 author = "DanielAvdar"
 
 # -- General configuration ---------------------------------------------------
