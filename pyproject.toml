@@ -46,6 +46,10 @@ dev = [
     "mypy==1.13.0",
     "pytest-parametrization>=2022",
     "ruff>=0.8.2",
+    "onnx",
+    "numpy",
+    "onnxscript"
+
 
 ]
 docs = [

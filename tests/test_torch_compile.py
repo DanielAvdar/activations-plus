@@ -1,10 +1,15 @@
+import sys
+
 import pytest
 import torch
 from torch import Tensor
 
 from activations_plus.sparsemax import Sparsemax
 
-compile_backends = ["inductor", "onnxrt", "openxla", "tvm"]
+compile_backends = []
+
+if sys.platform.startswith("linux"):
+    compile_backends += ["inductor", "onnxrt"]
 if torch.cuda.is_available():
     compile_backends += ["cudagraphs"]
 
