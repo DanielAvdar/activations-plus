@@ -4,6 +4,7 @@ import pytest
 import torch
 from torch import Tensor
 
+from activations_plus.entmax.entmax import Entmax
 from activations_plus.sparsemax import Sparsemax
 
 compile_backends = []
@@ -27,8 +28,9 @@ if torch.cuda.is_available():
     ],
 )
 @pytest.mark.parametrize("backend", compile_backends)
-def test_sparsemax_torch_compile(input_shape, dim, backend):
-    sparsemax = Sparsemax(dim=dim)
+@pytest.mark.parametrize("activation", [Sparsemax, Entmax])
+def test_sparsemax_torch_compile(input_shape, dim, backend, activation):
+    sparsemax = activation(dim=dim)
     input_tensor = torch.randn(input_shape, requires_grad=True)
 
     # Try compiling the Sparsemax model
