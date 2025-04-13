@@ -32,6 +32,7 @@ dev = [
     { name = "pytest-cov" },
     { name = "pytest-parametrization" },
     { name = "ruff" },
+    { name = "setuptools" },
 ]
 docs = [
     { name = "sphinx", version = "7.4.7", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.10'" },
@@ -57,6 +58,7 @@ dev = [
     { name = "pytest-cov", specifier = ">=4.0.0" },
     { name = "pytest-parametrization", specifier = ">=2022" },
     { name = "ruff", specifier = ">=0.8.2" },
+    { name = "setuptools", specifier = ">=67.0.0" },
 ]
 docs = [
     { name = "sphinx", marker = "python_full_version < '3.11'", specifier = ">=7.0.0" },
