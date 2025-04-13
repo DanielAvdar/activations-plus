@@ -24,4 +24,3 @@ jobs:
 
       - run: make install-docs
       - run: make doc
-
