@@ -1,5 +1,5 @@
 [project]
-name = "my-pkg" # todo: change to your package name
+name = "activations-plus"
 dynamic = ["version"]
 description = ""
 authors = [
@@ -42,11 +42,11 @@ docs = [
     "sphinx-rtd-theme>=3.0.2",
 ]
 [tool.hatch.build.targets.sdist]
-only-include = ["my_pkg",] # todo: change to your package name
+only-include = ["activations_plus",]
 source = "."
 
 [tool.hatch.build.targets.wheel]
-only-include = ["my_pkg",] # todo: change to your package name
+only-include = ["activations_plus",]
 source = "."
 
 
