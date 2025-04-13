@@ -33,18 +33,13 @@ def test_sparsemax_torch_compile(input_shape, dim, backend, activation):
     sparsemax = activation(dim=dim)
     input_tensor = torch.randn(input_shape, requires_grad=True)
 
-    # Try compiling the Sparsemax model
-    try:
-        compiled_sparsemax = torch.compile(sparsemax, backend=backend)
-        output: Tensor = compiled_sparsemax(input_tensor)
+    compiled_sparsemax = torch.compile(sparsemax, backend=backend)
+    output: Tensor = compiled_sparsemax(input_tensor)
 
-        # Verify basic properties of output (e.g., shape remains the same)
-        assert output.shape == input_shape, "Output shape mismatch."
-        assert not torch.any(torch.isnan(output)), "Output contains NaN."
+    # Verify basic properties of output (e.g., shape remains the same)
+    assert output.shape == input_shape, "Output shape mismatch."
+    assert not torch.any(torch.isnan(output)), "Output contains NaN."
 
-        # Optional: Check grad compatibility
-        output.sum().backward()
-        assert input_tensor.grad is not None, "Gradients did not compute properly."
-
-    except Exception as e:
-        pytest.fail(f"Compiling Sparsemax failed with error: {str(e)}")
+    # Optional: Check grad compatibility
+    output.sum().backward()
+    assert input_tensor.grad is not None, "Gradients did not compute properly."
