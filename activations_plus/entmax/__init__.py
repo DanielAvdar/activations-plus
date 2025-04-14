@@ -1,4 +1,4 @@
-# Add SReLU module to the entmax package
-from ..entmax.entmax import Entmax
+from .entmax import Entmax
+from .entmax_func import Entmax15Function
 
-__all__ = ["Entmax"]
+__all__ = ["Entmax15Function", "Entmax"]

@@ -25,11 +25,11 @@ class Entmax15Function(torch.autograd.Function):
     def backward(ctx: torch.Tensor, grad_output: torch.Tensor) -> tuple[torch.Tensor, None]:
         (y,) = ctx.saved_tensors
         gppr = y.sqrt()  # = 1 / g'' (y)
-        dX = grad_output * gppr
-        q = dX.sum(ctx.dim) / gppr.sum(ctx.dim)
+        dx = grad_output * gppr
+        q = dx.sum(ctx.dim) / gppr.sum(ctx.dim)
         q = q.unsqueeze(ctx.dim)
-        dX -= q * gppr
-        return dX, None
+        dx -= q * gppr
+        return dx, None
 
     @staticmethod
     def _make_ix_like(input_: torch.Tensor, dim: int = 0) -> torch.Tensor:
