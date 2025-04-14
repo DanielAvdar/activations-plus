@@ -1,5 +1,5 @@
 [project]
-name = "my-pkg" # todo: change to your package name
+name = "activations-plus"
 dynamic = ["version"]
 description = ""
 authors = [
@@ -9,19 +9,37 @@ license = {text = "MIT"}
 readme = "README.md"
 classifiers = [
     "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
     "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
     "Programming Language :: Python :: 3.13",
     "License :: OSI Approved :: MIT License",
     "Operating System :: OS Independent",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Science/Research",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
 ]
 requires-python = ">=3.9"
 
 keywords = [
     "python"
 ]
-dependencies = []
+dependencies = [
+
+    "torch",
+]
+
+[[tool.uv.index]]
+name = "cu124"
+url = "https://download.pytorch.org/whl/cu124"
+explicit = true
+
+[tool.uv.sources]
+torch = [
+  { index = "cu124", marker = "platform_system != 'Darwin'"},
+]
 
 [dependency-groups]
 dev = [
@@ -33,6 +51,9 @@ dev = [
     "mypy==1.13.0",
     "pytest-parametrization>=2022",
     "ruff>=0.8.2",
+    "setuptools>=67.0.0",
+
+
 
 ]
 docs = [
@@ -42,11 +63,11 @@ docs = [
     "sphinx-rtd-theme>=3.0.2",
 ]
 [tool.hatch.build.targets.sdist]
-only-include = ["my_pkg",] # todo: change to your package name
+only-include = ["activations_plus",]
 source = "."
 
 [tool.hatch.build.targets.wheel]
-only-include = ["my_pkg",] # todo: change to your package name
+only-include = ["activations_plus",]
 source = "."
 
 

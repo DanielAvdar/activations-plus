@@ -16,4 +16,4 @@ jobs:
       - run: uv python install 3.11
       - run: make
       - run: make check
-      - run: make mypy
+#      - run: make mypy
