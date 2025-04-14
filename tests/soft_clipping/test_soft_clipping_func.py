@@ -1,5 +1,7 @@
 import torch
+
 from activations_plus.soft_clipping.soft_clipping_func import SoftClipping
+
 
 def test_soft_clipping():
     activation = SoftClipping(min_val=-1.0, max_val=1.0)

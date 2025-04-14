@@ -1,5 +1,6 @@
 import torch
 
+
 class BentIdentity(torch.nn.Module):
     """
     Bent Identity activation function.
@@ -13,5 +14,6 @@ class BentIdentity(torch.nn.Module):
     Methods:
         forward(x): Computes the Bent Identity activation for the input tensor `x`.
     """
+
     def forward(self, x):
         return (torch.sqrt(x**2 + 1) - 1) / 2 + x
