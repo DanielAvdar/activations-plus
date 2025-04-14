@@ -1,3 +1,5 @@
+.. _hardswish:
+
 Hardswish
 =========
 

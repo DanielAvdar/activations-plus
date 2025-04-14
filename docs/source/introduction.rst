@@ -1,3 +1,5 @@
+.. _introduction:
+
 Activations Plus
 ================
 
