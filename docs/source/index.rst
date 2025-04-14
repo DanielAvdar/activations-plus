@@ -6,9 +6,18 @@
 Welcome to activations-plus's documentation!
 ============================================
 
-Add your content using ``reStructuredText`` syntax. See the
-`reStructuredText <https://www.sphinx-doc.org/en/master/usage/restructuredtext/index.html>`_
-documentation for details.
+Activations-plus is a Python library providing a collection of advanced activation functions for pytorch.
+
+Installation
+------------
+
+To install activations-plus, use pip:
+
+.. code-block:: bash
+
+    pip install activations-plus
+
+
 
 .. toctree::
    :maxdepth: 2
