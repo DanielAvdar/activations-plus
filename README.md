@@ -53,14 +53,14 @@ Comprehensive documentation is available [here](https://github.com/DanielAvdar/a
 
 ## Supported Activation Functions
 
-1. **Bent Identity**: A smooth approximation of the identity function.
-2. **ELiSH**: Combines exponential and linear properties for better gradient flow.
-3. **Entmax**: Sparse activation function for probabilistic models.
-4. **HardSwish**: Efficient approximation of the Swish activation.
-5. **Maxout**: Learns piecewise linear functions for better expressiveness.
-6. **Soft Clipping**: Smoothly clips values to a range to avoid extreme outputs.
-7. **Sparsemax**: Sparse alternative to softmax for probabilistic outputs.
-8. **SReLU**: Combines linear and non-linear properties for better flexibility.
+1. **Bent Identity**: A smooth approximation of the identity function. [Reference Paper](https://arxiv.org/abs/1901.08649)
+2. **ELiSH**: Combines exponential and linear properties for better gradient flow. [Reference Paper](https://arxiv.org/abs/1901.08649)
+3. **Entmax**: Sparse activation function for probabilistic models. [Reference Paper](https://arxiv.org/abs/1905.05702)
+4. **HardSwish**: Efficient approximation of the Swish activation. [Reference Paper](https://arxiv.org/abs/1905.02244)
+5. **Maxout**: Learns piecewise linear functions for better expressiveness. [Reference Paper](https://arxiv.org/abs/1302.4389)
+6. **Soft Clipping**: Smoothly clips values to a range to avoid extreme outputs. [Reference Paper](https://arxiv.org/abs/2002.11002)
+7. **Sparsemax**: Sparse alternative to softmax for probabilistic outputs. [Reference Paper](https://arxiv.org/abs/1602.02068)
+8. **SReLU**: Combines linear and non-linear properties for better flexibility. [Reference Paper](https://arxiv.org/abs/1512.07030)
 
 ## Contributing
 

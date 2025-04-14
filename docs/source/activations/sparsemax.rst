@@ -5,3 +5,5 @@ Sparsemax
    :members:
    :undoc-members:
    :show-inheritance:
+
+**Reference Paper**: [Sparsemax Activation Function](https://arxiv.org/abs/1602.02068)

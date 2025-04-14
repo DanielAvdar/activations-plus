@@ -5,3 +5,5 @@ Soft Clipping
    :members:
    :undoc-members:
    :show-inheritance:
+
+**Reference Paper**: [Soft Clipping Activation Function](https://arxiv.org/abs/2002.11002)

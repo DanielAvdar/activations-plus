@@ -7,3 +7,5 @@ Entmax
    :members:
    :undoc-members:
    :show-inheritance:
+
+**Reference Paper**: [Entmax Activation Function](https://arxiv.org/abs/1905.05702)

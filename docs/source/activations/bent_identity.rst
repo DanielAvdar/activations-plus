@@ -5,3 +5,5 @@ Bent Identity
    :members:
    :undoc-members:
    :show-inheritance:
+
+**Reference Paper**: [Bent Identity Activation Function](https://arxiv.org/abs/1901.08649)

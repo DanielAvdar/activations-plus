@@ -7,3 +7,5 @@ Hardswish
    :members:
    :undoc-members:
    :show-inheritance:
+
+**Reference Paper**: [HardSwish Activation Function](https://arxiv.org/abs/1905.02244)
