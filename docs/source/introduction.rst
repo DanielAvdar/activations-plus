@@ -36,13 +36,13 @@ Activations Plus is a Python package designed to provide a collection of advance
 
 The package includes a variety of activation functions, such as:
 
+- Entmax: A flexible sparse activation function for probabilistic models.
+- Sparsemax: A sparse alternative to softmax, useful for probabilistic outputs.
 - Bent Identity (Note: Experimental)
 - ELiSH (Exponential Linear Squared Hyperbolic) (Note: Experimental)
-- Entmax: A flexible sparse activation function for probabilistic models.
 - HardSwish (Note: Experimental)
 - Maxout (Note: Experimental)
 - Soft Clipping (Note: Experimental)
-- Sparsemax: A sparse alternative to softmax, useful for probabilistic outputs.
 - SReLU (S-shaped Rectified Linear Unit) (Note: Experimental)
 
 Each activation function is implemented with efficiency and flexibility in mind, making it easy to integrate into existing machine learning pipelines. Whether you're working on classification, regression, or other tasks, Activations Plus provides tools to experiment with and optimize your models.
