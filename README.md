@@ -37,19 +37,29 @@ pip install activations-plus
 
 Import and use any activation function in your PyTorch models:
 
+
 ```python
 import torch
-from activations_plus.bent_identity import BentIdentity
+from activations_plus.sparsemax import Sparsemax
+from activations_plus.entmax import Entmax
 
-activation = BentIdentity()
-x = torch.tensor([1.0, -1.0, 0.0])
-output = activation(x)
-print(output)
+# Example with Sparsemax
+sparsemax = Sparsemax()
+x = torch.tensor([[1.0, 2.0, 3.0], [1.0, 2.0, -1.0]])
+output_sparsemax = sparsemax(x)
+print("Sparsemax Output:", output_sparsemax)
+
+# Example with Entmax
+entmax = Entmax(alpha=1.5)
+output_entmax = entmax(x)
+print("Entmax Output:", output_entmax)
 ```
+
+These examples demonstrate how to use Sparsemax and Entmax activation functions in PyTorch models.
 
 ## Documentation
 
-Comprehensive documentation is available [here](https://github.com/DanielAvdar/activations-plus).
+Comprehensive documentation is available [documentation](https://activations-plus.readthedocs.io/en/latest/).
 
 ## Supported Activation Functions
 
