@@ -65,12 +65,12 @@ Comprehensive documentation is available [documentation](https://activations-plu
 
 1. **Entmax**: Sparse activation function for probabilistic models. [Reference Paper](https://arxiv.org/abs/1905.05702)
 2. **Sparsemax**: Sparse alternative to softmax for probabilistic outputs. [Reference Paper](https://arxiv.org/abs/1602.02068)
-3. **Bent Identity**: A smooth approximation of the identity function. (Note: Experimental) [Reference Paper](https://arxiv.org/abs/1901.08649)
-4. **ELiSH**: Combines exponential and linear properties for better gradient flow. (Note: Experimental) [Reference Paper](https://arxiv.org/abs/1901.08649)
-5. **HardSwish**: Efficient approximation of the Swish activation. (Note: Experimental) [Reference Paper](https://arxiv.org/abs/1905.02244)
-6. **Maxout**: Learns piecewise linear functions for better expressiveness. (Note: Experimental) [Reference Paper](https://arxiv.org/abs/1302.4389)
-7. **Soft Clipping**: Smoothly clips values to a range to avoid extreme outputs. (Note: Experimental) [Reference Paper](https://arxiv.org/abs/2002.11002)
-8. **SReLU**: Combines linear and non-linear properties for better flexibility. (Note: Experimental) [Reference Paper](https://arxiv.org/abs/1512.07030)
+3. **Bent Identity**: A smooth approximation of the identity function. *(Experimental feature under review)* [Reference Paper](https://arxiv.org/abs/1901.08649)
+4. **ELiSH**: Combines exponential and linear properties for better gradient flow. *(Experimental feature under review)* [Reference Paper](https://arxiv.org/abs/1901.08649)
+5. **HardSwish**: Efficient approximation of the Swish activation. *(Experimental feature under review)* [Reference Paper](https://arxiv.org/abs/1905.02244)
+6. **Maxout**: Learns piecewise linear functions for better expressiveness. *(Experimental feature under review)* [Reference Paper](https://arxiv.org/abs/1302.4389)
+7. **Soft Clipping**: Smoothly clips values to a range to avoid extreme outputs. *(Experimental feature under review)* [Reference Paper](https://arxiv.org/abs/2002.11002)
+8. **SReLU**: Combines linear and non-linear properties for better flexibility. *(Experimental feature under review)* [Reference Paper](https://arxiv.org/abs/1512.07030)
 
 ## Contributing
 
