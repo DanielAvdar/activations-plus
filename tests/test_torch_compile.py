@@ -6,8 +6,14 @@ import pytest
 import torch
 from torch import Tensor
 
+from activations_plus import ELiSH, HardSwish
 from activations_plus.entmax.entmax import Entmax
 from activations_plus.sparsemax import Sparsemax
+from activations_plus.bent_identity.bent_identity_func import BentIdentity
+
+from activations_plus.maxout.maxout_func import Maxout
+from activations_plus.soft_clipping.soft_clipping_func import SoftClipping
+from activations_plus.srelu.srelu_func import SReLU
 
 compile_backends = []
 
@@ -30,15 +36,15 @@ if torch.cuda.is_available():
     ],
 )
 @pytest.mark.parametrize("backend", compile_backends)
-@pytest.mark.parametrize("activation", [Sparsemax, Entmax])
-def test_sparsemax_torch_compile(input_shape, dim, backend, activation):
+@pytest.mark.parametrize("activation", [Sparsemax, Entmax, BentIdentity, ELiSH, HardSwish, SoftClipping, SReLU])
+def test_activations_torch_compile(input_shape, dim, backend, activation):
     with patch.dict(os.environ, {"TORCH_LOGS": "+dynamo", "TORCHDYNAMO_VERBOSE": "1"}):
-        sparsemax = activation(dim=dim)
+        activation_instance = activation(dim=dim) if hasattr(activation, 'dim') else activation()
         input_tensor = torch.randn(input_shape, requires_grad=True)
-        sparsemax(input_tensor)
+        activation_instance(input_tensor)
 
-        compiled_sparsemax = torch.compile(sparsemax, backend=backend)
-        output: Tensor = compiled_sparsemax(input_tensor)
+        compiled_activation = torch.compile(activation_instance, backend=backend)
+        output: Tensor = compiled_activation(input_tensor)
 
         # Verify basic properties of output (e.g., shape remains the same)
         assert output.shape == input_shape, "Output shape mismatch."
