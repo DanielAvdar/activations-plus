@@ -5,10 +5,46 @@
 
 Welcome to activations-plus's documentation!
 ============================================
+.. image:: https://img.shields.io/pypi/v/activations-plus.svg
+   :target: https://pypi.org/project/activations-plus/
+   :alt: PyPI version
 
-Add your content using ``reStructuredText`` syntax. See the
-`reStructuredText <https://www.sphinx-doc.org/en/master/usage/restructuredtext/index.html>`_
-documentation for details.
+.. image:: https://img.shields.io/pypi/pyversions/activations-plus.svg
+   :target: https://pypi.org/project/activations-plus/
+   :alt: Python versions
+
+.. image:: https://img.shields.io/badge/License-MIT-blue.svg
+   :target: https://opensource.org/licenses/MIT
+   :alt: License
+
+.. image:: https://img.shields.io/badge/ubuntu-blue?logo=ubuntu
+   :alt: Ubuntu
+
+.. image:: https://img.shields.io/badge/ubuntu-blue?logo=windows
+   :alt: Windows
+
+.. image:: https://img.shields.io/badge/ubuntu-blue?logo=apple
+   :alt: MacOS
+
+.. image:: https://codecov.io/gh/DanielAvdar/activations-plus/graph/badge.svg?token=N0V9KANTG2
+   :alt: Coverage
+
+.. image:: https://img.shields.io/github/last-commit/DanielAvdar/activations-plus/main
+   :alt: Last Commit
+
+
+Activations-plus is a Python library providing a collection of advanced activation functions for pytorch.
+
+Installation
+------------
+
+To install activations-plus, use pip:
+
+.. code-block:: bash
+
+    pip install activations-plus
+
+
 
 .. toctree::
    :maxdepth: 2
@@ -24,7 +60,6 @@ documentation for details.
    activations/sparsemax
    activations/bent_identity
    activations/elish
-   activations/hardswish
    activations/maxout
    activations/soft_clipping
    activations/srelu

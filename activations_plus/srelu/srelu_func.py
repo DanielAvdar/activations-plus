@@ -36,7 +36,3 @@ class SReLU(torch.nn.Module):
             self.lower_threshold,
             torch.where(x > self.upper_threshold, self.upper_threshold, x),
         )
-
-    def extra_repr(self):
-        """Extra representation for printing the module."""
-        return f"lower_threshold={self.lower_threshold}, upper_threshold={self.upper_threshold}"

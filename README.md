@@ -16,13 +16,13 @@ Activations Plus is a Python package designed to provide a collection of advance
 
 ## Features
 
+- **Entmax**: Sparse activation function for probabilistic models.
+- **Sparsemax**: Sparse alternative to softmax.
 - **Bent Identity**: Smooth approximation of the identity function.
 - **ELiSH (Exponential Linear Squared Hyperbolic)**: Combines exponential and linear properties.
-- **Entmax**: Sparse activation function for probabilistic models.
 - **HardSwish**: Efficient approximation of the Swish activation.
 - **Maxout**: Learns piecewise linear functions.
 - **Soft Clipping**: Smoothly clips values to a range.
-- **Sparsemax**: Sparse alternative to softmax.
 - **SReLU (S-shaped Rectified Linear Unit)**: Combines linear and non-linear properties.
 
 ## Installation
@@ -65,11 +65,10 @@ Comprehensive documentation is available [documentation](https://activations-plu
 
 1. **Entmax**: Sparse activation function for probabilistic models. [Reference Paper](https://arxiv.org/abs/1905.05702)
 2. **Sparsemax**: Sparse alternative to softmax for probabilistic outputs. [Reference Paper](https://arxiv.org/abs/1602.02068)
-3. **Bent Identity**: A smooth approximation of the identity function. *(Experimental feature under review)* [Reference Paper](https://arxiv.org/abs/1901.08649)
-4. **ELiSH**: Combines exponential and linear properties for better gradient flow. *(Experimental feature under review)* [Reference Paper](https://arxiv.org/abs/1901.08649)
-5. **HardSwish**: Efficient approximation of the Swish activation. *(Experimental feature under review)* [Reference Paper](https://arxiv.org/abs/1905.02244)
+3. **Bent Identity**: A smooth approximation of the identity function. *(Experimental feature under review) [reference missing]()
+4. **ELiSH**: Combines exponential and linear properties for better gradient flow. *(Experimental feature under review)* [Reference Paper](https://arxiv.org/abs/1808.00783)
 6. **Maxout**: Learns piecewise linear functions for better expressiveness. *(Experimental feature under review)* [Reference Paper](https://arxiv.org/abs/1302.4389)
-7. **Soft Clipping**: Smoothly clips values to a range to avoid extreme outputs. *(Experimental feature under review)* [Reference Paper](https://arxiv.org/abs/2002.11002)
+7. **Soft Clipping**: Smoothly clips values to a range to avoid extreme outputs. *(Experimental feature under review)* [Reference Paper](https://arxiv.org/abs/2406.16640)
 8. **SReLU**: Combines linear and non-linear properties for better flexibility. *(Experimental feature under review)* [Reference Paper](https://arxiv.org/abs/1512.07030)
 
 ## Contributing
