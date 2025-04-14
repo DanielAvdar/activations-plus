@@ -7,3 +7,16 @@ Soft Clipping
    :show-inheritance:
 
 **Reference Paper**: [Soft Clipping Activation Function](https://arxiv.org/abs/2002.11002)
+
+Example Usage
+-------------
+
+.. code-block:: python
+
+    import torch
+    from activations_plus.soft_clipping import SoftClipping
+
+    activation = SoftClipping(min_val=-2.0, max_val=2.0)
+    input_tensor = torch.tensor([-3.0, -1.0, 0.0, 1.0, 3.0])
+    output_tensor = activation(input_tensor)
+    print(output_tensor)  # Example output: tensor([-1.9998, -1.2689,  0.0000,  1.2689,  1.9998])
