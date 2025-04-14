@@ -23,8 +23,8 @@ class Entmax15Function(torch.autograd.Function):
 
     @staticmethod
     def backward(ctx: torch.Tensor, grad_output: torch.Tensor) -> tuple[torch.Tensor, None]:
-        (Y,) = ctx.saved_tensors
-        gppr = Y.sqrt()  # = 1 / g'' (Y)
+        (y,) = ctx.saved_tensors
+        gppr = y.sqrt()  # = 1 / g'' (y)
         dX = grad_output * gppr
         q = dX.sum(ctx.dim) / gppr.sum(ctx.dim)
         q = q.unsqueeze(ctx.dim)
@@ -41,11 +41,11 @@ class Entmax15Function(torch.autograd.Function):
 
     @staticmethod
     def _threshold_and_support(input_: torch.Tensor, dim: int = -1) -> tuple[torch.Tensor, torch.Tensor]:
-        Xsrt, _ = torch.sort(input_, descending=True, dim=dim)
+        xsrt, _ = torch.sort(input_, descending=True, dim=dim)
 
         rho = Entmax15Function._make_ix_like(input_, dim)
-        mean = Xsrt.cumsum(dim) / rho
-        mean_sq = (Xsrt**2).cumsum(dim) / rho
+        mean = xsrt.cumsum(dim) / rho
+        mean_sq = (xsrt**2).cumsum(dim) / rho
         ss = rho * (mean_sq - mean**2)
         delta = (1 - ss) / rho
 
@@ -55,6 +55,6 @@ class Entmax15Function(torch.autograd.Function):
         delta_nz = torch.clamp(delta, 0)
         tau = mean - torch.sqrt(delta_nz)
 
-        support_size = (tau <= Xsrt).sum(dim).unsqueeze(dim)
+        support_size = (tau <= xsrt).sum(dim).unsqueeze(dim)
         tau_star = tau.gather(dim, support_size - 1)
         return tau_star, support_size
