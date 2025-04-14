@@ -33,13 +33,13 @@ dev = [
     { name = "pytest-parametrization" },
     { name = "ruff" },
     { name = "setuptools" },
+    { name = "sybil", extra = ["pytest"] },
 ]
 docs = [
     { name = "sphinx", version = "7.4.7", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.10'" },
     { name = "sphinx", version = "8.1.3", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version == '3.10.*'" },
     { name = "sphinx", version = "8.2.3", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.11'" },
     { name = "sphinx-rtd-theme" },
-    { name = "sybil", extra = ["pytest"] },
 ]
 
 [package.metadata]
@@ -59,12 +59,12 @@ dev = [
     { name = "pytest-parametrization", specifier = ">=2022" },
     { name = "ruff", specifier = ">=0.8.2" },
     { name = "setuptools", specifier = ">=67.0.0" },
+    { name = "sybil", extras = ["pytest"] },
 ]
 docs = [
     { name = "sphinx", marker = "python_full_version < '3.11'", specifier = ">=7.0.0" },
     { name = "sphinx", marker = "python_full_version >= '3.11'", specifier = ">=8.2.0" },
     { name = "sphinx-rtd-theme", specifier = ">=3.0.2" },
-    { name = "sybil", extras = ["pytest"] },
 ]
 
 [[package]]
