@@ -3,10 +3,9 @@
 Entmax
 ======
 
-.. automodule:: activations_plus.entmax.entmax_func
-   :members:
-   :undoc-members:
-   :show-inheritance:
+.. automodule:: activations_plus.Entmax
+   :members: forward, __init__
+
 
 **Reference Paper**: [Entmax Activation Function](https://arxiv.org/abs/1905.05702)
 

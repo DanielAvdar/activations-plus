@@ -1,10 +1,9 @@
 Sparsemax
 =========
 
-.. automodule:: activations_plus.sparsemax.sparsemax_func
-   :members:
-   :undoc-members:
-   :show-inheritance:
+.. automodule:: activations_plus.Sparsemax
+   :members: forward, __init__
+
 
 **Reference Paper**: [Sparsemax Activation Function](https://arxiv.org/abs/1602.02068)
 

@@ -3,10 +3,9 @@
 Maxout
 ======
 
-.. automodule:: activations_plus.maxout.maxout_func
-   :members:
-   :undoc-members:
-   :show-inheritance:
+.. automodule:: activations_plus.Maxout
+   :members: forward, __init__
+
 
 **Reference Paper**: [Maxout Activation Function](https://arxiv.org/abs/1302.4389)
 

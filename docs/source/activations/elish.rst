@@ -3,10 +3,9 @@
 Elish
 =====
 
-.. automodule:: activations_plus.elish.elish_func
-   :members:
-   :undoc-members:
-   :show-inheritance:
+.. automodule:: activations_plus.ELiSH
+   :members: forward, __init__
+
 
 **Reference Paper**: [ELiSH Activation Function](https://arxiv.org/abs/1901.08649)
 
