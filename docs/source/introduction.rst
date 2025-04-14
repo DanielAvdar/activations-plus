@@ -33,7 +33,7 @@ Below are examples of Sparsemax and Entmax in action:
     print("Sparsemax Output:", output_sparsemax)
 
     # Entmax Example
-    entmax = Entmax(alpha=1.5)
+    entmax = Entmax(dim=-1)
     output_entmax = entmax(x)
     print("Entmax Output:", output_entmax)
 
