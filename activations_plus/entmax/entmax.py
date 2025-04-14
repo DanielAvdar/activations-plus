@@ -43,6 +43,3 @@ class Entmax(nn.Module):
                  behavior depending on the input values.
         """
         return Entmax15Function.apply(x, self.dim)
-
-    def extra_repr(self):
-        return f"dim={self.dim}"

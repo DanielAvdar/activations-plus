@@ -31,10 +31,11 @@ class Sparsemax(nn.Module):
         super(Sparsemax, self).__init__()
         self.dim = dim
 
-    def __setstate__(self, state):
-        self.__dict__.update(state)
-        if not hasattr(self, "dim"):
-            self.dim = None
+    #
+    # def __setstate__(self, state):
+    #     self.__dict__.update(state)
+    #     if not hasattr(self, "dim"):
+    #         self.dim = None
 
     def forward(self, x):
         """
