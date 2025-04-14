@@ -20,21 +20,21 @@ Each activation function is implemented with efficiency and flexibility in mind,
 
 Below are examples of Sparsemax and Entmax in action:
 
-```python
-import torch
-from activations_plus.sparsemax import Sparsemax
-from activations_plus.entmax import Entmax
+.. code-block:: python
 
-# Sparsemax Example
-sparsemax = Sparsemax()
-x = torch.tensor([[1.0, 2.0, 3.0], [1.0, 2.0, -1.0]])
-output_sparsemax = sparsemax(x)
-print("Sparsemax Output:", output_sparsemax)
+    import torch
+    from activations_plus.sparsemax import Sparsemax
+    from activations_plus.entmax import Entmax
 
-# Entmax Example
-entmax = Entmax(alpha=1.5)
-output_entmax = entmax(x)
-print("Entmax Output:", output_entmax)
-```
+    # Sparsemax Example
+    sparsemax = Sparsemax()
+    x = torch.tensor([[1.0, 2.0, 3.0], [1.0, 2.0, -1.0]])
+    output_sparsemax = sparsemax(x)
+    print("Sparsemax Output:", output_sparsemax)
+
+    # Entmax Example
+    entmax = Entmax(alpha=1.5)
+    output_entmax = entmax(x)
+    print("Entmax Output:", output_entmax)
 
 These examples illustrate how to use Sparsemax and Entmax activation functions in PyTorch.
