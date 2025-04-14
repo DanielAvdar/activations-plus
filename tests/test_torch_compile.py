@@ -7,12 +7,10 @@ import torch
 from torch import Tensor
 
 from activations_plus import ELiSH, HardSwish
-from activations_plus.entmax.entmax import Entmax
-from activations_plus.sparsemax import Sparsemax
 from activations_plus.bent_identity.bent_identity_func import BentIdentity
-
-from activations_plus.maxout.maxout_func import Maxout
+from activations_plus.entmax.entmax import Entmax
 from activations_plus.soft_clipping.soft_clipping_func import SoftClipping
+from activations_plus.sparsemax import Sparsemax
 from activations_plus.srelu.srelu_func import SReLU
 
 compile_backends = []
@@ -39,7 +37,7 @@ if torch.cuda.is_available():
 @pytest.mark.parametrize("activation", [Sparsemax, Entmax, BentIdentity, ELiSH, HardSwish, SoftClipping, SReLU])
 def test_activations_torch_compile(input_shape, dim, backend, activation):
     with patch.dict(os.environ, {"TORCH_LOGS": "+dynamo", "TORCHDYNAMO_VERBOSE": "1"}):
-        activation_instance = activation(dim=dim) if hasattr(activation, 'dim') else activation()
+        activation_instance = activation(dim=dim) if hasattr(activation, "dim") else activation()
         input_tensor = torch.randn(input_shape, requires_grad=True)
         activation_instance(input_tensor)
 
