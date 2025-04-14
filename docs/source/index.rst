@@ -12,9 +12,14 @@ documentation for details.
 
 .. toctree::
    :maxdepth: 2
-   :caption: Contents:
+   :caption: Getting Started
 
    introduction
+
+.. toctree::
+   :maxdepth: 2
+   :caption: Activation Functions
+
    activations/bent_identity
    activations/elish
    activations/entmax
@@ -23,6 +28,12 @@ documentation for details.
    activations/soft_clipping
    activations/sparsemax
    activations/srelu
+
+.. toctree::
+   :maxdepth: 2
+   :caption: Additional Information
+
+   credits
 
 Indices and tables
 ==================
