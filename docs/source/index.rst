@@ -20,13 +20,13 @@ documentation for details.
    :maxdepth: 2
    :caption: Activation Functions
 
+   activations/entmax
+   activations/sparsemax
    activations/bent_identity
    activations/elish
-   activations/entmax
    activations/hardswish
    activations/maxout
    activations/soft_clipping
-   activations/sparsemax
    activations/srelu
 
 .. toctree::
