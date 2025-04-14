@@ -5,7 +5,7 @@ Soft Clipping
    :members: forward, __init__
 
 
-**Reference Paper**: [Soft Clipping Activation Function](https://arxiv.org/abs/2002.11002)
+**Reference Paper**: [Soft Clipping Activation Function](https://arxiv.org/abs/2406.16640)
 
 Example Usage
 -------------

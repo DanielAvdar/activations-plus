@@ -7,7 +7,7 @@ Elish
    :members: forward, __init__
 
 
-**Reference Paper**: [ELiSH Activation Function](https://arxiv.org/abs/1901.08649)
+**Reference Paper**: [ELiSH Activation Function](https://arxiv.org/abs/1808.00783)
 
 .. code-block:: python
 
