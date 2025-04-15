@@ -20,7 +20,6 @@ Activations Plus is a Python package designed to provide a collection of advance
 - **Sparsemax**: Sparse alternative to softmax.
 - **Bent Identity**: Smooth approximation of the identity function.
 - **ELiSH (Exponential Linear Squared Hyperbolic)**: Combines exponential and linear properties.
-- **HardSwish**: Efficient approximation of the Swish activation.
 - **Maxout**: Learns piecewise linear functions.
 - **Soft Clipping**: Smoothly clips values to a range.
 - **SReLU (S-shaped Rectified Linear Unit)**: Combines linear and non-linear properties.
