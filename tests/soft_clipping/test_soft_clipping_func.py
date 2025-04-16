@@ -5,7 +5,7 @@ from activations_plus.soft_clipping.soft_clipping_func import SoftClipping
 
 
 def test_soft_clipping():
-    activation = SoftClipping(min_val=-1.0, max_val=1.0)
+    activation = SoftClipping(x_min=-1.0, x_max=1.0)
     x = torch.tensor([-3.0, 0.0, 3.0])
     y = activation(x)
     expected = -1.0 + (1.0 - (-1.0)) * torch.sigmoid(x)
@@ -13,7 +13,7 @@ def test_soft_clipping():
 
 
 def test_soft_clipping_math():
-    activation = SoftClipping(min_val=-1.0, max_val=1.0)
+    activation = SoftClipping(x_min=-1.0, x_max=1.0)
     x = torch.tensor([-3.0, 0.0, 3.0])
     y = activation(x)
     expected = -1.0 + (1.0 - (-1.0)) * torch.sigmoid(x)
@@ -29,6 +29,6 @@ def test_soft_clipping_math():
     ],
 )
 def test_soft_clipping_math_param(x, expected):
-    activation = SoftClipping(min_val=-1.0, max_val=1.0)
+    activation = SoftClipping(x_min=-1.0, x_max=1.0)
     y = activation(x)
     assert torch.allclose(y, expected), "Soft Clipping does not match the mathematical definition."
