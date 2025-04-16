@@ -12,9 +12,11 @@ Soft Clipping
 The Soft Clipping activation function is defined as:
 
 .. math::
-    f(x) = \frac{x}{1 + |x|}
+    f(x) = \text{min\_val} + (\text{max\_val} - \text{min\_val}) \cdot \sigma(x)
 
-This ensures smooth clipping of input values.
+where :math:`\sigma(x)` is the sigmoid function, defined as :math:`\sigma(x) = \frac{1}{1 + e^{-x}}`.
+
+This ensures smooth clipping of input values within the range [min_val, max_val].
 
 Example Usage
 -------------
