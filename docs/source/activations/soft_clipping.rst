@@ -12,14 +12,14 @@ Soft Clipping
 The Soft Clipping activation function is defined as:
 
 .. math::
-    f(x) = \text{min\_val} + (\text{max\_val} - \text{min\_val}) \cdot \sigma(x)
+    f(x) = x_{\text{min}} + (x_{\text{max}} - x_{\text{min}}) \cdot \sigma(x)
 
 where :math:`\sigma(x)` is the sigmoid function, defined as:
 
 .. math::
     \sigma(x) = \frac{1}{1 + e^{-x}}
 
-This ensures smooth clipping of input values within the range :math:`[\text{min\_val}, \text{max\_val}]`.
+This ensures smooth clipping of input values within the range :math:`[x_{\text{min}}, x_{\text{max}}]`.
 
 ---
 
@@ -31,7 +31,7 @@ This ensures smooth clipping of input values within the range :math:`[\text{min\
     from activations_plus.soft_clipping import SoftClipping
 
     # Initialize the Soft Clipping activation function
-    activation = SoftClipping(min_val=-2.0, max_val=2.0)
+    activation = SoftClipping(x_min=-2.0, x_max=2.0)
 
     # Input tensor
     input_tensor = torch.tensor([-3.0, -1.0, 0.0, 1.0, 3.0])
