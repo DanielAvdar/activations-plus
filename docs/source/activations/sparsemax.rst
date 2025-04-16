@@ -7,6 +7,17 @@ Sparsemax
 
 **Reference Paper**: [Sparsemax Activation Function](https://arxiv.org/abs/1602.02068)
 
+**Mathematical Explanation**:
+
+The Sparsemax activation function maps inputs to a probability distribution, similar to softmax, but encourages sparsity by projecting onto a simplex.
+
+The Sparsemax activation function is defined as:
+
+.. math::
+    \text{Sparsemax}(z) = \underset{p \in \Delta^{d-1}}{\operatorname{argmin}} \|p - z\|^2
+
+where :math:`\Delta^{d-1}` is the :math:`(d-1)`-dimensional probability simplex.
+
 **Example Usage**:
 
 .. code-block:: python

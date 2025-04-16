@@ -7,6 +7,15 @@ Soft Clipping
 
 **Reference Paper**: [Soft Clipping Activation Function](https://arxiv.org/abs/2406.16640)
 
+**Mathematical Explanation**:
+
+The Soft Clipping activation function is defined as:
+
+.. math::
+    f(x) = \frac{x}{1 + |x|}
+
+This ensures smooth clipping of input values.
+
 Example Usage
 -------------
 

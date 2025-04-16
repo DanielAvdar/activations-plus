@@ -9,6 +9,15 @@ Entmax
 
 **Reference Paper**: [Entmax Activation Function](https://arxiv.org/abs/1905.05702)
 
+**Mathematical Explanation**:
+
+The Entmax activation function is defined as:
+
+.. math::
+    \text{Entmax}_\alpha(z) = \underset{p \in \Delta^{d-1}}{\operatorname{argmax}} \left( p \cdot z - \frac{1}{\alpha(\alpha-1)} \sum_{i=1}^d p_i^\alpha \right)
+
+where :math:`\alpha` controls the sparsity of the output.
+
 .. code-block:: python
 
     import torch
