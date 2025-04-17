@@ -7,6 +7,15 @@ Bent Identity
 
 **Reference Paper**: [Bent Identity Activation Function](https://arxiv.org/abs/1901.08649)
 
+**Mathematical Explanation**:
+
+The Bent Identity activation function is defined as:
+
+.. math::
+    f(x) = \frac{\sqrt{x^2 + 1} - 1}{2} + x
+
+This introduces a slight non-linearity for negative inputs.
+
 .. code-block:: python
 
     import torch

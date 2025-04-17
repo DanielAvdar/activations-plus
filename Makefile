@@ -25,7 +25,7 @@ coverage:
 	uv run pytest --cov=activations_plus --cov-report=xml
 
 mypy:
-	uv tool run mypy activations_plus --config-file pyproject.toml
+	uv  run mypy activations_plus --config-file pyproject.toml
 
 doc:
 	uv run sphinx-build -M html docs/source docs/build/

@@ -9,5 +9,5 @@ class ELiSH(torch.nn.Module):
      aiming to retain small negative values while maintaining smoothness.
     """
 
-    def forward(self, x):
+    def forward(self, x: torch.Tensor) -> torch.Tensor:
         return torch.where(x > 0, x / (1 + torch.exp(-x)), torch.exp(x) - 1)

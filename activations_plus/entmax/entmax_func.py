@@ -1,3 +1,5 @@
+from typing import Any
+
 import torch
 
 
@@ -9,7 +11,7 @@ class Entmax15Function(torch.autograd.Function):
     """
 
     @staticmethod
-    def forward(ctx: torch.Tensor, input_: torch.Tensor, dim: int = -1) -> torch.Tensor:
+    def forward(ctx: Any, input_: torch.Tensor, dim: int = -1) -> torch.Tensor:
         ctx.dim = dim
 
         max_val, _ = input_.max(dim=dim, keepdim=True)
@@ -22,7 +24,7 @@ class Entmax15Function(torch.autograd.Function):
         return output
 
     @staticmethod
-    def backward(ctx: torch.Tensor, grad_output: torch.Tensor) -> tuple[torch.Tensor, None]:
+    def backward(ctx: Any, grad_output: torch.Tensor) -> tuple[torch.Tensor, None]:  # type: ignore
         (y,) = ctx.saved_tensors
         gppr = y.sqrt()  # = 1 / g'' (y)
         dx = grad_output * gppr

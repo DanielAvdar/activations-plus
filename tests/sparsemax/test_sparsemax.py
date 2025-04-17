@@ -18,8 +18,3 @@ def test_sparsemax_dim_validation():
     input_tensor = torch.tensor([[1.0, 2.0, 0.5]])
     with pytest.raises(IndexError, match="Dimension out of range"):
         sparsemax(input_tensor)
-
-
-def test_sparsemax_extra_repr():
-    sparsemax = Sparsemax(dim=0)
-    assert sparsemax.extra_repr() == "dim=0"

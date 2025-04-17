@@ -7,6 +7,19 @@ SReLU
 
 **Reference Paper**: [SReLU Activation Function](https://arxiv.org/abs/1512.07030)
 
+**Mathematical Explanation**:
+
+The SReLU activation function is defined as:
+
+.. math::
+    f(x) = \begin{cases}
+    t_1 + a_1(x - t_1), & x < t_1 \\
+    x, & t_1 \leq x \leq t_2 \\
+    t_2 + a_2(x - t_2), & x > t_2
+    \end{cases}
+
+where :math:`t_1`, :math:`t_2`, :math:`a_1`, and :math:`a_2` are learnable parameters.
+
 **Example Usage**:
 
 .. code-block:: python

@@ -9,6 +9,15 @@ Maxout
 
 **Reference Paper**: [Maxout Activation Function](https://arxiv.org/abs/1302.4389)
 
+**Mathematical Explanation**:
+
+The Maxout activation function is defined as:
+
+.. math::
+    f(x) = \max_{i \in [1, k]} (x \cdot W_i + b_i)
+
+where :math:`W_i` and :math:`b_i` are learnable parameters, and :math:`k` is the number of linear pieces.
+
 .. code-block:: python
 
     import torch

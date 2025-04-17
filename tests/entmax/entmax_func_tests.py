@@ -111,3 +111,25 @@ def test_entmax15_randomized(random_data, dim):
     assert torch.allclose(grad_sum, torch.zeros_like(grad_sum), atol=1e-4), (
         "Gradients must sum to zero along the specified dimension"
     )
+
+
+def test_entmax_math():
+    x = torch.tensor([[1.0, 2.0, 3.0], [0.5, 0.5, 0.5]], dtype=torch.float32)
+    result = Entmax15Function.apply(x)
+    # Validate that the result is a projection onto the simplex and sums to 1
+    assert torch.all(result >= 0), "Entmax output contains negative values."
+    assert torch.allclose(result.sum(dim=-1), torch.ones(result.size(0)), atol=1e-4), "Entmax output does not sum to 1."
+
+
+@pytest.mark.parametrize(
+    "x",
+    [
+        torch.tensor([[1.0, 2.0, 3.0], [0.5, 0.5, 0.5]], dtype=torch.float32),
+        torch.tensor([[0.0, 0.0, 0.0], [1.0, 1.0, 1.0]], dtype=torch.float32),
+        torch.tensor([[-1.0, -2.0, -3.0], [0.5, 0.5, 0.5]], dtype=torch.float32),
+    ],
+)
+def test_entmax_math_param(x):
+    result = Entmax15Function.apply(x)
+    assert torch.all(result >= 0), "Entmax output contains negative values."
+    assert torch.allclose(result.sum(dim=-1), torch.ones(result.size(0)), atol=1e-4), "Entmax output does not sum to 1."
