@@ -1,5 +1,5 @@
 import torch
-
+from typing import Callable
 
 class SoftClipping(torch.nn.Module):
     """
@@ -11,7 +11,7 @@ class SoftClipping(torch.nn.Module):
 
     """
 
-    def __init__(self, x_min=-1.0, x_max=1.0, clip_func=torch.sigmoid):
+    def __init__(self, x_min: float = -1.0, x_max: float = 1.0, clip_func: Callable = torch.sigmoid):
         """
         SoftClipping is a configurable module for applying soft clipping to values within
         a specified range. The module uses a differentiable non-linear clipping function

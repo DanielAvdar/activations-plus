@@ -21,7 +21,7 @@ class SReLU(torch.nn.Module):
         self.lower_threshold = lower_threshold
         self.upper_threshold = upper_threshold
 
-    def forward(self, x):
+    def forward(self, x: torch.Tensor) -> torch.Tensor:
         """
         Forward pass of the SReLU activation function.
 
