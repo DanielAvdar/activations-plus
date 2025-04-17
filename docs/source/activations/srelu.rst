@@ -4,8 +4,8 @@ SReLU
 .. automodule:: activations_plus.SReLU
    :members: forward, __init__
 
-
-**Reference Paper**: [SReLU Activation Function](https://arxiv.org/abs/1512.07030)
+**Reference Paper**:
+`SReLU Activation Function <https://arxiv.org/abs/1512.07030>`_
 
 **Mathematical Explanation**:
 

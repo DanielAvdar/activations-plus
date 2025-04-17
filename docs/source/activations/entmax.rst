@@ -6,8 +6,8 @@ Entmax
 .. automodule:: activations_plus.Entmax
    :members: forward, __init__
 
-
-**Reference Paper**: [Entmax Activation Function](https://arxiv.org/abs/1905.05702)
+**Reference Paper**:
+`Entmax Activation Function <https://arxiv.org/abs/1905.05702>`_
 
 **Mathematical Explanation**:
 
@@ -17,6 +17,8 @@ The Entmax activation function is defined as:
     \text{Entmax}_\alpha(z) = \underset{p \in \Delta^{d-1}}{\operatorname{argmax}} \left( p \cdot z - \frac{1}{\alpha(\alpha-1)} \sum_{i=1}^d p_i^\alpha \right)
 
 where :math:`\alpha` controls the sparsity of the output.
+
+**Example Usage**:
 
 .. code-block:: python
 
