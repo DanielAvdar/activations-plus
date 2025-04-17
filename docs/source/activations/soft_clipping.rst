@@ -44,4 +44,30 @@ This ensures smooth clipping of input values within the range :math:`[x_{\text{m
 
 ---
 
+**Custom Clipping Function**:
+
+The Soft Clipping activation function can also use a custom clipping function instead of the default sigmoid. For example:
+
+.. code-block:: python
+
+    import torch
+    from activations_plus.soft_clipping import SoftClipping
+
+    # Custom clipping function (e.g., hyperbolic tangent)
+    custom_clip_func = torch.tanh
+
+    # Initialize the Soft Clipping activation function with a custom function
+    activation = SoftClipping(x_min=-2.0, x_max=2.0, clip_func=custom_clip_func)
+
+    # Input tensor
+    input_tensor = torch.tensor([-3.0, -1.0, 0.0, 1.0, 3.0])
+
+    # Apply the activation function
+    output_tensor = activation(input_tensor)
+
+    # Print the output
+    print(output_tensor)  # Example output: tensor([-1.9993, -1.7616,  0.0000,  1.7616,  1.9993])
+
+---
+
 This activation function is particularly useful for stabilizing neural network training by smoothly limiting the range of activations.
