@@ -1,13 +1,11 @@
-.. _maxout:
-
 Maxout
 ======
 
 .. automodule:: activations_plus.Maxout
    :members: forward, __init__
 
-
-**Reference Paper**: [Maxout Activation Function](https://arxiv.org/abs/1302.4389)
+**Reference Paper**:
+`Maxout Activation Function <https://arxiv.org/abs/1302.4389>`_
 
 **Mathematical Explanation**:
 
@@ -17,6 +15,8 @@ The Maxout activation function is defined as:
     f(x) = \max_{i \in [1, k]} (x \cdot W_i + b_i)
 
 where :math:`W_i` and :math:`b_i` are learnable parameters, and :math:`k` is the number of linear pieces.
+
+**Example Usage**:
 
 .. code-block:: python
 

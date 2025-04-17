@@ -2,10 +2,10 @@ Bent Identity
 =============
 
 .. automodule:: activations_plus.BentIdentity
-   :members: forward, __init__
+   :members: forward
 
-
-**Reference Paper**: [Bent Identity Activation Function](https://arxiv.org/abs/1901.08649)
+**Reference Paper**:
+`Bent Identity Activation Function <https://arxiv.org/abs/1901.08649>`_
 
 **Mathematical Explanation**:
 
@@ -15,6 +15,8 @@ The Bent Identity activation function is defined as:
     f(x) = \frac{\sqrt{x^2 + 1} - 1}{2} + x
 
 This introduces a slight non-linearity for negative inputs.
+
+**Example Usage**:
 
 .. code-block:: python
 

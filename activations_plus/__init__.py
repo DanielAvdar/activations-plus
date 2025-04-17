@@ -1,3 +1,5 @@
+"""activations_plus package initialization."""
+
 from importlib.metadata import version
 
 from .bent_identity import BentIdentity

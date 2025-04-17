@@ -86,10 +86,12 @@ line-length = 120
 include = ["pyproject.toml", "tests/**",]
 
 [tool.ruff.lint]
-select = ["F", "B", "I", "F", "W", "E","A","N"]
+select = ["F", "B", "I", "F", "W", "E","A","N","D"]
 
 fixable = ["ALL"]
-
+[tool.ruff.lint.per-file-ignores]
+"tests/*" = ["D"]
+"docs/*" = ["D"]
 [tool.ruff.lint.isort]
 combine-as-imports = true
 [tool.mypy]

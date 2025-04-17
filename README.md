@@ -18,11 +18,11 @@ Activations Plus is a Python package designed to provide a collection of advance
 
 - **Entmax**: Sparse activation function for probabilistic models.
 - **Sparsemax**: Sparse alternative to softmax.
-- **Bent Identity**: Smooth approximation of the identity function.
-- **ELiSH (Exponential Linear Squared Hyperbolic)**: Combines exponential and linear properties.
-- **Maxout**: Learns piecewise linear functions.
-- **Soft Clipping**: Smoothly clips values to a range.
-- **SReLU (S-shaped Rectified Linear Unit)**: Combines linear and non-linear properties.
+- **Bent Identity**: Smooth approximation of the identity function. *(Experimental feature require review)*
+- **ELiSH (Exponential Linear Squared Hyperbolic)**: Combines exponential and linear properties. *(Experimental feature require review)*
+- **Maxout**: Learns piecewise linear functions. *(Experimental feature require review)*
+- **Soft Clipping**: Smoothly clips values to a range. *(Experimental feature require review)*
+- **SReLU (S-shaped Rectified Linear Unit)**: Combines linear and non-linear properties. *(Experimental feature require review)*
 
 ## Installation
 
@@ -64,11 +64,11 @@ Comprehensive documentation is available [documentation](https://activations-plu
 
 1. **Entmax**: Sparse activation function for probabilistic models. [Reference Paper](https://arxiv.org/abs/1905.05702)
 2. **Sparsemax**: Sparse alternative to softmax for probabilistic outputs. [Reference Paper](https://arxiv.org/abs/1602.02068)
-3. **Bent Identity**: A smooth approximation of the identity function. *(Experimental feature under review) [reference missing]()
-4. **ELiSH**: Combines exponential and linear properties for better gradient flow. *(Experimental feature under review)* [Reference Paper](https://arxiv.org/abs/1808.00783)
-6. **Maxout**: Learns piecewise linear functions for better expressiveness. *(Experimental feature under review)* [Reference Paper](https://arxiv.org/abs/1302.4389)
-7. **Soft Clipping**: Smoothly clips values to a range to avoid extreme outputs. *(Experimental feature under review)* [Reference Paper](https://arxiv.org/abs/2406.16640)
-8. **SReLU**: Combines linear and non-linear properties for better flexibility. *(Experimental feature under review)* [Reference Paper](https://arxiv.org/abs/1512.07030)
+3. **Bent Identity**: A smooth approximation of the identity function. *(Experimental feature require review)* [reference missing]()
+4. **ELiSH**: Combines exponential and linear properties for better gradient flow. *(Experimental feature require review)* [Reference Paper](https://arxiv.org/abs/1808.00783)
+6. **Maxout**: Learns piecewise linear functions for better expressiveness. *(Experimental feature require review)* [Reference Paper](https://arxiv.org/abs/1302.4389)
+7. **Soft Clipping**: Smoothly clips values to a range to avoid extreme outputs. *(Experimental feature require review)* [Reference Paper](https://arxiv.org/abs/2406.16640)
+8. **SReLU**: Combines linear and non-linear properties for better flexibility. *(Experimental feature require review)* [Reference Paper](https://arxiv.org/abs/1512.07030)
 
 ## Contributing
 
