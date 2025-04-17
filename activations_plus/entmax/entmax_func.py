@@ -4,10 +4,9 @@ import torch
 
 
 class Entmax15Function(torch.autograd.Function):
-    """
-    An implementation of exact Entmax with alpha=1.5 (B. Peters, V. Niculae, A. Martins). See
+    """An implementation of exact Entmax with alpha=1.5 (B. Peters, V. Niculae, A. Martins). See
     :cite:`https://arxiv.org/abs/1905.05702 for detailed description.
-    Source: https://github.com/deep-spin/entmax
+    Source: https://github.com/deep-spin/entmax.
     """
 
     @staticmethod

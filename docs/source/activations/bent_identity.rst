@@ -2,7 +2,7 @@ Bent Identity
 =============
 
 .. automodule:: activations_plus.BentIdentity
-   :members: forward, __init__
+   :members: forward
 
 
 **Reference Paper**: [Bent Identity Activation Function](https://arxiv.org/abs/1901.08649)

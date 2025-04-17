@@ -4,8 +4,7 @@ import torch
 
 
 class SoftClipping(torch.nn.Module):
-    """
-    Soft Clipping activation function.
+    """Soft Clipping activation function.
 
     This activation function smoothly limits the range of activations, preventing extreme values
     without hard truncation. It is particularly useful for stabilizing neural network training.
@@ -14,8 +13,7 @@ class SoftClipping(torch.nn.Module):
     """
 
     def __init__(self, x_min: float = -1.0, x_max: float = 1.0, clip_func: Callable = torch.sigmoid):
-        """
-        SoftClipping is a configurable module for applying soft clipping to values within
+        """SoftClipping is a configurable module for applying soft clipping to values within
         a specified range. The module uses a differentiable non-linear clipping function
         to constrain input values between a defined minimum and maximum range, facilitating
         gradient-based optimization and control over numerical saturation.
@@ -39,8 +37,7 @@ class SoftClipping(torch.nn.Module):
         self.clip_func = clip_func
 
     def forward(self, x: torch.Tensor) -> torch.Tensor:
-        """
-        Applies a transformation to the input tensor by scaling and clipping its
+        """Applies a transformation to the input tensor by scaling and clipping its
         values based on predefined `min_val` and `max_val`, using a clipping function.
 
         :param x: Input tensor to be transformed.
