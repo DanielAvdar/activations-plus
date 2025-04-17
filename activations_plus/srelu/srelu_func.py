@@ -28,7 +28,8 @@ class SReLU(torch.nn.Module):
         self.upper_threshold: float = upper_threshold
 
     def forward(self, x: Tensor) -> Tensor:
-        """Apply a thresholding operation to the input tensor, clipping values that are below or above
+        """Apply a thresholding operation to the input tensor, clipping values that are below or above.
+
         the specified thresholds.
 
         If a value in the input tensor is less than the `lower_threshold`, it is replaced with

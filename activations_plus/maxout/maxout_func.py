@@ -12,6 +12,7 @@ class Maxout(torch.nn.Module):
 
     Select the maximum across multiple linear functions,
     allowing the network to learn piecewise linear convex functions.
+
     """
 
     def __init__(self, num_pieces: int) -> None:

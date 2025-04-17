@@ -7,7 +7,8 @@ from .sparsemax_func import SparsemaxFunction
 
 
 class Sparsemax(nn.Module):
-    """Sparsemax class implements a transformation function from the paper
+    """Sparsemax class implements a transformation function from the paper.
+
     "From Softmax to Sparsemax: A Sparse Model of Attention and Multi-Label
     Classification" (https://arxiv.org/pdf/1602.02068.pdf). This function is
     used as an activation function that is similar to softmax but can produce
