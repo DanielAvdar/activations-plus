@@ -51,6 +51,3 @@ class Sparsemax(nn.Module):
             dimension.
         """
         return SparsemaxFunction.apply(x, self.dim)
-
-    def extra_repr(self):
-        return f"dim={self.dim}"

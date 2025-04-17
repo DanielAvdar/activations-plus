@@ -1,7 +1,9 @@
+from typing import Any
+
 import torch
 
 
-def flatten_all_but_nth_dim(ctx, x: torch.Tensor) -> tuple:
+def flatten_all_but_nth_dim(ctx: Any, x: torch.Tensor) -> tuple:
     """
     Flattens tensor in all but 1 chosen dimension.
     Saves necessary context for backward pass and unflattening.
@@ -21,7 +23,7 @@ def flatten_all_but_nth_dim(ctx, x: torch.Tensor) -> tuple:
     return ctx, x.transpose(0, -1)
 
 
-def unflatten_all_but_nth_dim(ctx, x: torch.Tensor) -> tuple:
+def unflatten_all_but_nth_dim(ctx: Any, x: torch.Tensor) -> tuple:
     """
     Unflattens tensor using necessary context
     """

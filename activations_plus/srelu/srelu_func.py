@@ -1,5 +1,6 @@
 # Implementation of the SReLU (S-shaped ReLU), ELiSH (Exponential Linear Sigmoid Squash), and Soft Clipping functions
 import torch
+from torch import Tensor
 
 
 class SReLU(torch.nn.Module):
@@ -14,14 +15,14 @@ class SReLU(torch.nn.Module):
         ValueError: If lower_threshold is greater than upper_threshold.
     """
 
-    def __init__(self, lower_threshold=-1.0, upper_threshold=1.0):
+    def __init__(self, lower_threshold: float = -1.0, upper_threshold: float = 1.0) -> None:
         super(SReLU, self).__init__()
         if lower_threshold > upper_threshold:
             raise ValueError("lower_threshold must be less than or equal to upper_threshold")
-        self.lower_threshold = lower_threshold
-        self.upper_threshold = upper_threshold
+        self.lower_threshold: float = lower_threshold
+        self.upper_threshold: float = upper_threshold
 
-    def forward(self, x: torch.Tensor) -> torch.Tensor:
+    def forward(self, x: Tensor) -> Tensor:
         """
         Forward pass of the SReLU activation function.
 
