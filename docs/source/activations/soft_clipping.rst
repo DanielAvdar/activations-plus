@@ -12,14 +12,14 @@ Soft Clipping
 The Soft Clipping activation function is defined as:
 
 .. math::
-    f(x) = x_{\text{min}} + (x_{\text{max}} - x_{\text{min}}) \cdot \sigma(x)
+    f(x) = x_{\text{min}} + (x_{\text{max}} - x_{\text{min}}) \cdot g(x)
 
-where :math:`\sigma(x)` is the sigmoid function, defined as:
+where :math:`g(x)` is the clipping function, which can be chosen as sigmoid, tanh, or any other differentiable function. For example:
 
-.. math::
-    \sigma(x) = \frac{1}{1 + e^{-x}}
+- Sigmoid: :math:`g(x) = \frac{1}{1 + e^{-x}}`
+- Hyperbolic Tangent (tanh): :math:`g(x) = \tanh(x)`
 
-This ensures smooth clipping of input values within the range :math:`[x_{\text{min}}, x_{\text{max}}]`.
+This ensures smooth clipping of input values within the range :math:`[x_{\text{min}}, x_{\text{max}}]`, with the behavior determined by the choice of :math:`g(x)`.
 
 ---
 
