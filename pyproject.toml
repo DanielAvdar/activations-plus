@@ -89,7 +89,7 @@ include = ["pyproject.toml", "tests/**",]
 select = ["F", "B", "I", "F", "W", "E","A","N","D"]
 
 fixable = ["ALL"]
-[tool.ruff.per-file-ignores]
+[tool.ruff.lint.per-file-ignores]
 "tests/*" = ["D"]
 "docs/*" = ["D"]
 [tool.ruff.lint.isort]
