@@ -5,7 +5,7 @@ from activations_plus.sparsemax.utils import flatten_all_but_nth_dim, unflatten_
 
 class SparsemaxFunction(torch.autograd.Function):
     @staticmethod
-    def forward(ctx, x: torch.Tensor, dim: int = -1):
+    def forward(ctx, x: torch.Tensor, dim: int = -1) -> torch.Tensor:
         input_dim = x.dim()
         if input_dim <= dim or dim < -input_dim:
             raise IndexError(
@@ -50,7 +50,7 @@ class SparsemaxFunction(torch.autograd.Function):
         return output
 
     @staticmethod
-    def backward(ctx, grad_output):
+    def backward(ctx, grad_output: torch.Tensor) -> tuple[torch.Tensor, None]:
         output, *_ = ctx.saved_tensors
 
         # Reshape if needed

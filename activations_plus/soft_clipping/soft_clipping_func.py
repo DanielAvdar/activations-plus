@@ -1,5 +1,7 @@
-import torch
 from typing import Callable
+
+import torch
+
 
 class SoftClipping(torch.nn.Module):
     """

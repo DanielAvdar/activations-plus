@@ -1,4 +1,5 @@
 import torch.nn as nn
+from torch import Tensor
 
 from .sparsemax_func import SparsemaxFunction
 
@@ -21,7 +22,7 @@ class Sparsemax(nn.Module):
 
     __constants__ = ["dim"]
 
-    def __init__(self, dim=-1):
+    def __init__(self, dim: int = -1) -> None:
         """
         Sparsemax class as seen in https://arxiv.org/pdf/1602.02068.pdf
         Parameters
@@ -37,7 +38,7 @@ class Sparsemax(nn.Module):
     #     if not hasattr(self, "dim"):
     #         self.dim = None
 
-    def forward(self, x):
+    def forward(self, x: Tensor) -> Tensor:
         """
         Applies the sparsemax function along the specified dimension.
 

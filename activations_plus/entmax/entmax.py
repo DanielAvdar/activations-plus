@@ -1,4 +1,5 @@
 import torch.nn as nn
+from torch import Tensor
 
 from .entmax_func import Entmax15Function
 
@@ -17,7 +18,7 @@ class Entmax(nn.Module):
 
     __constants__ = ["dim"]
 
-    def __init__(self, dim=-1):
+    def __init__(self, dim: int = -1) -> None:
         """
         Entmax15 activation with α=1.5 from https://arxiv.org/abs/1905.05702
         Parameters
@@ -27,7 +28,7 @@ class Entmax(nn.Module):
         super().__init__()
         self.dim = dim
 
-    def forward(self, x):
+    def forward(self, x: Tensor) -> Tensor:
         """
         Applies the Entmax15 function along a specified dimension. Entmax15
         is a smooth variation of softmax that includes the capability to
