@@ -1,16 +1,19 @@
+"""Implements the Entmax15 function for PyTorch."""
+
 from typing import Any
 
 import torch
 
 
 class Entmax15Function(torch.autograd.Function):
-    """An implementation of exact Entmax with alpha=1.5 (B. Peters, V. Niculae, A. Martins). See
-    :cite:`https://arxiv.org/abs/1905.05702 for detailed description.
-    Source: https://github.com/deep-spin/entmax.
+    """Implement exact Entmax with alpha=1.5 (B. Peters, V. Niculae, A. Martins).
+
+    See :cite:`https://arxiv.org/abs/1905.05702` for detailed description. Source: https://github.com/deep-spin/entmax.
     """
 
     @staticmethod
     def forward(ctx: Any, input_: torch.Tensor, dim: int = -1) -> torch.Tensor:
+        """Perform the forward pass for Entmax15Function."""
         ctx.dim = dim
 
         max_val, _ = input_.max(dim=dim, keepdim=True)
@@ -24,6 +27,7 @@ class Entmax15Function(torch.autograd.Function):
 
     @staticmethod
     def backward(ctx: Any, grad_output: torch.Tensor) -> tuple[torch.Tensor, None]:  # type: ignore
+        """Perform the backward pass for Entmax15Function."""
         (y,) = ctx.saved_tensors
         gppr = y.sqrt()  # = 1 / g'' (y)
         dx = grad_output * gppr
@@ -34,6 +38,7 @@ class Entmax15Function(torch.autograd.Function):
 
     @staticmethod
     def _make_ix_like(input_: torch.Tensor, dim: int = 0) -> torch.Tensor:
+        """Create an index tensor like the input tensor."""
         d = input_.size(dim)
         rho = torch.arange(1, d + 1, device=input_.device, dtype=input_.dtype)
         view = [1] * input_.dim()
@@ -42,6 +47,7 @@ class Entmax15Function(torch.autograd.Function):
 
     @staticmethod
     def _threshold_and_support(input_: torch.Tensor, dim: int = -1) -> tuple[torch.Tensor, torch.Tensor]:
+        """Compute the threshold and support for the input tensor."""
         xsrt, _ = torch.sort(input_, descending=True, dim=dim)
 
         rho = Entmax15Function._make_ix_like(input_, dim)

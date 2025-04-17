@@ -1,3 +1,5 @@
+"""Implements the Sparsemax function for PyTorch."""
+
 from typing import Any
 
 import torch
@@ -6,8 +8,11 @@ from activations_plus.sparsemax.utils import flatten_all_but_nth_dim, unflatten_
 
 
 class SparsemaxFunction(torch.autograd.Function):
+    """Sparsemax autograd function for forward and backward passes."""
+
     @staticmethod
     def forward(ctx: Any, x: torch.Tensor, dim: int = -1) -> torch.Tensor:
+        """Perform the forward pass for SparsemaxFunction."""
         input_dim = x.dim()
         if input_dim <= dim or dim < -input_dim:
             raise IndexError(
@@ -53,6 +58,7 @@ class SparsemaxFunction(torch.autograd.Function):
 
     @staticmethod
     def backward(ctx: Any, grad_output: torch.Tensor) -> tuple[torch.Tensor, None]:  # type: ignore
+        """Perform the backward pass for SparsemaxFunction."""
         output, *_ = ctx.saved_tensors
 
         # Reshape if needed

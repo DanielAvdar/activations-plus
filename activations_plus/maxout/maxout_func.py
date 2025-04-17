@@ -1,21 +1,23 @@
+"""Module implementing the Maxout activation function for PyTorch.
+
+This module provides a Maxout activation class that can be used in neural network architectures
+for learning piecewise linear convex functions.
+"""
+
 import torch
 
 
 class Maxout(torch.nn.Module):
     """Maxout activation function.
 
-    Selects the maximum across multiple linear functions,
+    Select the maximum across multiple linear functions,
     allowing the network to learn piecewise linear convex functions.
     """
 
     def __init__(self, num_pieces: int) -> None:
-        """Represents a Maxout activation module used in neural networks. Maxout activation
-        splits the input into multiple pieces and selects the maximum value from each
-        set of pieces.
+        """Initialize the Maxout activation module.
 
-        This module is useful for creating complex, non-linear decision boundaries in
-        machine learning models. Each instance of this class initializes the number of
-        pieces into which the input is split, used to perform the Maxout operation.
+        Initialize the number of pieces into which the input is split for the Maxout operation.
 
         :param num_pieces: Number of pieces into which the input is divided for the
             Maxout operation.
@@ -24,12 +26,10 @@ class Maxout(torch.nn.Module):
         self.num_pieces = num_pieces
 
     def forward(self, x: torch.Tensor) -> torch.Tensor:
-        """Reshapes the input tensor to split its last dimension into multiple parts and then
-        computes the maximum along the newly added dimension.
+        """Reshape the input tensor and compute the maximum along the split dimension.
 
-        The function modifies the shape of the input tensor such that the last dimension is
-        divided into `num_pieces`. It then computes and returns the maximum values along the
-        last axis of the reshaped tensor.
+        Reshape the input tensor so that the last dimension is divided into `num_pieces`,
+        then compute and return the maximum values along the new axis.
 
         :param x: A tensor of arbitrary shape where the last dimension must be divisible by
             `self.num_pieces`.

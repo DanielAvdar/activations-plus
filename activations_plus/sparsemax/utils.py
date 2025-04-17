@@ -1,11 +1,14 @@
+"""Utility functions for the Sparsemax activation function."""
+
 from typing import Any
 
 import torch
 
 
 def flatten_all_but_nth_dim(ctx: Any, x: torch.Tensor) -> tuple:
-    """Flattens tensor in all but 1 chosen dimension.
-    Saves necessary context for backward pass and unflattening.
+    """Flatten tensor in all but 1 chosen dimension.
+
+    Save necessary context for backward pass and unflattening.
     """
     # transpose batch and nth dim
     x = x.transpose(0, ctx.dim)
