@@ -1,6 +1,6 @@
+import hypothesis.extra.numpy as hnp
 import torch
 from hypothesis import given, strategies as st
-import hypothesis.extra.numpy as hnp
 
 from activations_plus.soft_clipping.soft_clipping_func import SoftClipping
 

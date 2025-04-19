@@ -1,6 +1,6 @@
+import hypothesis.extra.numpy as hnp
 import torch
 from hypothesis import given, strategies as st
-import hypothesis.extra.numpy as hnp
 
 from activations_plus.bent_identity.bent_identity_func import BentIdentity
 

@@ -20,7 +20,6 @@ def test_sparsemax_dim_validation():
         sparsemax(input_tensor)
 
 
-
 @pytest.mark.parametrize("dim", [-1, 0, 1])
 @pytest.mark.parametrize("input_shape", [(5, 3), (2, 4, 6), (2, 2, 3, 4), (10, 20, 30)])
 def test_sparsemax(input_shape, dim):

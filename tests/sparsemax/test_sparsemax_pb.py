@@ -1,8 +1,9 @@
+import hypothesis.extra.numpy as hnp
 import torch
 from hypothesis import given, strategies as st
-import hypothesis as hp
-import hypothesis.extra.numpy as hnp
+
 from activations_plus import Sparsemax
+from activations_plus.sparsemax.sparsemax_v2 import SparsemaxFunction
 
 
 # Helper function to create tensors from hypothesis-generated lists
@@ -13,16 +14,15 @@ def tensor_from_list(data, shape):
 
 # Hypothesis test for forward correctness
 @given(
-    hnp.arrays(
+    random_data=hnp.arrays(
         dtype=float,
-        shape=hnp.array_shapes(min_dims=1, max_dims=1, min_side=2, max_side=100),
+        shape=hnp.array_shapes(min_dims=2, max_dims=5, min_side=2, max_side=10),
         elements=st.floats(min_value=-1000, max_value=1000, allow_nan=False, allow_infinity=False),
     ),
-    st.integers(min_value=-1, max_value=0),
+    dim=st.integers(min_value=-1, max_value=0),
 )
 def test_sparsemax_forward_pb(random_data, dim):
-    shape = (random_data.shape[0],)
-    x = torch.tensor(random_data, dtype=torch.double, requires_grad=True).reshape(shape)
+    x = torch.tensor(random_data, dtype=torch.double, requires_grad=True)
 
     sparsemax = Sparsemax(dim=dim)
     result = sparsemax(x)
@@ -40,14 +40,13 @@ def test_sparsemax_forward_pb(random_data, dim):
 @given(
     random_data=hnp.arrays(
         dtype=float,
-        shape=hnp.array_shapes(min_dims=1, max_dims=1, min_side=2, max_side=100),
+        shape=hnp.array_shapes(min_dims=2, max_dims=5, min_side=2, max_side=10),
         elements=st.floats(min_value=-1000, max_value=1000, allow_nan=False, allow_infinity=False),
     ),
     dim=st.integers(min_value=-1, max_value=0),
 )
 def test_sparsemax_backward_pb(random_data, dim):
-    shape = (random_data.shape[0],)
-    x = torch.tensor(random_data, dtype=torch.double, requires_grad=True).reshape(shape).clone().detach().requires_grad_(True)
+    x = torch.tensor(random_data, dtype=torch.double, requires_grad=True).clone().detach().requires_grad_(True)
 
     # Apply sparsemax and conduct backward pass
     sparsemax = Sparsemax(dim=dim)
@@ -65,4 +64,50 @@ def test_sparsemax_backward_pb(random_data, dim):
 
     assert torch.allclose(grads_sum, zeros_tensor, atol=1e-5), (
         "Gradients must sum to zero along the sparsemax dimension"
+    )
+
+
+# Hypothesis test for Sparsemax v2 threshold and support correctness
+@given(
+    random_data=hnp.arrays(
+        dtype=float,
+        shape=hnp.array_shapes(min_dims=1, max_dims=3, min_side=2, max_side=10),
+        elements=st.floats(min_value=-1000, max_value=1000, allow_nan=False, allow_infinity=False),
+    ),
+    dim=st.integers(min_value=-1, max_value=0),
+)
+def test_sparsemax_v2_threshold_and_support_pb(random_data, dim):
+    x = torch.tensor(random_data, dtype=torch.double)
+    tau, support_size = SparsemaxFunction._threshold_and_support(x, dim=dim)
+    # Check shapes
+    assert tau.shape == x.sum(dim=dim, keepdim=True).shape, "Tau shape mismatch"
+    assert support_size.shape == x.sum(dim=dim, keepdim=True).shape, "Support size shape mismatch"
+    # Check support_size is positive and integer
+    assert torch.all(support_size > 0), "Support size must be positive"
+    assert torch.all((support_size % 1) == 0), "Support size must be integer-valued"
+    # Check tau is finite
+    assert torch.all(torch.isfinite(tau)), "Tau must be finite"
+    # Optionally: check that at least one value in (x - tau) is >= 0 (i.e., support is non-empty)
+    assert torch.any((x - tau) >= 0), "At least one value should be in the support (x - tau >= 0)"
+
+
+# Hypothesis test for Sparsemax v2 threshold and support values correctness
+@given(
+    random_data=hnp.arrays(
+        dtype=float,
+        shape=hnp.array_shapes(min_dims=1, max_dims=5, min_side=2, max_side=5),
+        elements=st.floats(min_value=-1000, max_value=1000, allow_nan=False, allow_infinity=False),
+    ),
+    dim=st.integers(min_value=-1, max_value=0),
+)
+def test_sparsemax_v2_threshold_and_support_values_pb(random_data, dim):
+    x = torch.tensor(random_data, dtype=torch.double)
+    tau, support_size = SparsemaxFunction._threshold_and_support(x, dim=dim)
+    support_mask = (x - tau) > 0
+    expected_support_size = support_mask.sum(dim=dim, keepdim=True)
+    assert torch.all(support_size == expected_support_size), "Support size does not match mask count"
+    sum_positive = (x - tau).clamp(min=0).sum(dim=dim, keepdim=True)
+    # The sum of positive parts should be 1 for each row (sparsemax property)
+    assert torch.allclose(sum_positive, torch.ones_like(sum_positive)), (
+        f"Sum of positive parts is not 1: got {sum_positive}"
     )

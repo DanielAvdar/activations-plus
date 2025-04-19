@@ -4,6 +4,7 @@ import torch
 from torch import nn
 from torch.autograd import Function
 
+
 def _make_ix_like(input_: torch.Tensor, dim: int = 0) -> torch.Tensor:
     d = input_.size(dim)
     rho = torch.arange(1, d + 1, device=input_.device, dtype=input_.dtype)
@@ -13,15 +14,14 @@ def _make_ix_like(input_: torch.Tensor, dim: int = 0) -> torch.Tensor:
 
 
 class SparsemaxFunction(Function):
-    """
-    An implementation of sparsemax (Martins & Astudillo, 2016). See
+    """An implementation of sparsemax (Martins & Astudillo, 2016). See
     :cite:`DBLP:journals/corr/MartinsA16` for detailed description.
-    By Ben Peters and Vlad Niculae
+    By Ben Peters and Vlad Niculae.
     """
 
     @staticmethod
     def forward(ctx: torch.Tensor, input_: torch.Tensor, dim: int = -1) -> torch.Tensor:
-        """sparsemax: normalizing sparse transform (a la softmax)
+        """sparsemax: normalizing sparse transform (a la softmax).
 
         Parameters
         ----------
@@ -59,7 +59,7 @@ class SparsemaxFunction(Function):
 
     @staticmethod
     def _threshold_and_support(input_: torch.Tensor, dim: int = -1) -> tuple[torch.Tensor, torch.Tensor]:
-        """Sparsemax building block: compute the threshold
+        """Sparsemax building block: compute the threshold.
 
         Parameters
         ----------
@@ -75,7 +75,6 @@ class SparsemaxFunction(Function):
         support_size : torch.Tensor
 
         """
-
         input_srt, _ = torch.sort(input_, descending=True, dim=dim)
         input_cumsum = input_srt.cumsum(dim) - 1
         rhos = _make_ix_like(input_, dim)
