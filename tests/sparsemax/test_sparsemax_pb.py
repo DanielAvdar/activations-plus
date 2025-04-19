@@ -5,6 +5,8 @@ from hypothesis import given, strategies as st
 from activations_plus import Sparsemax
 from activations_plus.sparsemax.sparsemax_v2 import SparsemaxFunction
 
+from .tabnet_original import Sparsemax as SparsemaxOriginal
+
 
 # Helper function to create tensors from hypothesis-generated lists
 def tensor_from_list(data, shape):
@@ -67,30 +69,6 @@ def test_sparsemax_backward_pb(random_data, dim):
     )
 
 
-# Hypothesis test for Sparsemax v2 threshold and support correctness
-@given(
-    random_data=hnp.arrays(
-        dtype=float,
-        shape=hnp.array_shapes(min_dims=1, max_dims=3, min_side=2, max_side=10),
-        elements=st.floats(min_value=-1000, max_value=1000, allow_nan=False, allow_infinity=False),
-    ),
-    dim=st.integers(min_value=-1, max_value=0),
-)
-def test_sparsemax_v2_threshold_and_support_pb(random_data, dim):
-    x = torch.tensor(random_data, dtype=torch.double)
-    tau, support_size = SparsemaxFunction._threshold_and_support(x, dim=dim)
-    # Check shapes
-    assert tau.shape == x.sum(dim=dim, keepdim=True).shape, "Tau shape mismatch"
-    assert support_size.shape == x.sum(dim=dim, keepdim=True).shape, "Support size shape mismatch"
-    # Check support_size is positive and integer
-    assert torch.all(support_size > 0), "Support size must be positive"
-    assert torch.all((support_size % 1) == 0), "Support size must be integer-valued"
-    # Check tau is finite
-    assert torch.all(torch.isfinite(tau)), "Tau must be finite"
-    # Optionally: check that at least one value in (x - tau) is >= 0 (i.e., support is non-empty)
-    assert torch.any((x - tau) >= 0), "At least one value should be in the support (x - tau >= 0)"
-
-
 # Hypothesis test for Sparsemax v2 threshold and support values correctness
 @given(
     random_data=hnp.arrays(
@@ -100,7 +78,7 @@ def test_sparsemax_v2_threshold_and_support_pb(random_data, dim):
     ),
     dim=st.integers(min_value=-1, max_value=0),
 )
-def test_sparsemax_v2_threshold_and_support_values_pb(random_data, dim):
+def test_sparsemax_v2_threshold_and_support(random_data, dim):
     x = torch.tensor(random_data, dtype=torch.double)
     tau, support_size = SparsemaxFunction._threshold_and_support(x, dim=dim)
     support_mask = (x - tau) > 0
@@ -111,3 +89,24 @@ def test_sparsemax_v2_threshold_and_support_values_pb(random_data, dim):
     assert torch.allclose(sum_positive, torch.ones_like(sum_positive)), (
         f"Sum of positive parts is not 1: got {sum_positive}"
     )
+
+
+@given(
+    random_data=hnp.arrays(
+        dtype=float,
+        shape=hnp.array_shapes(min_dims=1, max_dims=5, min_side=2, max_side=5),
+        elements=st.floats(min_value=-1000, max_value=1000, allow_nan=False, allow_infinity=False),
+    ),
+)
+def test_compare_with_original(random_data):
+    x = torch.tensor(random_data, dtype=torch.double)
+    for dim in range(-1, x.dim()):
+        sparsemax_v2 = Sparsemax(dim=dim)
+        sparsemax_original = SparsemaxOriginal(dim=dim)
+
+        result_v2 = sparsemax_v2(x)
+        result_original = sparsemax_original(x)
+
+        assert torch.allclose(result_v2, result_original, atol=1e-5), (
+            f"Results do not match for dim={dim}: {result_v2} vs {result_original}"
+        )
