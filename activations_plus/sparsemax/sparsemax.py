@@ -24,9 +24,7 @@ class Sparsemax(nn.Module):
     def __init__(self, dim: int = -1) -> None:
         """Initialize the Sparsemax activation function.
 
-        Parameters
-        ----------
-        dim : int, optional
+        :param dim: int, optional
             The dimension along which to apply the Sparsemax operation. Defaults to -1, indicating the last dimension.
 
         """
