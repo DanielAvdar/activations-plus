@@ -42,7 +42,7 @@ def test_sparsemax_forward_pb(random_data, dim):
 @given(
     random_data=hnp.arrays(
         dtype=float,
-        shape=hnp.array_shapes(min_dims=2, max_dims=5, min_side=2, max_side=10),
+        shape=hnp.array_shapes(min_dims=1, max_dims=5, min_side=2, max_side=5),
         elements=st.floats(min_value=-1000, max_value=1000, allow_nan=False, allow_infinity=False),
     ),
     dim=st.integers(min_value=-1, max_value=0),
@@ -67,6 +67,12 @@ def test_sparsemax_backward_pb(random_data, dim):
     assert torch.allclose(grads_sum, zeros_tensor, atol=1e-5), (
         "Gradients must sum to zero along the sparsemax dimension"
     )
+
+    # Check gradient is zero where output is zero
+    output = sparsemax(x)
+    assert torch.all(x.grad[output == 0] == 0), "Gradient should be zero where output is zero"
+    # Check all gradients are finite
+    assert torch.all(torch.isfinite(x.grad)), "All gradients should be finite (no NaN or Inf)"
 
 
 # Hypothesis test for Sparsemax v2 threshold and support values correctness
