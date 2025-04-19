@@ -64,6 +64,7 @@ class SparsemaxFunction(torch.autograd.Function):
 
     @staticmethod
     def backward(ctx: Any, grad_output: torch.Tensor) -> tuple[torch.Tensor, None]:  # type: ignore
+        """Compute the backward pass for SparsemaxFunction."""
         output, *_ = ctx.saved_tensors
 
         if ctx.needs_reshaping:
