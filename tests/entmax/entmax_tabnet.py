@@ -1,5 +1,5 @@
 import torch
-import torch.nn.functional as F
+import torch.nn.functional as functional
 from torch import nn
 from torch.autograd import Function
 
@@ -129,21 +129,21 @@ class Entmax15Function(Function):
 
     @staticmethod
     def backward(ctx: torch.Tensor, grad_output: torch.Tensor) -> tuple[torch.Tensor, None]:
-        (Y,) = ctx.saved_tensors
-        gppr = Y.sqrt()  # = 1 / g'' (Y)
-        dX = grad_output * gppr
-        q = dX.sum(ctx.dim) / gppr.sum(ctx.dim)
+        (y,) = ctx.saved_tensors
+        gppr = y.sqrt()  # = 1 / g'' (y)
+        dx = grad_output * gppr
+        q = dx.sum(ctx.dim) / gppr.sum(ctx.dim)
         q = q.unsqueeze(ctx.dim)
-        dX -= q * gppr
-        return dX, None
+        dx -= q * gppr
+        return dx, None
 
     @staticmethod
     def _threshold_and_support(input_: torch.Tensor, dim: int = -1) -> tuple[torch.Tensor, torch.Tensor]:
-        Xsrt, _ = torch.sort(input_, descending=True, dim=dim)
+        xsrt, _ = torch.sort(input_, descending=True, dim=dim)
 
         rho = _make_ix_like(input_, dim)
-        mean = Xsrt.cumsum(dim) / rho
-        mean_sq = (Xsrt**2).cumsum(dim) / rho
+        mean = xsrt.cumsum(dim) / rho
+        mean_sq = (xsrt**2).cumsum(dim) / rho
         ss = rho * (mean_sq - mean**2)
         delta = (1 - ss) / rho
 
@@ -153,7 +153,7 @@ class Entmax15Function(Function):
         delta_nz = torch.clamp(delta, 0)
         tau = mean - torch.sqrt(delta_nz)
 
-        support_size = (tau <= Xsrt).sum(dim).unsqueeze(dim)
+        support_size = (tau <= xsrt).sum(dim).unsqueeze(dim)
         tau_star = tau.gather(dim, support_size - 1)
         return tau_star, support_size
 
@@ -170,9 +170,9 @@ class Entmoid15(Function):
     @staticmethod
     def _forward(input_: torch.Tensor) -> torch.Tensor:
         input_, is_pos = abs(input_), input_ >= 0
-        tau = (input_ + torch.sqrt(F.relu(8 - input_**2))) / 2
+        tau = (input_ + torch.sqrt(functional.relu(8 - input_**2))) / 2
         tau.masked_fill_(tau <= input_, 2.0)
-        y_neg = 0.25 * F.relu(tau - input_, inplace=True) ** 2
+        y_neg = 0.25 * functional.relu(tau - input_, inplace=True) ** 2
         return torch.where(is_pos, 1 - y_neg, y_neg)
 
     @staticmethod
