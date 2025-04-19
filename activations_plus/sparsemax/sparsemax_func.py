@@ -13,6 +13,10 @@ class SparsemaxFunction(torch.autograd.Function):
     @staticmethod
     def forward(ctx: Any, x: torch.Tensor, dim: int = -1) -> torch.Tensor:
         """Perform the forward pass for SparsemaxFunction with arbitrary dim support."""
+        # Handle empty input: return empty tensor of same shape/type
+        if x.numel() == 0:
+            return x.clone()
+
         input_dim = x.dim()
         if input_dim <= dim or dim < -input_dim:
             raise IndexError(
@@ -65,6 +69,10 @@ class SparsemaxFunction(torch.autograd.Function):
     @staticmethod
     def backward(ctx: Any, grad_output: torch.Tensor) -> tuple[torch.Tensor, None]:  # type: ignore
         """Compute the backward pass for SparsemaxFunction."""
+        # Handle empty input: return zero-like grad_input and None
+        if grad_output.numel() == 0:
+            return grad_output.clone(), None
+
         output, *_ = ctx.saved_tensors
 
         if ctx.needs_reshaping:
