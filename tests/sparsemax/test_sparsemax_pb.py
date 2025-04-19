@@ -3,7 +3,7 @@ import torch
 from hypothesis import given, strategies as st
 
 from activations_plus import Sparsemax
-from activations_plus.sparsemax.sparsemax_v2 import SparsemaxFunction
+from activations_plus.sparsemax.sparsemax_func_v2 import SparsemaxFunction
 
 from .tabnet_original import Sparsemax as SparsemaxOriginal
 

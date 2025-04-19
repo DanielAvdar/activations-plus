@@ -1,7 +1,7 @@
 import pytest
 import torch
 
-from activations_plus.sparsemax.sparsemax_func import SparsemaxFunction
+from activations_plus.sparsemax import SparsemaxFunction
 
 
 def test_sparsemax_forward_valid_input():
