@@ -3,7 +3,6 @@ import torch
 from hypothesis import given, strategies as st
 
 from activations_plus import Sparsemax
-from activations_plus.sparsemax.sparsemax import Sparsemax as SparsemaxFunctionV1
 
 from .tabnet_tabnet import Sparsemax as SparsemaxTabnet, SparsemaxFunction
 
@@ -25,9 +24,12 @@ def tensor_from_list(data, shape):
 )
 def test_sparsemax_forward_pb(random_data, dim):
     x = torch.tensor(random_data, dtype=torch.double, requires_grad=True)
+    clone_x = x.clone().detach().requires_grad_(True)
 
     sparsemax = Sparsemax(dim=dim)
     result = sparsemax(x)
+
+    assert torch.allclose(x, clone_x), "Input tensor should not be modified"
 
     assert result is not None, "Sparsemax forward output cannot be None"
     assert result.shape == x.shape, "Output shape must match input shape"
@@ -109,19 +111,22 @@ def test_sparsemax_v2_threshold_and_support(random_data, dim):
     ),
 )
 def test_compare_with_original(random_data):
-    x = torch.tensor(random_data, dtype=torch.double)
+    x = torch.tensor(random_data, dtype=torch.double, requires_grad=True)
     for dim in range(-1, x.dim()):
         sparsemax_v2 = Sparsemax(dim=dim)
         sparsemax_original = SparsemaxTabnet(dim=dim)
-        sparsemax_v1 = SparsemaxFunctionV1(dim=dim)
+        # sparsemax_v1 = SparsemaxFunctionV1(dim=dim)
 
         result_v2 = sparsemax_v2(x)
-        result_v1 = sparsemax_v1(x)
-        result_original = sparsemax_original(x)
+        x_clone = x.clone().detach().requires_grad_(True)
+
+        result_original = sparsemax_original(x_clone)
 
         assert torch.allclose(result_v2, result_original, atol=1e-5), (
             f"Results do not match for dim={dim}: {result_v2} vs {result_original}"
         )
-        assert torch.allclose(result_v1, result_original, atol=1e-5), (
-            f"Results do not match for dim={dim}: {result_v1} vs {result_original}"
+        result_v2.sum().backward()
+        result_original.sum().backward()
+        assert torch.allclose(x.grad, x_clone.grad, atol=1e-5), (
+            f"Gradients do not match for dim={dim}: {x.grad} vs {x_clone.grad}"
         )
