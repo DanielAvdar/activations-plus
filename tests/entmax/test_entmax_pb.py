@@ -1,26 +1,22 @@
 import torch
 from hypothesis import given, strategies as st
+import hypothesis.extra.numpy as hnp
 
 from activations_plus.entmax.entmax import Entmax
 
 
-def tensor_from_list(data, shape):
-    return torch.tensor(data, dtype=torch.float32, requires_grad=True).reshape(shape)
-
-
 @given(
-    random_data=st.lists(
-        st.floats(min_value=-1e6, max_value=1e6, allow_nan=False, allow_infinity=False), min_size=2, max_size=100
+    random_data=hnp.arrays(
+        dtype=float,
+        shape=hnp.array_shapes(min_dims=1, max_dims=1, min_side=2, max_side=100),
+        elements=st.floats(min_value=-1e6, max_value=1e6, allow_nan=False, allow_infinity=False),
     ),
     dim=st.integers(min_value=-1, max_value=0),
 )
 def test_entmax_forward_pb(random_data, dim):
-    shape = (len(random_data),)
-    x = tensor_from_list(random_data, shape)
-
+    x = torch.tensor(random_data, dtype=torch.float32, requires_grad=True)
     entmax = Entmax(dim=dim)
     result = entmax(x)
-
     assert result is not None, "Output cannot be None"
     assert result.shape == x.shape, "Output shape mismatch"
     assert torch.all(result >= 0), "Output must be non-negative"
@@ -30,21 +26,19 @@ def test_entmax_forward_pb(random_data, dim):
 
 
 @given(
-    random_data=st.lists(
-        st.floats(min_value=-1e6, max_value=1e6, allow_nan=False, allow_infinity=False), min_size=2, max_size=100
+    random_data=hnp.arrays(
+        dtype=float,
+        shape=hnp.array_shapes(min_dims=1, max_dims=1, min_side=2, max_side=100),
+        elements=st.floats(min_value=-1e6, max_value=1e6, allow_nan=False, allow_infinity=False),
     ),
     dim=st.integers(min_value=-1, max_value=0),
 )
 def test_entmax_backward_pb(random_data, dim):
-    shape = (len(random_data),)
-    x = tensor_from_list(random_data, shape).clone().detach().requires_grad_(True)
-
+    x = torch.tensor(random_data, dtype=torch.float32, requires_grad=True).clone().detach().requires_grad_(True)
     entmax = Entmax(dim=dim)
     result = entmax(x)
-
     # Backward pass
     result.sum().backward()
-
     assert x.grad is not None, "Gradient should not be None"
     assert x.grad.shape == x.shape, "Gradient shape mismatch"
     grad_sum = x.grad.sum(dim)

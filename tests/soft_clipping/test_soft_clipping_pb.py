@@ -1,11 +1,16 @@
 import torch
 from hypothesis import given, strategies as st
+import hypothesis.extra.numpy as hnp
 
 from activations_plus.soft_clipping.soft_clipping_func import SoftClipping
 
 
 @given(
-    st.lists(st.floats(min_value=-1e6, max_value=1e6, allow_nan=False, allow_infinity=False), min_size=1, max_size=100)
+    hnp.arrays(
+        dtype=float,
+        shape=hnp.array_shapes(min_dims=1, max_dims=1, min_side=1, max_side=100),
+        elements=st.floats(min_value=-1e6, max_value=1e6, allow_nan=False, allow_infinity=False),
+    )
 )
 def test_soft_clipping_randomized(data):
     activation = SoftClipping(x_min=-1.0, x_max=1.0)

@@ -1,6 +1,7 @@
 import torch
 from hypothesis import given, strategies as st
 import hypothesis as hp
+import hypothesis.extra.numpy as hnp
 from activations_plus import Sparsemax
 
 
@@ -12,14 +13,16 @@ def tensor_from_list(data, shape):
 
 # Hypothesis test for forward correctness
 @given(
-    st.lists(
-        st.floats(min_value=-1000, max_value=1000, allow_nan=False, allow_infinity=False), min_size=2, max_size=100
+    hnp.arrays(
+        dtype=float,
+        shape=hnp.array_shapes(min_dims=1, max_dims=1, min_side=2, max_side=100),
+        elements=st.floats(min_value=-1000, max_value=1000, allow_nan=False, allow_infinity=False),
     ),
     st.integers(min_value=-1, max_value=0),
 )
 def test_sparsemax_forward_pb(random_data, dim):
-    shape = (len(random_data),)
-    x = tensor_from_list(random_data, shape)
+    shape = (random_data.shape[0],)
+    x = torch.tensor(random_data, dtype=torch.double, requires_grad=True).reshape(shape)
 
     sparsemax = Sparsemax(dim=dim)
     result = sparsemax(x)
@@ -33,17 +36,18 @@ def test_sparsemax_forward_pb(random_data, dim):
     )
 
 
-
 # Hypothesis test for backward correctness (gradients)
 @given(
-    random_data=st.lists(
-        st.floats(min_value=-1000, max_value=1000, allow_nan=False, allow_infinity=False), min_size=2, max_size=100
+    random_data=hnp.arrays(
+        dtype=float,
+        shape=hnp.array_shapes(min_dims=1, max_dims=1, min_side=2, max_side=100),
+        elements=st.floats(min_value=-1000, max_value=1000, allow_nan=False, allow_infinity=False),
     ),
     dim=st.integers(min_value=-1, max_value=0),
 )
 def test_sparsemax_backward_pb(random_data, dim):
-    shape = (len(random_data),)
-    x = tensor_from_list(random_data, shape).clone().detach().requires_grad_(True)
+    shape = (random_data.shape[0],)
+    x = torch.tensor(random_data, dtype=torch.double, requires_grad=True).reshape(shape).clone().detach().requires_grad_(True)
 
     # Apply sparsemax and conduct backward pass
     sparsemax = Sparsemax(dim=dim)
