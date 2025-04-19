@@ -6,7 +6,7 @@ from activations_plus.sparsemax import Sparsemax
 
 
 @pytest.mark.parametrize("dimension", [-4, -3, -2, -1, 0, 1, 2, 3])
-@pytest.mark.skip(reason="Skipping grad-check temporarily")
+# @pytest.mark.skip(reason="Skipping grad-check temporarily")
 def test_sparsemax_grad(dimension):
     sparsemax = Sparsemax(dimension)
     inputs = torch.randn(6, 3, 5, 4, dtype=torch.double, requires_grad=True)

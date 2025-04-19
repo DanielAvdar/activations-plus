@@ -3,9 +3,10 @@ import torch
 from hypothesis import given, strategies as st
 
 from activations_plus import Sparsemax
+from activations_plus.sparsemax.sparsemax import Sparsemax as SparsemaxFunctionV1
 from activations_plus.sparsemax.sparsemax_func_v2 import SparsemaxFunction
 
-from .tabnet_original import Sparsemax as SparsemaxOriginal
+from .tabnet_tabnet import Sparsemax as SparsemaxOriginal
 
 
 # Helper function to create tensors from hypothesis-generated lists
@@ -113,10 +114,15 @@ def test_compare_with_original(random_data):
     for dim in range(-1, x.dim()):
         sparsemax_v2 = Sparsemax(dim=dim)
         sparsemax_original = SparsemaxOriginal(dim=dim)
+        sparsemax_v1 = SparsemaxFunctionV1(dim=dim)
 
         result_v2 = sparsemax_v2(x)
+        result_v1 = sparsemax_v1(x)
         result_original = sparsemax_original(x)
 
         assert torch.allclose(result_v2, result_original, atol=1e-5), (
             f"Results do not match for dim={dim}: {result_v2} vs {result_original}"
+        )
+        assert torch.allclose(result_v1, result_original, atol=1e-5), (
+            f"Results do not match for dim={dim}: {result_v1} vs {result_original}"
         )
