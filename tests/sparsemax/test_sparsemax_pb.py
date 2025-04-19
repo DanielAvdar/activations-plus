@@ -1,7 +1,7 @@
 import torch
 from hypothesis import given, strategies as st
-
-from activations_plus.sparsemax.sparsemax import Sparsemax
+import hypothesis as hp
+from activations_plus import Sparsemax
 
 
 # Helper function to create tensors from hypothesis-generated lists
@@ -27,9 +27,11 @@ def test_sparsemax_forward_pb(random_data, dim):
     assert result is not None, "Sparsemax forward output cannot be None"
     assert result.shape == x.shape, "Output shape must match input shape"
     assert torch.all(result >= 0), "Sparsemax output must have non-negative values"
-    assert torch.allclose(result.sum(dim), torch.tensor(1.0, dtype=torch.double)), (
+    sum_result = result.sum(dim)
+    assert torch.allclose(sum_result, torch.ones_like(sum_result)), (
         "Sparsemax outputs must sum to 1 along specified dimension or 0 (if sparsely activated)"
     )
+
 
 
 # Hypothesis test for backward correctness (gradients)
