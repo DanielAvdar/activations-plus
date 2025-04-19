@@ -32,6 +32,8 @@ def test_sparsemax_forward_pb(random_data, dim):
     assert result is not None, "Sparsemax forward output cannot be None"
     assert result.shape == x.shape, "Output shape must match input shape"
     assert torch.all(result >= 0), "Sparsemax output must have non-negative values"
+    # General assertions for more thorough testing
+    assert torch.all(torch.isfinite(result)), "Sparsemax output contains NaN or Inf"
     sum_result = result.sum(dim)
     assert torch.allclose(sum_result, torch.ones_like(sum_result)), (
         "Sparsemax outputs must sum to 1 along specified dimension or 0 (if sparsely activated)"
@@ -71,6 +73,8 @@ def test_sparsemax_backward_pb(random_data, dim):
     # Check gradient is zero where output is zero
     output = sparsemax(x)
     assert torch.all(x.grad[output == 0] == 0), "Gradient should be zero where output is zero"
+    # General assertions for more thorough testing
+    assert torch.all(torch.isfinite(x.grad)), "Gradient contains NaN or Inf"
     # Check all gradients are finite
     assert torch.all(torch.isfinite(x.grad)), "All gradients should be finite (no NaN or Inf)"
 
