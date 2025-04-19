@@ -40,6 +40,55 @@ def test_sparsemax_forward_dim_handling():
     assert torch.all(result >= 0)
 
 
+def test_sparsemax_idempotence():
+    x = torch.tensor([[1.0, 2.0, 3.0], [0.5, 0.5, 0.5]], dtype=torch.float32)
+    y1 = SparsemaxFunction.apply(x)
+    y2 = SparsemaxFunction.apply(y1)
+    assert torch.allclose(y1, y2, atol=1e-5), "Sparsemax should be idempotent (applying twice yields same result)"
+
+
+@pytest.mark.parametrize(
+    "device", [torch.device("cpu")] + ([torch.device("cuda")] if torch.cuda.is_available() else [])
+)
+def test_sparsemax_device_consistency(device):
+    x = torch.randn(5, 3, dtype=torch.float32, device=device, requires_grad=True)
+    y = SparsemaxFunction.apply(x)
+    assert y.device == x.device
+    y.sum().backward()
+    assert x.grad is not None
+    assert x.grad.device == x.device
+
+
+@pytest.mark.parametrize("dtype", [torch.float16, torch.float32, torch.float64])
+def test_sparsemax_dtype_consistency(dtype):
+    x = torch.randn(5, 3, dtype=dtype, requires_grad=True)
+    y = SparsemaxFunction.apply(x)
+    assert y.dtype == x.dtype
+
+
+@pytest.mark.parametrize("shape", [(0, 3), (1, 3), (3, 0)])
+def test_sparsemax_empty_and_singleton(shape):
+    x = torch.empty(*shape, dtype=torch.float32, requires_grad=True)
+    y = SparsemaxFunction.apply(x)
+    assert y.shape == x.shape
+
+
+@pytest.mark.parametrize(
+    "x",
+    [
+        torch.tensor([[1.0, 2.0, 3.0], [0.5, 0.5, 0.5]], dtype=torch.float32),
+        torch.tensor([[0.0, 0.0, 0.0], [1.0, 1.0, 1.0]], dtype=torch.float32),
+        torch.tensor([[-1.0, -2.0, -3.0], [0.5, 0.5, 0.5]], dtype=torch.float32),
+    ],
+)
+def test_sparsemax_monotonicity(x):
+    # Monotonicity: increasing input should not decrease output
+    x2 = x + 1.0
+    y1 = SparsemaxFunction.apply(x)
+    y2 = SparsemaxFunction.apply(x2)
+    assert torch.all(y2 >= y1 - 1e-5), "Sparsemax output should be monotonic with respect to input"
+
+
 @pytest.mark.parametrize(
     "x",
     [
