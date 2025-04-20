@@ -16,6 +16,10 @@ class Entmax15Function(torch.autograd.Function):
         """Perform the forward pass for Entmax15Function."""
         ctx.dim = dim
 
+        # Handle empty input early (like softmax)
+        if input_.numel() == 0:
+            return input_.clone()
+
         max_val, _ = input_.max(dim=dim, keepdim=True)
         input_ = input_ - max_val  # same numerical stability trick as for softmax
         input_ = input_ / 2  # divide by 2 to solve actual Entmax
@@ -28,6 +32,9 @@ class Entmax15Function(torch.autograd.Function):
     @staticmethod
     def backward(ctx: Any, grad_output: torch.Tensor) -> tuple[torch.Tensor, None]:  # type: ignore
         """Perform the backward pass for Entmax15Function."""
+        # Handle empty grad_output (empty input case)
+        if grad_output.numel() == 0:
+            return grad_output.clone(), None
         (y,) = ctx.saved_tensors
         gppr = y.sqrt()  # = 1 / g'' (y)
         dx = grad_output * gppr
