@@ -18,7 +18,11 @@ class ELiSH(torch.nn.Module):
         activation that aids deep learning models in learning complex data patterns more effectively.
 
         :param x: A PyTorch tensor input representing the data to apply the Swish activation function.
-        :return: A PyTorch tensor containing the element-wise output after applying the Swish activation
-            function.
+
+        Returns
+        -------
+        torch.Tensor
+            The element-wise output after applying the Swish activation function.
+
         """
         return torch.where(x > 0, x / (1 + torch.exp(-x)), torch.exp(x) - 1)

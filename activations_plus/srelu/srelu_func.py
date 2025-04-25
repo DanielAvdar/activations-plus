@@ -20,6 +20,12 @@ class SReLU(torch.nn.Module):
         :param upper_threshold: The maximum value an input can take after being passed through the
             activation function.
         :raises ValueError: If `lower_threshold` is greater than `upper_threshold`.
+
+        Raises
+        ------
+        ValueError
+            If `lower_threshold` is greater than `upper_threshold`.
+
         """
         super(SReLU, self).__init__()
         if lower_threshold > upper_threshold:
@@ -40,6 +46,12 @@ class SReLU(torch.nn.Module):
         :type x: Tensor
         :return: A tensor with values clipped according to the thresholding criteria.
         :rtype: Tensor
+
+        Returns
+        -------
+        Tensor
+            A tensor with values clipped according to the thresholding criteria.
+
         """
         return torch.where(
             x < self.lower_threshold,

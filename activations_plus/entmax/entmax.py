@@ -36,8 +36,11 @@ class Entmax(nn.Module):
         non-negative distributions are desired.
 
         :param x: The input tensor on which the Entmax15 function will be applied.
-        :return: The tensor obtained after applying the Entmax15 transformation to the input tensor. The
-            output tensor has the same shape as the input but may exhibit sparse behavior depending on the
-            input values.
+
+        Returns
+        -------
+        Tensor
+            The tensor after applying the Entmax15 transformation.
+
         """
         return Entmax15Function.apply(x, self.dim)

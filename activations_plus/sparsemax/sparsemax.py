@@ -39,6 +39,11 @@ class Sparsemax(nn.Module):
         probabilities are exactly zero.
 
         :param x: The input tensor to which the sparsemax function will be applied.
-        :return: The tensor after applying the sparsemax operation along the specified dimension.
+
+        Returns
+        -------
+        Tensor
+            The tensor after applying the sparsemax operation along the specified dimension.
+
         """
         return SparsemaxFunction.apply(x, self.dim)
