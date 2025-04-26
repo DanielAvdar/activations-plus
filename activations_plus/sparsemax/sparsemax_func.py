@@ -12,7 +12,28 @@ class SparsemaxFunction(torch.autograd.Function):
 
     @staticmethod
     def forward(ctx: Any, x: torch.Tensor, dim: int = -1) -> torch.Tensor:
-        """Perform the forward pass for SparsemaxFunction with arbitrary dim support."""
+        """Perform the forward pass for SparsemaxFunction with arbitrary dim support.
+
+        Parameters
+        ----------
+        ctx : Any
+            Context object for autograd.
+        x : torch.Tensor
+            Input tensor.
+        dim : int, optional
+            Dimension along which to apply Sparsemax. Default is -1.
+
+        Returns
+        -------
+        torch.Tensor
+            The output tensor after applying Sparsemax.
+
+        Raises
+        ------
+        IndexError
+            If the specified dimension is out of range for the input tensor.
+
+        """
         # Handle empty input: return empty tensor of same shape/type
         if x.numel() == 0:
             return x.clone()
@@ -68,7 +89,21 @@ class SparsemaxFunction(torch.autograd.Function):
 
     @staticmethod
     def backward(ctx: Any, grad_output: torch.Tensor) -> tuple[torch.Tensor, None]:  # type: ignore
-        """Compute the backward pass for SparsemaxFunction."""
+        """Compute the backward pass for SparsemaxFunction.
+
+        Parameters
+        ----------
+        ctx : Any
+            Context object for autograd.
+        grad_output : torch.Tensor
+            Gradient of the loss with respect to the output.
+
+        Returns
+        -------
+        tuple[torch.Tensor, None]
+            The gradient with respect to the input and None for dim.
+
+        """
         # Handle empty input: return zero-like grad_input and None
         if grad_output.numel() == 0:
             return grad_output.clone(), None

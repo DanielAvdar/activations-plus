@@ -13,7 +13,23 @@ class Entmax15Function(torch.autograd.Function):
 
     @staticmethod
     def forward(ctx: Any, input_: torch.Tensor, dim: int = -1) -> torch.Tensor:
-        """Perform the forward pass for Entmax15Function."""
+        """Perform the forward pass for Entmax15Function.
+
+        Parameters
+        ----------
+        ctx : Any
+            Context object for autograd.
+        input_ : torch.Tensor
+            Input tensor.
+        dim : int, optional
+            Dimension along which to apply Entmax15. Default is -1.
+
+        Returns
+        -------
+        torch.Tensor
+            The output tensor after applying Entmax15.
+
+        """
         ctx.dim = dim
 
         # Handle empty input early (like softmax)
@@ -31,7 +47,21 @@ class Entmax15Function(torch.autograd.Function):
 
     @staticmethod
     def backward(ctx: Any, grad_output: torch.Tensor) -> tuple[torch.Tensor, None]:  # type: ignore
-        """Perform the backward pass for Entmax15Function."""
+        """Perform the backward pass for Entmax15Function.
+
+        Parameters
+        ----------
+        ctx : Any
+            Context object for autograd.
+        grad_output : torch.Tensor
+            Gradient of the loss with respect to the output.
+
+        Returns
+        -------
+        tuple[torch.Tensor, None]
+            The gradient with respect to the input and None for dim.
+
+        """
         # Handle empty grad_output (empty input case)
         if grad_output.numel() == 0:
             return grad_output.clone(), None
@@ -45,7 +75,21 @@ class Entmax15Function(torch.autograd.Function):
 
     @staticmethod
     def _make_ix_like(input_: torch.Tensor, dim: int = 0) -> torch.Tensor:
-        """Create an index tensor like the input tensor."""
+        """Create an index tensor like the input tensor.
+
+        Parameters
+        ----------
+        input_ : torch.Tensor
+            Input tensor.
+        dim : int, optional
+            Dimension for the index tensor. Default is 0.
+
+        Returns
+        -------
+        torch.Tensor
+            Index tensor with the same device and dtype as input_.
+
+        """
         d = input_.size(dim)
         rho = torch.arange(1, d + 1, device=input_.device, dtype=input_.dtype)
         view = [1] * input_.dim()
@@ -54,7 +98,21 @@ class Entmax15Function(torch.autograd.Function):
 
     @staticmethod
     def _threshold_and_support(input_: torch.Tensor, dim: int = -1) -> tuple[torch.Tensor, torch.Tensor]:
-        """Compute the threshold and support for the input tensor."""
+        """Compute the threshold and support for the input tensor.
+
+        Parameters
+        ----------
+        input_ : torch.Tensor
+            Input tensor.
+        dim : int, optional
+            Dimension along which to compute threshold/support. Default is -1.
+
+        Returns
+        -------
+        tuple[torch.Tensor, torch.Tensor]
+            The threshold and support tensors.
+
+        """
         xsrt, _ = torch.sort(input_, descending=True, dim=dim)
 
         rho = Entmax15Function._make_ix_like(input_, dim)

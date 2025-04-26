@@ -20,8 +20,11 @@ class BentIdentity(torch.nn.Module):
         :param x: A tensor of numeric values on which the custom transformation is performed. The tensor
             should consist of real-valued numbers.
         :type x: torch.Tensor
-        :return: A tensor containing the transformed values after applying the custom operation to the
-            input tensor.
-        :rtype: torch.Tensor
+
+        Returns
+        -------
+        torch.Tensor
+            The transformed tensor after applying the Bent Identity operation.
+
         """
         return (torch.sqrt(x**2 + 1) - 1) / 2 + x

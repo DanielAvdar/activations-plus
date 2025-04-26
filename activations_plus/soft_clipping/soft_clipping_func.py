@@ -46,7 +46,11 @@ class SoftClipping(torch.nn.Module):
 
         :param x: Input tensor to be transformed.
         :type x: torch.Tensor
-        :return: Transformed tensor after applying the scaling and clipping operation.
-        :rtype: torch.Tensor
+
+        Returns
+        -------
+        torch.Tensor
+            The transformed tensor after scaling and soft clipping.
+
         """
         return self.min_val + (self.max_val - self.min_val) * self.clip_func(x)

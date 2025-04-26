@@ -4,6 +4,7 @@ default: install
 
 
 install:
+	uv run pre-commit install
 	uv sync --all-extras --all-groups --frozen
 	uv pip install pre-commit
 

@@ -34,9 +34,12 @@ class Maxout(torch.nn.Module):
 
         :param x: A tensor of arbitrary shape where the last dimension must be divisible by
             `self.num_pieces`.
-        :return: A tensor containing the maximum values along the split dimension of the
-            reshaped input tensor. The resulting shape will match all but the last dimension
-            of the input tensor.
+
+        Returns
+        -------
+        torch.Tensor
+            The tensor containing the maximum values along the split dimension.
+
         """
         shape = x.shape[:-1] + (x.shape[-1] // self.num_pieces, self.num_pieces)
         x = x.view(*shape)
