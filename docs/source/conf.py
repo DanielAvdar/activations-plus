@@ -31,7 +31,8 @@ extensions = [
     "sphinx.ext.autodoc",
     "sphinx.ext.doctest",
     "sphinx.ext.intersphinx",
-    "sphinx.ext.mathjax",  # Enable math rendering with MathJax
+    "sphinx.ext.mathjax",
+    "matplotlib.sphinxext.plot_directive",
 ]
 
 templates_path = ["_templates"]

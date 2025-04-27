@@ -13,6 +13,21 @@ def relu(x):
 
         \mathrm{ReLU}(z) = \max(0, z)
 
+    .. plot::
+       :include-source:
+
+       from activations_plus.simple.relu_variants import relu
+       import torch
+       import matplotlib.pyplot as plt
+       x = torch.linspace(-3, 3, 200)
+       y = relu(x)
+       plt.plot(x.numpy(), y.numpy())
+       plt.title("ReLU")
+       plt.xlabel("Input")
+       plt.ylabel("Output")
+       plt.grid(alpha=0.3)
+       plt.show()
+
     Returns
     -------
     torch.Tensor
@@ -28,6 +43,21 @@ def lrelu(x, a=0.01):
     .. math::
 
         \mathrm{LReLU}(z) = \begin{cases} z, & z \geq 0 \\ \frac{z}{a}, & z < 0 \end{cases}
+
+    .. plot::
+       :include-source:
+
+       from activations_plus.simple.relu_variants import lrelu
+       import torch
+       import matplotlib.pyplot as plt
+       x = torch.linspace(-3, 3, 200)
+       y = lrelu(x, a=0.1)
+       plt.plot(x.numpy(), y.numpy())
+       plt.title("Leaky ReLU (a=0.1)")
+       plt.xlabel("Input")
+       plt.ylabel("Output")
+       plt.grid(alpha=0.3)
+       plt.show()
 
     Parameters
     ----------
@@ -51,6 +81,21 @@ def blrelu(x, a=0.01, b=1.0, c=0.0):
     .. math::
 
         \mathrm{BLReLU}(z) = \begin{cases} az, & z \leq 0 \\ z, & 0 < z < b \\ az + c, & z \geq b \end{cases}
+
+    .. plot::
+       :include-source:
+
+       from activations_plus.simple.relu_variants import blrelu
+       import torch
+       import matplotlib.pyplot as plt
+       x = torch.linspace(-3, 3, 200)
+       y = blrelu(x)
+       plt.plot(x.numpy(), y.numpy())
+       plt.title("Bounded Leaky ReLU")
+       plt.xlabel("Input")
+       plt.ylabel("Output")
+       plt.grid(alpha=0.3)
+       plt.show()
 
     Parameters
     ----------

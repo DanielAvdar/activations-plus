@@ -62,6 +62,8 @@ docs = [
     "sphinx>=8.2.0; python_version >= '3.11'",
     "sphinx>=7.0.0; python_version < '3.11'",
     "sphinx-rtd-theme>=3.0.2",
+    "matplotlib",
+
 ]
 [tool.hatch.build.targets.sdist]
 only-include = ["activations_plus",]

@@ -13,6 +13,21 @@ def polynomial_linear_unit(x):
 
         \mathrm{PLU}(z) = \begin{cases} z, & z \geq 0 \\ \frac{1}{1-z} - 1, & z < 0 \end{cases}
 
+    .. plot::
+       :include-source:
+
+       from activations_plus.simple.polynomial_power_variants import polynomial_linear_unit
+       import torch
+       import matplotlib.pyplot as plt
+       x = torch.linspace(-3, 3, 200)
+       y = polynomial_linear_unit(x)
+       plt.plot(x.numpy(), y.numpy())
+       plt.title("Polynomial Linear Unit")
+       plt.xlabel("Input")
+       plt.ylabel("Output")
+       plt.grid(alpha=0.3)
+       plt.show()
+
     Parameters
     ----------
     x : torch.Tensor
@@ -34,6 +49,21 @@ def power_function_linear_unit(x):
 
         \mathrm{PFLU}(z) = z \cdot \frac{1}{2} \left(1 + \frac{z}{\sqrt{1+z^2}}\right)
 
+    .. plot::
+       :include-source:
+
+       from activations_plus.simple.polynomial_power_variants import power_function_linear_unit
+       import torch
+       import matplotlib.pyplot as plt
+       x = torch.linspace(-3, 3, 200)
+       y = power_function_linear_unit(x)
+       plt.plot(x.numpy(), y.numpy())
+       plt.title("Power Function Linear Unit")
+       plt.xlabel("Input")
+       plt.ylabel("Output")
+       plt.grid(alpha=0.3)
+       plt.show()
+
     Parameters
     ----------
     x : torch.Tensor
@@ -54,6 +84,21 @@ def power_linear_unit(x, a=1.0):
     .. math::
 
         \mathrm{PowerLU}(z) = \begin{cases} z, & z \geq 0 \\ (1-z)^{-a} - 1, & z < 0 \end{cases}
+
+    .. plot::
+       :include-source:
+
+       from activations_plus.simple.polynomial_power_variants import power_linear_unit
+       import torch
+       import matplotlib.pyplot as plt
+       x = torch.linspace(-3, 3, 200)
+       y = power_linear_unit(x)
+       plt.plot(x.numpy(), y.numpy())
+       plt.title("Power Linear Unit")
+       plt.xlabel("Input")
+       plt.ylabel("Output")
+       plt.grid(alpha=0.3)
+       plt.show()
 
     Parameters
     ----------
@@ -77,6 +122,21 @@ def inverse_polynomial_linear_unit(x, a=1.0):
     .. math::
 
         \mathrm{IPLU}(z) = \begin{cases} z, & z \geq 0 \\ \frac{1}{1+|z|^a}, & z < 0 \end{cases}
+
+    .. plot::
+       :include-source:
+
+       from activations_plus.simple.polynomial_power_variants import inverse_polynomial_linear_unit
+       import torch
+       import matplotlib.pyplot as plt
+       x = torch.linspace(-3, 3, 200)
+       y = inverse_polynomial_linear_unit(x)
+       plt.plot(x.numpy(), y.numpy())
+       plt.title("Inverse Polynomial Linear Unit")
+       plt.xlabel("Input")
+       plt.ylabel("Output")
+       plt.grid(alpha=0.3)
+       plt.show()
 
     Parameters
     ----------

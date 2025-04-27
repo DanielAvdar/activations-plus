@@ -13,6 +13,21 @@ def sigmoid(x):
 
         \sigma(z) = \frac{1}{1 + e^{-z}}
 
+    .. plot::
+       :include-source:
+
+       from activations_plus.simple.sigmoid_tanh_variants import sigmoid
+       import torch
+       import matplotlib.pyplot as plt
+       x = torch.linspace(-6, 6, 200)
+       y = sigmoid(x)
+       plt.plot(x.numpy(), y.numpy())
+       plt.title("Sigmoid")
+       plt.xlabel("Input")
+       plt.ylabel("Output")
+       plt.grid(alpha=0.3)
+       plt.show()
+
     Parameters
     ----------
     x : torch.Tensor
@@ -34,6 +49,21 @@ def tanh(x):
 
         \tanh(z) = \frac{e^{z} - e^{-z}}{e^{z} + e^{-z}}
 
+    .. plot::
+       :include-source:
+
+       from activations_plus.simple.sigmoid_tanh_variants import tanh
+       import torch
+       import matplotlib.pyplot as plt
+       x = torch.linspace(-6, 6, 200)
+       y = tanh(x)
+       plt.plot(x.numpy(), y.numpy())
+       plt.title("Tanh")
+       plt.xlabel("Input")
+       plt.ylabel("Output")
+       plt.grid(alpha=0.3)
+       plt.show()
+
     Parameters
     ----------
     x : torch.Tensor
@@ -54,6 +84,21 @@ def hardtanh(x, a=-1.0, b=1.0):
     .. math::
 
         \mathrm{HardTanh}(z) = \begin{cases} a, & z < a \\ z, & a \leq z \leq b \\ b, & z > b \end{cases}
+
+    .. plot::
+       :include-source:
+
+       from activations_plus.simple.sigmoid_tanh_variants import hardtanh
+       import torch
+       import matplotlib.pyplot as plt
+       x = torch.linspace(-6, 6, 200)
+       y = hardtanh(x)
+       plt.plot(x.numpy(), y.numpy())
+       plt.title("HardTanh")
+       plt.xlabel("Input")
+       plt.ylabel("Output")
+       plt.grid(alpha=0.3)
+       plt.show()
 
     Parameters
     ----------
@@ -80,6 +125,21 @@ def softsign(x):
 
         \mathrm{Softsign}(z) = \frac{z}{1 + |z|}
 
+    .. plot::
+       :include-source:
+
+       from activations_plus.simple.sigmoid_tanh_variants import softsign
+       import torch
+       import matplotlib.pyplot as plt
+       x = torch.linspace(-6, 6, 200)
+       y = softsign(x)
+       plt.plot(x.numpy(), y.numpy())
+       plt.title("Softsign")
+       plt.xlabel("Input")
+       plt.ylabel("Output")
+       plt.grid(alpha=0.3)
+       plt.show()
+
     Parameters
     ----------
     x : torch.Tensor
@@ -103,6 +163,21 @@ def sqnl(x):
         z - \frac{z^2}{4}, & 0 \leq z \leq 2 \\
         z + \frac{z^2}{4}, & -2 \leq z < 0 \\
         -1, & z < -2 \end{cases}
+
+    .. plot::
+       :include-source:
+
+       from activations_plus.simple.sigmoid_tanh_variants import sqnl
+       import torch
+       import matplotlib.pyplot as plt
+       x = torch.linspace(-3, 3, 200)
+       y = sqnl(x)
+       plt.plot(x.numpy(), y.numpy())
+       plt.title("SQNL")
+       plt.xlabel("Input")
+       plt.ylabel("Output")
+       plt.grid(alpha=0.3)
+       plt.show()
 
     Parameters
     ----------
@@ -131,6 +206,21 @@ def softplus(x):
 
         \mathrm{Softplus}(z) = \log(1 + e^{z})
 
+    .. plot::
+       :include-source:
+
+       from activations_plus.simple.sigmoid_tanh_variants import softplus
+       import torch
+       import matplotlib.pyplot as plt
+       x = torch.linspace(-6, 6, 200)
+       y = softplus(x)
+       plt.plot(x.numpy(), y.numpy())
+       plt.title("Softplus")
+       plt.xlabel("Input")
+       plt.ylabel("Output")
+       plt.grid(alpha=0.3)
+       plt.show()
+
     Parameters
     ----------
     x : torch.Tensor
@@ -151,6 +241,21 @@ def tanh_exp(x):
     .. math::
 
         \mathrm{TanhExp}(z) = z \tanh(e^{z})
+
+    .. plot::
+       :include-source:
+
+       from activations_plus.simple.sigmoid_tanh_variants import tanh_exp
+       import torch
+       import matplotlib.pyplot as plt
+       x = torch.linspace(-3, 3, 200)
+       y = tanh_exp(x)
+       plt.plot(x.numpy(), y.numpy())
+       plt.title("TanhExp")
+       plt.xlabel("Input")
+       plt.ylabel("Output")
+       plt.grid(alpha=0.3)
+       plt.show()
 
     Parameters
     ----------

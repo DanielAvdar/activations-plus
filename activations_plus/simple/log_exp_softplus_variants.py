@@ -13,6 +13,21 @@ def loglog(x):
 
         \mathrm{LogLog}(z) = \exp(-\exp(-z))
 
+    .. plot::
+       :include-source:
+
+       from activations_plus.simple.log_exp_softplus_variants import loglog
+       import torch
+       import matplotlib.pyplot as plt
+       x = torch.linspace(-3, 3, 200)
+       y = loglog(x)
+       plt.plot(x.numpy(), y.numpy())
+       plt.title("LogLog")
+       plt.xlabel("Input")
+       plt.ylabel("Output")
+       plt.grid(alpha=0.3)
+       plt.show()
+
     Parameters
     ----------
     x : torch.Tensor
@@ -34,6 +49,21 @@ def loglogish(x):
 
         \mathrm{LogLogish}(z) = z (1 - \exp(-\exp(z)))
 
+    .. plot::
+       :include-source:
+
+       from activations_plus.simple.log_exp_softplus_variants import loglogish
+       import torch
+       import matplotlib.pyplot as plt
+       x = torch.linspace(-3, 3, 200)
+       y = loglogish(x)
+       plt.plot(x.numpy(), y.numpy())
+       plt.title("LogLogish")
+       plt.xlabel("Input")
+       plt.ylabel("Output")
+       plt.grid(alpha=0.3)
+       plt.show()
+
     Parameters
     ----------
     x : torch.Tensor
@@ -54,6 +84,21 @@ def logish(x):
     .. math::
 
         \mathrm{Logish}(z) = z \log(1 + \sigma(z))
+
+    .. plot::
+       :include-source:
+
+       from activations_plus.simple.log_exp_softplus_variants import logish
+       import torch
+       import matplotlib.pyplot as plt
+       x = torch.linspace(-3, 3, 200)
+       y = logish(x)
+       plt.plot(x.numpy(), y.numpy())
+       plt.title("Logish")
+       plt.xlabel("Input")
+       plt.ylabel("Output")
+       plt.grid(alpha=0.3)
+       plt.show()
 
     Parameters
     ----------
@@ -81,6 +126,21 @@ def soft_exponential(x, a=1.0):
                 \exp(z) - 1, & a > 0 \\
                 -\log(1-z), & a < 0
             \end{cases}
+
+    .. plot::
+       :include-source:
+
+       from activations_plus.simple.log_exp_softplus_variants import soft_exponential
+       import torch
+       import matplotlib.pyplot as plt
+       x = torch.linspace(-2, 2, 200)
+       y = soft_exponential(x)
+       plt.plot(x.numpy(), y.numpy())
+       plt.title("Soft Exponential")
+       plt.xlabel("Input")
+       plt.ylabel("Output")
+       plt.grid(alpha=0.3)
+       plt.show()
 
     Parameters
     ----------
@@ -113,6 +173,21 @@ def softplus_linear_unit(x, a=1.0, b=1.0, c=0.0):
                 az, & z \geq 0 \\
                 b \log(\exp(z)+1) - c, & z < 0
             \end{cases}
+
+    .. plot::
+       :include-source:
+
+       from activations_plus.simple.log_exp_softplus_variants import softplus_linear_unit
+       import torch
+       import matplotlib.pyplot as plt
+       x = torch.linspace(-3, 3, 200)
+       y = softplus_linear_unit(x)
+       plt.plot(x.numpy(), y.numpy())
+       plt.title("Softplus Linear Unit")
+       plt.xlabel("Input")
+       plt.ylabel("Output")
+       plt.grid(alpha=0.3)
+       plt.show()
 
     Parameters
     ----------
