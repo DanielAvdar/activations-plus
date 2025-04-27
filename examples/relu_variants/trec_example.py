@@ -1,7 +1,7 @@
 import matplotlib.pyplot as plt
 import torch
 
-from activations_plus.simple.relu_variants import trec
+from activations_plus.simple import trec
 
 x = torch.linspace(-3, 3, 200)
 y = trec(x, a=0.0)

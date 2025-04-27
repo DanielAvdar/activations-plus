@@ -1,7 +1,7 @@
 import matplotlib.pyplot as plt
 import torch
 
-from activations_plus.simple.log_exp_softplus_variants import loglogish
+from activations_plus.simple import loglogish
 
 x = torch.linspace(-3, 3, 200)
 y = loglogish(x)

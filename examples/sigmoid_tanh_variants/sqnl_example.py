@@ -1,7 +1,7 @@
 import matplotlib.pyplot as plt
 import torch
 
-from activations_plus.simple.sigmoid_tanh_variants import sqnl
+from activations_plus.simple import sqnl
 
 x = torch.linspace(-3, 3, 200)
 y = sqnl(x)

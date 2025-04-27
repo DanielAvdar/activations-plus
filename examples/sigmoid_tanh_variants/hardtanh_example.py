@@ -1,7 +1,7 @@
 import matplotlib.pyplot as plt
 import torch
 
-from activations_plus.simple.sigmoid_tanh_variants import hardtanh
+from activations_plus.simple import hardtanh
 
 x = torch.linspace(-6, 6, 200)
 y = hardtanh(x)

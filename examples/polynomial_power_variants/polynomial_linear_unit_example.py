@@ -1,7 +1,7 @@
 import matplotlib.pyplot as plt
 import torch
 
-from activations_plus.simple.polynomial_power_variants import polynomial_linear_unit
+from activations_plus.simple import polynomial_linear_unit
 
 x = torch.linspace(-3, 3, 200)
 y = polynomial_linear_unit(x)

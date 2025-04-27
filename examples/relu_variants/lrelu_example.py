@@ -1,7 +1,7 @@
 import matplotlib.pyplot as plt
 import torch
 
-from activations_plus.simple.relu_variants import lrelu
+from activations_plus.simple import lrelu
 
 x = torch.linspace(-3, 3, 200)
 y = lrelu(x, a=0.1)

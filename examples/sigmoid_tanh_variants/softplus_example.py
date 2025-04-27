@@ -1,7 +1,7 @@
 import matplotlib.pyplot as plt
 import torch
 
-from activations_plus.simple.sigmoid_tanh_variants import softplus
+from activations_plus.simple import softplus
 
 x = torch.linspace(-6, 6, 200)
 y = softplus(x)

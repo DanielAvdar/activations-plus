@@ -1,7 +1,7 @@
 import matplotlib.pyplot as plt
 import torch
 
-from activations_plus.simple.sigmoid_tanh_variants import tanh_exp
+from activations_plus.simple import tanh_exp
 
 x = torch.linspace(-3, 3, 200)
 y = tanh_exp(x)

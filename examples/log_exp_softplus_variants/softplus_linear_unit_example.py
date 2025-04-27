@@ -1,7 +1,7 @@
 import matplotlib.pyplot as plt
 import torch
 
-from activations_plus.simple.log_exp_softplus_variants import softplus_linear_unit
+from activations_plus.simple import softplus_linear_unit
 
 x = torch.linspace(-3, 3, 200)
 y = softplus_linear_unit(x)
