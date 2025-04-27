@@ -31,14 +31,15 @@ dependencies = [
     "torch",
 ]
 
+
 [[tool.uv.index]]
-name = "cu124"
-url = "https://download.pytorch.org/whl/cu124"
+name = "cu128"
+url = "https://download.pytorch.org/whl/cu128"
 explicit = true
 
 [tool.uv.sources]
 torch = [
-  { index = "cu124", marker = "platform_system != 'Darwin'"},
+  { index = "cu128", marker = "platform_system != 'Darwin'"},
 ]
 
 [dependency-groups]

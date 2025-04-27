@@ -35,6 +35,11 @@ def _all_devices():
     devices = [torch.device("cpu")]
     if torch.cuda.is_available():
         devices.append(torch.device("cuda"))
+    try:
+        if torch.backends.mps.is_available():
+            devices.append("mps")
+    except Exception:
+        pass
     return devices
 
 
