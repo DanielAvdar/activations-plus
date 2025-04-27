@@ -24,13 +24,14 @@ author = "DanielAvdar"
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
 
 extensions = [
-    "sphinx.ext.autodoc",  # Core extension for pulling docstrings
-    "sphinx.ext.napoleon",  # Support for Google and NumPy style docstrings
-    "sphinx.ext.viewcode",  # Add links to source code
-    "sphinx.ext.githubpages",  # If deploying to GitHub Pages
+    "sphinx.ext.autodoc",
+    "sphinx.ext.napoleon",
+    "sphinx.ext.viewcode",
+    "sphinx.ext.githubpages",
     "sphinx.ext.autodoc",
     "sphinx.ext.doctest",
     "sphinx.ext.intersphinx",
+    "sphinx.ext.mathjax",  # Enable math rendering with MathJax
 ]
 
 templates_path = ["_templates"]
