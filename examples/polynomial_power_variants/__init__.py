@@ -1,1 +1,1 @@
-"""Examples for the polynomial_power_variants subpackage of the docs."""
+"""Polynomial and power variants examples."""

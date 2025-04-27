@@ -1,1 +1,1 @@
-"""log_exp_softplus_variants examples package."""
+"""Log, exp, and softplus variants examples."""

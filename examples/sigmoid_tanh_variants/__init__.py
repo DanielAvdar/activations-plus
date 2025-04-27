@@ -1,1 +1,1 @@
-"""Examples using variants of the sigmoid and tanh functions."""
+"""Sigmoid and tanh variants examples."""

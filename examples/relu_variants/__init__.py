@@ -1,1 +1,1 @@
-"""Examples using the ReLU variants."""
+"""ReLU variants examples."""

@@ -68,7 +68,6 @@ To install activations-plus, use pip:
    :maxdepth: 2
    :caption: Simple Activation Functions
 
-   simple/examples
    simple/api
 
 .. toctree::
