@@ -1,5 +1,6 @@
 import pytest
 import torch
+from torch.autograd import gradcheck, gradgradcheck
 
 from activations_plus.simple import (
     log_exp_softplus_variants,
@@ -44,7 +45,26 @@ def test_simple_activations(func, kwargs):
     assert torch.is_tensor(y)
     assert y.shape == x.shape
     # Check backward if possible
-    try:
-        y.sum().backward()
-    except Exception as e:
-        pytest.skip(f"No backward for {func.__name__}: {e}")
+    y.sum().backward()
+    assert x.grad is not None
+
+
+@pytest.mark.parametrize("func, kwargs", SIMPLE_ACTIVATIONS)
+def test_simple_activations_gradcheck(func, kwargs):
+    x = torch.randn(3, 3, dtype=torch.double, requires_grad=True)
+
+    # gradcheck expects the function to return only doubles and take only doubles
+    def wrapped(x):
+        return func(x, **kwargs)
+
+    assert gradcheck(wrapped, (x,), eps=1e-6, atol=1e-4)
+
+
+@pytest.mark.parametrize("func, kwargs", SIMPLE_ACTIVATIONS)
+def test_simple_activations_gradgradcheck(func, kwargs):
+    x = torch.randn(3, 3, dtype=torch.double, requires_grad=True)
+
+    def wrapped(x):
+        return func(x, **kwargs)
+
+    assert gradgradcheck(wrapped, (x,), eps=1e-6, atol=1e-4)

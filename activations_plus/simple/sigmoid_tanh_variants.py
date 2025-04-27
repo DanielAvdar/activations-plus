@@ -14,19 +14,11 @@ def sigmoid(x):
         \sigma(z) = \frac{1}{1 + e^{-z}}
 
     .. plot::
-       :include-source:
 
-       from activations_plus.simple.sigmoid_tanh_variants import sigmoid
-       import torch
-       import matplotlib.pyplot as plt
-       x = torch.linspace(-6, 6, 200)
-       y = sigmoid(x)
-       plt.plot(x.numpy(), y.numpy())
-       plt.title("Sigmoid")
-       plt.xlabel("Input")
-       plt.ylabel("Output")
-       plt.grid(alpha=0.3)
-       plt.show()
+
+       .. literalinclude:: ../../examples/sigmoid_tanh_variants/sigmoid_example.py
+          :language: python
+          :caption: Example for sigmoid
 
     Parameters
     ----------
@@ -50,19 +42,11 @@ def tanh(x):
         \tanh(z) = \frac{e^{z} - e^{-z}}{e^{z} + e^{-z}}
 
     .. plot::
-       :include-source:
 
-       from activations_plus.simple.sigmoid_tanh_variants import tanh
-       import torch
-       import matplotlib.pyplot as plt
-       x = torch.linspace(-6, 6, 200)
-       y = tanh(x)
-       plt.plot(x.numpy(), y.numpy())
-       plt.title("Tanh")
-       plt.xlabel("Input")
-       plt.ylabel("Output")
-       plt.grid(alpha=0.3)
-       plt.show()
+
+       .. literalinclude:: ../../examples/sigmoid_tanh_variants/tanh_example.py
+          :language: python
+          :caption: Example for tanh
 
     Parameters
     ----------
@@ -86,19 +70,11 @@ def hardtanh(x, a=-1.0, b=1.0):
         \mathrm{HardTanh}(z) = \begin{cases} a, & z < a \\ z, & a \leq z \leq b \\ b, & z > b \end{cases}
 
     .. plot::
-       :include-source:
 
-       from activations_plus.simple.sigmoid_tanh_variants import hardtanh
-       import torch
-       import matplotlib.pyplot as plt
-       x = torch.linspace(-6, 6, 200)
-       y = hardtanh(x)
-       plt.plot(x.numpy(), y.numpy())
-       plt.title("HardTanh")
-       plt.xlabel("Input")
-       plt.ylabel("Output")
-       plt.grid(alpha=0.3)
-       plt.show()
+
+       .. literalinclude:: ../../examples/sigmoid_tanh_variants/hardtanh_example.py
+          :language: python
+          :caption: Example for hardtanh
 
     Parameters
     ----------
@@ -126,19 +102,11 @@ def softsign(x):
         \mathrm{Softsign}(z) = \frac{z}{1 + |z|}
 
     .. plot::
-       :include-source:
 
-       from activations_plus.simple.sigmoid_tanh_variants import softsign
-       import torch
-       import matplotlib.pyplot as plt
-       x = torch.linspace(-6, 6, 200)
-       y = softsign(x)
-       plt.plot(x.numpy(), y.numpy())
-       plt.title("Softsign")
-       plt.xlabel("Input")
-       plt.ylabel("Output")
-       plt.grid(alpha=0.3)
-       plt.show()
+
+       .. literalinclude:: ../../examples/sigmoid_tanh_variants/softsign_example.py
+          :language: python
+          :caption: Example for softsign
 
     Parameters
     ----------
@@ -165,19 +133,11 @@ def sqnl(x):
         -1, & z < -2 \end{cases}
 
     .. plot::
-       :include-source:
 
-       from activations_plus.simple.sigmoid_tanh_variants import sqnl
-       import torch
-       import matplotlib.pyplot as plt
-       x = torch.linspace(-3, 3, 200)
-       y = sqnl(x)
-       plt.plot(x.numpy(), y.numpy())
-       plt.title("SQNL")
-       plt.xlabel("Input")
-       plt.ylabel("Output")
-       plt.grid(alpha=0.3)
-       plt.show()
+
+       .. literalinclude:: ../../examples/sigmoid_tanh_variants/sqnl_example.py
+          :language: python
+          :caption: Example for sqnl
 
     Parameters
     ----------
@@ -207,19 +167,11 @@ def softplus(x):
         \mathrm{Softplus}(z) = \log(1 + e^{z})
 
     .. plot::
-       :include-source:
 
-       from activations_plus.simple.sigmoid_tanh_variants import softplus
-       import torch
-       import matplotlib.pyplot as plt
-       x = torch.linspace(-6, 6, 200)
-       y = softplus(x)
-       plt.plot(x.numpy(), y.numpy())
-       plt.title("Softplus")
-       plt.xlabel("Input")
-       plt.ylabel("Output")
-       plt.grid(alpha=0.3)
-       plt.show()
+
+       .. literalinclude:: ../../examples/sigmoid_tanh_variants/softplus_example.py
+          :language: python
+          :caption: Example for softplus
 
     Parameters
     ----------
@@ -243,19 +195,11 @@ def tanh_exp(x):
         \mathrm{TanhExp}(z) = z \tanh(e^{z})
 
     .. plot::
-       :include-source:
 
-       from activations_plus.simple.sigmoid_tanh_variants import tanh_exp
-       import torch
-       import matplotlib.pyplot as plt
-       x = torch.linspace(-3, 3, 200)
-       y = tanh_exp(x)
-       plt.plot(x.numpy(), y.numpy())
-       plt.title("TanhExp")
-       plt.xlabel("Input")
-       plt.ylabel("Output")
-       plt.grid(alpha=0.3)
-       plt.show()
+
+       .. literalinclude:: ../../examples/sigmoid_tanh_variants/tanh_exp_example.py
+          :language: python
+          :caption: Example for tanh_exp
 
     Parameters
     ----------

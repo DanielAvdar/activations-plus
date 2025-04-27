@@ -14,19 +14,11 @@ def relu(x):
         \mathrm{ReLU}(z) = \max(0, z)
 
     .. plot::
-       :include-source:
 
-       from activations_plus.simple.relu_variants import relu
-       import torch
-       import matplotlib.pyplot as plt
-       x = torch.linspace(-3, 3, 200)
-       y = relu(x)
-       plt.plot(x.numpy(), y.numpy())
-       plt.title("ReLU")
-       plt.xlabel("Input")
-       plt.ylabel("Output")
-       plt.grid(alpha=0.3)
-       plt.show()
+
+       .. literalinclude:: ../../examples/relu_variants/relu_example.py
+          :language: python
+          :caption: Example for relu
 
     Returns
     -------
@@ -45,19 +37,11 @@ def lrelu(x, a=0.01):
         \mathrm{LReLU}(z) = \begin{cases} z, & z \geq 0 \\ \frac{z}{a}, & z < 0 \end{cases}
 
     .. plot::
-       :include-source:
 
-       from activations_plus.simple.relu_variants import lrelu
-       import torch
-       import matplotlib.pyplot as plt
-       x = torch.linspace(-3, 3, 200)
-       y = lrelu(x, a=0.1)
-       plt.plot(x.numpy(), y.numpy())
-       plt.title("Leaky ReLU (a=0.1)")
-       plt.xlabel("Input")
-       plt.ylabel("Output")
-       plt.grid(alpha=0.3)
-       plt.show()
+
+       .. literalinclude:: ../../examples/relu_variants/lrelu_example.py
+          :language: python
+          :caption: Example for lrelu
 
     Parameters
     ----------
@@ -83,19 +67,11 @@ def blrelu(x, a=0.01, b=1.0, c=0.0):
         \mathrm{BLReLU}(z) = \begin{cases} az, & z \leq 0 \\ z, & 0 < z < b \\ az + c, & z \geq b \end{cases}
 
     .. plot::
-       :include-source:
 
-       from activations_plus.simple.relu_variants import blrelu
-       import torch
-       import matplotlib.pyplot as plt
-       x = torch.linspace(-3, 3, 200)
-       y = blrelu(x)
-       plt.plot(x.numpy(), y.numpy())
-       plt.title("Bounded Leaky ReLU")
-       plt.xlabel("Input")
-       plt.ylabel("Output")
-       plt.grid(alpha=0.3)
-       plt.show()
+
+       .. literalinclude:: ../../examples/relu_variants/blrelu_example.py
+          :language: python
+          :caption: Example for blrelu
 
     Parameters
     ----------
@@ -124,6 +100,13 @@ def rrelu(x, a=0.01):
 
         \mathrm{RReLU}(z) = \begin{cases} z, & z \geq 0 \\ z a, & z < 0 \end{cases}
 
+    .. plot::
+
+
+       .. literalinclude:: ../../examples/relu_variants/rrelu_example.py
+          :language: python
+          :caption: Example for rrelu
+
     Parameters
     ----------
     x : torch.Tensor
@@ -147,6 +130,13 @@ def trec(x, a=0.0):
 
         \mathrm{TRec}(z) = \begin{cases} z, & z > a \\ 0, & z \leq a \end{cases}
 
+    .. plot::
+
+
+       .. literalinclude:: ../../examples/relu_variants/trec_example.py
+          :language: python
+          :caption: Example for trec
+
     Parameters
     ----------
     x : torch.Tensor
@@ -169,6 +159,13 @@ def dual_line(x, a=1.0, b=0.01, m=0.0):
     .. math::
 
         \mathrm{DualLine}(x) = \begin{cases} a x + m, & x \geq 0 \\ b x + m, & x < 0 \end{cases}
+
+    .. plot::
+
+
+       .. literalinclude:: ../../examples/relu_variants/dual_line_example.py
+          :language: python
+          :caption: Example for dual_line
 
     Parameters
     ----------
@@ -196,6 +193,13 @@ def mrelu(x):
     .. math::
 
         \mathrm{mReLU}(z) = \min(\mathrm{ReLU}(1-z), \mathrm{ReLU}(1+z))
+
+    .. plot::
+
+
+       .. literalinclude:: ../../examples/relu_variants/mrelu_example.py
+          :language: python
+          :caption: Example for mrelu
 
     Parameters
     ----------

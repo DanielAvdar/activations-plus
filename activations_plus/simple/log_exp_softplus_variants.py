@@ -14,19 +14,11 @@ def loglog(x):
         \mathrm{LogLog}(z) = \exp(-\exp(-z))
 
     .. plot::
-       :include-source:
 
-       from activations_plus.simple.log_exp_softplus_variants import loglog
-       import torch
-       import matplotlib.pyplot as plt
-       x = torch.linspace(-3, 3, 200)
-       y = loglog(x)
-       plt.plot(x.numpy(), y.numpy())
-       plt.title("LogLog")
-       plt.xlabel("Input")
-       plt.ylabel("Output")
-       plt.grid(alpha=0.3)
-       plt.show()
+
+       .. literalinclude:: ../../examples/log_exp_softplus_variants/loglog_example.py
+          :language: python
+          :caption: Example for loglog
 
     Parameters
     ----------
@@ -50,19 +42,11 @@ def loglogish(x):
         \mathrm{LogLogish}(z) = z (1 - \exp(-\exp(z)))
 
     .. plot::
-       :include-source:
 
-       from activations_plus.simple.log_exp_softplus_variants import loglogish
-       import torch
-       import matplotlib.pyplot as plt
-       x = torch.linspace(-3, 3, 200)
-       y = loglogish(x)
-       plt.plot(x.numpy(), y.numpy())
-       plt.title("LogLogish")
-       plt.xlabel("Input")
-       plt.ylabel("Output")
-       plt.grid(alpha=0.3)
-       plt.show()
+
+       .. literalinclude:: ../../examples/log_exp_softplus_variants/loglogish_example.py
+          :language: python
+          :caption: Example for loglogish
 
     Parameters
     ----------
@@ -86,19 +70,11 @@ def logish(x):
         \mathrm{Logish}(z) = z \log(1 + \sigma(z))
 
     .. plot::
-       :include-source:
 
-       from activations_plus.simple.log_exp_softplus_variants import logish
-       import torch
-       import matplotlib.pyplot as plt
-       x = torch.linspace(-3, 3, 200)
-       y = logish(x)
-       plt.plot(x.numpy(), y.numpy())
-       plt.title("Logish")
-       plt.xlabel("Input")
-       plt.ylabel("Output")
-       plt.grid(alpha=0.3)
-       plt.show()
+
+       .. literalinclude:: ../../examples/log_exp_softplus_variants/logish_example.py
+          :language: python
+          :caption: Example for logish
 
     Parameters
     ----------
@@ -128,19 +104,11 @@ def soft_exponential(x, a=1.0):
             \end{cases}
 
     .. plot::
-       :include-source:
 
-       from activations_plus.simple.log_exp_softplus_variants import soft_exponential
-       import torch
-       import matplotlib.pyplot as plt
-       x = torch.linspace(-2, 2, 200)
-       y = soft_exponential(x)
-       plt.plot(x.numpy(), y.numpy())
-       plt.title("Soft Exponential")
-       plt.xlabel("Input")
-       plt.ylabel("Output")
-       plt.grid(alpha=0.3)
-       plt.show()
+
+       .. literalinclude:: ../../examples/log_exp_softplus_variants/soft_exponential_example.py
+          :language: python
+          :caption: Example for soft_exponential
 
     Parameters
     ----------
@@ -175,19 +143,11 @@ def softplus_linear_unit(x, a=1.0, b=1.0, c=0.0):
             \end{cases}
 
     .. plot::
-       :include-source:
 
-       from activations_plus.simple.log_exp_softplus_variants import softplus_linear_unit
-       import torch
-       import matplotlib.pyplot as plt
-       x = torch.linspace(-3, 3, 200)
-       y = softplus_linear_unit(x)
-       plt.plot(x.numpy(), y.numpy())
-       plt.title("Softplus Linear Unit")
-       plt.xlabel("Input")
-       plt.ylabel("Output")
-       plt.grid(alpha=0.3)
-       plt.show()
+
+       .. literalinclude:: ../../examples/log_exp_softplus_variants/softplus_linear_unit_example.py
+          :language: python
+          :caption: Example for softplus_linear_unit
 
     Parameters
     ----------
