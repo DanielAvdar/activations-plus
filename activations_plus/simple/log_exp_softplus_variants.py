@@ -96,18 +96,19 @@ def logish(x: Tensor) -> Tensor:
 
 
 def soft_exponential(x: Tensor, a: float = 1.0) -> Tensor:
-    r"""Apply the Soft Exponential activation (incomplete, placeholder).
+    r"""Apply the Soft Exponential activation function.
 
     .. math::
 
         \text{SoftExponential}(z) =
             \begin{cases}
+                -\frac{\log(1 - a(z + a))}{a}, & a < 0 \\
                 z, & a = 0 \\
-                \exp(z) - 1, & a > 0 \\
-                -\log(1-z), & a < 0
+                \frac{e^{az} - 1}{a} + a, & a > 0
             \end{cases}
 
-    Introduced in "A New Activation Function for Artificial Neural Network" by Ushida et al. (2018).
+    Introduced in "A continuum among logarithmic, linear, and exponential functions, and
+    its potential to improve generalization in neural networks" by Godfrey and Gashler (2016).
 
     See: https://arxiv.org/abs/1602.01321
 
@@ -130,9 +131,9 @@ def soft_exponential(x: Tensor, a: float = 1.0) -> Tensor:
     if a == 0:
         return x
     elif a > 0:
-        return torch.exp(x) - 1
-    else:
-        return -torch.log(1 - x)
+        return (torch.exp(a * x) - 1) / a + a
+    else:  # a < 0
+        return -torch.log(1 - a * (x + a)) / a
 
 
 def softplus_linear_unit(x: Tensor, a: float = 1.0, b: float = 1.0, c: float = 0.0) -> Tensor:
