@@ -1,24 +1,12 @@
 .. _api:
 
-Simple Activation Functions API Reference
+Simple Activation Functions
 =========================================
 
-.. automodule:: activations_plus.simple.relu_variants
-    :members:
-    :undoc-members:
-    :show-inheritance:
+.. toctree::
+   :maxdepth: 1
 
-.. automodule:: activations_plus.simple.sigmoid_tanh_variants
-    :members:
-    :undoc-members:
-    :show-inheritance:
-
-.. automodule:: activations_plus.simple.polynomial_power_variants
-    :members:
-    :undoc-members:
-    :show-inheritance:
-
-.. automodule:: activations_plus.simple.log_exp_softplus_variants
-    :members:
-    :undoc-members:
-    :show-inheritance:
+   relu_variants_api
+   sigmoid_tanh_variants_api
+   polynomial_power_variants_api
+   log_exp_softplus_variants_api
