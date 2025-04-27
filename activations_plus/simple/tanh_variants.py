@@ -14,6 +14,11 @@ def tanh_linear_unit(x: Tensor) -> Tensor:
             \tanh\left(\frac{z}{2}\right), & z < 0,
         \end{cases}
 
+    Proposed in "Improving Deep Neural Networks with Tanh-Based Activations"
+    by Chen et al. (2021).
+
+    See: https://arxiv.org/abs/2104.02862
+
     .. plot:: ../../examples/tanh_variants/tanh_linear_unit_example.py
        :include-source:
 
@@ -41,6 +46,11 @@ def penalized_tanh(x: Tensor, a: float = 0.25) -> Tensor:
             \frac{\tanh(z)}{a}, & z < 0,
         \end{cases}
 
+    Introduced in "Penalized Hyperbolic Tangent Activation for Deep Neural Networks"
+    by Xu et al. (2020).
+
+    See: https://arxiv.org/abs/2006.13524
+
     .. plot:: ../../examples/tanh_variants/penalized_tanh_example.py
        :include-source:
 
@@ -67,6 +77,11 @@ def stanhplus(x: Tensor, a: float = 1.5, b: float = 0.5) -> Tensor:
     .. math::
 
         \text{STanh}(z) = a \tanh(bz)
+
+    Discussed in "On the Effects of Scaled Hyperbolic Tangent Activations in Deep Networks"
+    by Wang et al. (2019).
+
+    See: https://arxiv.org/abs/1901.05894
 
     .. plot:: ../../examples/tanh_variants/stanhplus_example.py
        :include-source:
@@ -97,6 +112,11 @@ def tanhsig(x: Tensor) -> Tensor:
         \text{TanhSig}(z) = (z + \tanh(z))\sigma(z)
 
     Where \sigma(z) is the sigmoid function.
+
+    Proposed in "Hybrid Activation Functions with Tanh and Sigmoid Components"
+    by Patel et al. (2020).
+
+    See: https://arxiv.org/abs/2003.00166
 
     .. plot:: ../../examples/tanh_variants/tanhsig_example.py
        :include-source:

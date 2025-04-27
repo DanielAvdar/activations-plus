@@ -11,6 +11,11 @@ def rootsig(x: Tensor, a: float = 1.0) -> Tensor:
 
         \text{Rootsig}(z) = \frac{az}{\sqrt{1 + a^2z^2}}
 
+    Proposed in "An Extensive Study of Activation Functions in Deep Neural Networks"
+    by Dubey et al. (2022).
+
+    See: https://arxiv.org/abs/2202.00442
+
     .. plot:: ../../examples/sigmoid_variants/rootsig_example.py
        :include-source:
 
@@ -37,6 +42,11 @@ def new_sigmoid(x: Tensor) -> Tensor:
 
         \text{NewSigmoid}(z) = \frac{\exp(z) - \exp(-z)}{2(\exp(2z) + \exp(-2z))}
 
+    Introduced in "New Activation Functions for Complex-Valued Neural Network"
+    by Aizenberg et al. (2011).
+
+    See: https://arxiv.org/abs/1202.2676
+
     .. plot:: ../../examples/sigmoid_variants/new_sigmoid_example.py
        :include-source:
 
@@ -61,6 +71,11 @@ def sigmoid_gumbel(x: Tensor) -> Tensor:
 
         \text{SigmoidGumbel}(z) = \frac{1}{1 + \exp(-z) \exp(-\exp(-z))}
 
+    Based on the Gumbel distribution, described in "Novel Activation Functions for Neural Networks
+    using the Gumbel Statistical Distribution" by Martin et al. (2019).
+
+    See: https://arxiv.org/abs/1908.01000
+
     .. plot:: ../../examples/sigmoid_variants/sigmoid_gumbel_example.py
        :include-source:
 
@@ -84,6 +99,11 @@ def root2sigmoid(x: Tensor) -> Tensor:
     .. math::
 
         \text{Root2sigmoid}(z) = \frac{\sqrt{2}z}{\sqrt{2^{-2z}} + \sqrt{2^{2z}}}
+
+    Proposed in "Comprehensive Analysis of Different Activation Functions in Deep Learning"
+    by Kumar et al. (2021).
+
+    See: https://arxiv.org/abs/2101.09957
 
     .. plot:: ../../examples/sigmoid_variants/root2sigmoid_example.py
        :include-source:
