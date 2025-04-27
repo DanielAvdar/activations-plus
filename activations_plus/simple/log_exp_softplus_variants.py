@@ -4,9 +4,10 @@ This module provides several simple log, exp, and softplus-like activation funct
 """
 
 import torch
+from torch import Tensor
 
 
-def loglog(x):
+def loglog(x: Tensor) -> Tensor:
     r"""Apply the LogLog activation.
 
     .. math::
@@ -30,7 +31,7 @@ def loglog(x):
     return torch.exp(-torch.exp(-x))
 
 
-def loglogish(x):
+def loglogish(x: Tensor) -> Tensor:
     r"""Apply the LogLogish activation.
 
     .. math::
@@ -54,7 +55,7 @@ def loglogish(x):
     return x * (1 - torch.exp(-torch.exp(x)))
 
 
-def logish(x):
+def logish(x: Tensor) -> Tensor:
     r"""Apply the Logish activation.
 
     .. math::
@@ -79,7 +80,7 @@ def logish(x):
     return x * torch.log(1 + s)
 
 
-def soft_exponential(x, a=1.0):
+def soft_exponential(x: Tensor, a: float = 1.0) -> Tensor:
     r"""Apply the Soft Exponential activation (incomplete, placeholder).
 
     .. math::
@@ -115,7 +116,7 @@ def soft_exponential(x, a=1.0):
         return -torch.log(1 - x)
 
 
-def softplus_linear_unit(x, a=1.0, b=1.0, c=0.0):
+def softplus_linear_unit(x: Tensor, a: float = 1.0, b: float = 1.0, c: float = 0.0) -> Tensor:
     r"""Apply the Softplus Linear Unit activation.
 
     .. math::

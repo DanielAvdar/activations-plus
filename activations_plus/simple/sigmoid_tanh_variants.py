@@ -4,9 +4,10 @@ This module provides several simple sigmoid/tanh-based activation functions.
 """
 
 import torch
+from torch import Tensor
 
 
-def sigmoid(x):
+def sigmoid(x: Tensor) -> Tensor:
     r"""Apply the standard sigmoid function.
 
     .. math::
@@ -30,7 +31,7 @@ def sigmoid(x):
     return torch.sigmoid(x)
 
 
-def tanh(x):
+def tanh(x: Tensor) -> Tensor:
     r"""Apply the hyperbolic tangent function.
 
     .. math::
@@ -54,7 +55,7 @@ def tanh(x):
     return torch.tanh(x)
 
 
-def hardtanh(x, a=-1.0, b=1.0):
+def hardtanh(x: Tensor, a: float = -1.0, b: float = 1.0) -> Tensor:
     r"""Apply the HardTanh activation (clamps between a and b).
 
     .. math::
@@ -82,7 +83,7 @@ def hardtanh(x, a=-1.0, b=1.0):
     return torch.clamp(x, min=a, max=b)
 
 
-def softsign(x):
+def softsign(x: Tensor) -> Tensor:
     r"""Apply the Softsign activation.
 
     .. math::
@@ -106,7 +107,7 @@ def softsign(x):
     return x / (1 + torch.abs(x))
 
 
-def sqnl(x):
+def sqnl(x: Tensor) -> Tensor:
     r"""Apply the SQNL (Square Non-Linear) activation.
 
     .. math::
@@ -139,7 +140,7 @@ def sqnl(x):
     )
 
 
-def softplus(x):
+def softplus(x: Tensor) -> Tensor:
     r"""Apply the Softplus activation.
 
     .. math::
@@ -163,7 +164,7 @@ def softplus(x):
     return torch.nn.functional.softplus(x)
 
 
-def tanh_exp(x):
+def tanh_exp(x: Tensor) -> Tensor:
     r"""Apply the TanhExp activation.
 
     .. math::

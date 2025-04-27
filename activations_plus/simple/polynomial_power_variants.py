@@ -4,9 +4,10 @@ This module provides several simple polynomial and power-based activation functi
 """
 
 import torch
+from torch import Tensor
 
 
-def polynomial_linear_unit(x):
+def polynomial_linear_unit(x: Tensor) -> Tensor:
     r"""Apply the Polynomial Linear Unit activation.
 
     .. math::
@@ -30,7 +31,7 @@ def polynomial_linear_unit(x):
     return torch.where(x >= 0, x, 1 / (1 - x) - 1)
 
 
-def power_function_linear_unit(x):
+def power_function_linear_unit(x: Tensor) -> Tensor:
     r"""Apply the Power Function Linear Unit activation.
 
     .. math::
@@ -54,7 +55,7 @@ def power_function_linear_unit(x):
     return x * 0.5 * (1 + x / torch.sqrt(1 + x**2))
 
 
-def power_linear_unit(x, a=1.0):
+def power_linear_unit(x: Tensor, a: float = 1.0) -> Tensor:
     r"""Apply the Power Linear Unit activation.
 
     .. math::
@@ -80,7 +81,7 @@ def power_linear_unit(x, a=1.0):
     return torch.where(x >= 0, x, (1 - x) ** (-a) - 1)
 
 
-def inverse_polynomial_linear_unit(x, a=1.0):
+def inverse_polynomial_linear_unit(x: Tensor, a: float = 1.0) -> Tensor:
     r"""Apply the Inverse Polynomial Linear Unit activation.
 
     .. math::

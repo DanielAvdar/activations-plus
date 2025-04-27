@@ -4,9 +4,10 @@ This module provides several simple ReLU-based activation functions.
 """
 
 import torch
+from torch import Tensor
 
 
-def relu(x):
+def relu(x: Tensor) -> Tensor:
     r"""Apply the Rectified Linear Unit activation.
 
     .. math::
@@ -25,7 +26,7 @@ def relu(x):
     return torch.relu(x)
 
 
-def lrelu(x, a=0.01):
+def lrelu(x: Tensor, a: float = 0.01) -> Tensor:
     r"""Apply the Leaky ReLU activation.
 
     .. math::
@@ -51,7 +52,7 @@ def lrelu(x, a=0.01):
     return torch.where(x >= 0, x, x / a)
 
 
-def blrelu(x, a=0.01, b=1.0, c=0.0):
+def blrelu(x: Tensor, a: float = 0.01, b: float = 1.0, c: float = 0.0) -> Tensor:
     r"""Apply the Bounded Leaky ReLU activation.
 
     .. math::
@@ -81,7 +82,7 @@ def blrelu(x, a=0.01, b=1.0, c=0.0):
     return torch.where(x <= 0, a * x, torch.where((x > 0) & (x < b), x, a * x + c))
 
 
-def rrelu(x, a=0.01):
+def rrelu(x: Tensor, a: float = 0.01) -> Tensor:
     r"""Apply the Randomized Leaky ReLU activation.
 
     .. math::
@@ -107,7 +108,7 @@ def rrelu(x, a=0.01):
     return torch.where(x >= 0, x, x * a)
 
 
-def trec(x, a=0.0):
+def trec(x: Tensor, a: float = 0.0) -> Tensor:
     r"""Apply the Truncated Rectified activation.
 
     .. math::
@@ -133,7 +134,7 @@ def trec(x, a=0.0):
     return torch.where(x > a, x, torch.zeros_like(x))
 
 
-def dual_line(x, a=1.0, b=0.01, m=0.0):
+def dual_line(x: Tensor, a: float = 1.0, b: float = 0.01, m: float = 0.0) -> Tensor:
     r"""Apply the Dual Line activation.
 
     .. math::
@@ -163,7 +164,7 @@ def dual_line(x, a=1.0, b=0.01, m=0.0):
     return torch.where(x >= 0, a * x + m, b * x + m)
 
 
-def mrelu(x):
+def mrelu(x: Tensor) -> Tensor:
     r"""Apply the Mirrored ReLU activation.
 
     .. math::
