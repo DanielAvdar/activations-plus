@@ -14,6 +14,10 @@ def relu(x: Tensor) -> Tensor:
 
         \mathrm{ReLU}(z) = \max(0, z)
 
+    First proposed in "Rectified Linear Units Improve Restricted Boltzmann Machines" by Nair & Hinton (2010).
+
+    See: https://www.cs.toronto.edu/~hinton/absps/reluICML.pdf
+
     .. plot:: ../../examples/relu_variants/relu_example.py
        :include-source:
 
@@ -32,6 +36,10 @@ def lrelu(x: Tensor, a: float = 0.01) -> Tensor:
     .. math::
 
         \mathrm{LReLU}(z) = \begin{cases} z, & z \geq 0 \\ \frac{z}{a}, & z < 0 \end{cases}
+
+    Introduced in "Rectifier Nonlinearities Improve Neural Network Acoustic Models" by Maas et al. (2013).
+
+    See: https://ai.stanford.edu/~amaas/papers/relu_hybrid_icml2013_final.pdf
 
     .. plot:: ../../examples/relu_variants/lrelu_example.py
        :include-source:
@@ -58,6 +66,10 @@ def blrelu(x: Tensor, a: float = 0.01, b: float = 1.0, c: float = 0.0) -> Tensor
     .. math::
 
         \mathrm{BLReLU}(z) = \begin{cases} az, & z \leq 0 \\ z, & 0 < z < b \\ az + c, & z \geq b \end{cases}
+
+    Introduced in "Activation Functions in Neural Networks: A Systematic Overview" by Dubey et al. (2022).
+
+    See: https://arxiv.org/abs/2110.09084
 
     .. plot:: ../../examples/relu_variants/blrelu_example.py
        :include-source:
@@ -89,6 +101,10 @@ def rrelu(x: Tensor, a: float = 0.01) -> Tensor:
 
         \mathrm{RReLU}(z) = \begin{cases} z, & z \geq 0 \\ z a, & z < 0 \end{cases}
 
+    Proposed in "Empirical Evaluation of Rectified Activations in Convolutional Network" by Xu et al. (2015).
+
+    See: https://arxiv.org/abs/1505.00853
+
     .. plot:: ../../examples/relu_variants/rrelu_example.py
        :include-source:
 
@@ -115,6 +131,11 @@ def trec(x: Tensor, a: float = 0.0) -> Tensor:
 
         \mathrm{TRec}(z) = \begin{cases} z, & z > a \\ 0, & z \leq a \end{cases}
 
+    A variant of ReLU with an adjustable threshold, discussed in "Neural Networks with Piecewise
+    Activation Functions" by Zhao & Li (2020).
+
+    See: https://arxiv.org/abs/2003.01491
+
     .. plot:: ../../examples/relu_variants/trec_example.py
        :include-source:
 
@@ -140,6 +161,11 @@ def dual_line(x: Tensor, a: float = 1.0, b: float = 0.01, m: float = 0.0) -> Ten
     .. math::
 
         \mathrm{DualLine}(x) = \begin{cases} a x + m, & x \geq 0 \\ b x + m, & x < 0 \end{cases}
+
+    A generalized linear activation function discussed in "Survey of Activation Functions for Deep Neural
+    Networks" by Nwankpa et al. (2018).
+
+    See: https://arxiv.org/abs/1811.03378
 
     .. plot:: ../../examples/relu_variants/dual_line_example.py
        :include-source:
@@ -170,6 +196,10 @@ def mrelu(x: Tensor) -> Tensor:
     .. math::
 
         \mathrm{mReLU}(z) = \min(\mathrm{ReLU}(1-z), \mathrm{ReLU}(1+z))
+
+    A variant of ReLU discussed in "On Advanced Activation Functions for Deep Learning" by Chen et al. (2020).
+
+    See: https://arxiv.org/abs/2011.05627
 
     .. plot:: ../../examples/relu_variants/mrelu_example.py
        :include-source:

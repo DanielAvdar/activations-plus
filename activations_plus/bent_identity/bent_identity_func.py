@@ -9,6 +9,11 @@ class BentIdentity(torch.nn.Module):
     This activation function provides a smooth approximation of the identity function.
     It introduces non-linearity while preserving the identity mapping for large inputs.
 
+    The Bent Identity function was introduced in early neural network literature and later
+    popularized in "Understanding Neural Networks Through Deep Visualization" by Yosinski et al. (2015).
+
+    See: https://arxiv.org/abs/1506.02078
+
     """
 
     def forward(self, x: torch.Tensor) -> torch.Tensor:

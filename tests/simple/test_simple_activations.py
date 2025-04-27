@@ -39,6 +39,7 @@ SIMPLE_ACTIVATIONS = [
     (log_exp_softplus_variants.loglogish, {}),
     (log_exp_softplus_variants.logish, {}),
     (log_exp_softplus_variants.soft_exponential, {}),
+    (log_exp_softplus_variants.soft_exponential, {"a": -1}),
     (log_exp_softplus_variants.softplus_linear_unit, {}),
     # New ELU variants
     (elu_variants.elu, {}),

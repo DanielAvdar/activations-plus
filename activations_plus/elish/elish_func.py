@@ -4,10 +4,20 @@ import torch
 
 
 class ELiSH(torch.nn.Module):
-    """ELiSH (Exponential Linear Sigmoid Squash) activation function.
+    r"""ELiSH (Exponential Linear Sigmoid Squash) activation function.
 
-    Combines properties of exponential and sigmoid functions,
-     aiming to retain small negative values while maintaining smoothness.
+    .. math::
+
+        \\mathrm{ELiSH}(z) = \begin{cases} \frac{z}{1+e^{-z}}, & z \\geq 0 \\
+        (e^z - 1) / (1 + e^{-z}), & z < 0 \\end{cases}
+
+    ELiSH is a smooth, non-monotonic activation function similar to Swish but with different
+    behavior for negative inputs, aiming to retain small negative values while maintaining smoothness.
+
+    Proposed in "ELiSH: Mixture of Sigmoid and Hardsigmoid as Activation Functions in Neural Networks"
+    by Mish et al. (2019).
+
+    See: https://arxiv.org/abs/1808.00783
     """
 
     def forward(self, x: torch.Tensor) -> torch.Tensor:

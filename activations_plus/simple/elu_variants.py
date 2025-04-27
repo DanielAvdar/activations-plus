@@ -15,6 +15,10 @@ def elu(x: Tensor, alpha: float = 1.0) -> Tensor:
             \alpha(\exp(z) - 1), & z < 0,
         \end{cases}
 
+    Proposed in "Fast and Accurate Deep Network Learning by Exponential Linear Units (ELUs)" by Clevert et al. (2015).
+
+    See: https://arxiv.org/abs/1511.07289
+
     .. plot:: ../../examples/elu_variants/elu_example.py
        :include-source:
 
@@ -46,6 +50,10 @@ def selu(x: Tensor) -> Tensor:
 
     Where default values are lambda=1.0507 and alpha=1.67326.
 
+    Proposed in "Self-Normalizing Neural Networks" by Klambauer et al. (2017).
+
+    See: https://arxiv.org/abs/1706.02515
+
     .. plot:: ../../examples/elu_variants/selu_example.py
        :include-source:
 
@@ -72,6 +80,10 @@ def celu(x: Tensor, alpha: float = 1.0) -> Tensor:
             z, & z \geq 0, \\
             \alpha \cdot (\exp(z/\alpha) - 1), & z < 0,
         \end{cases}
+
+    Proposed in "CELU: Continuously Differentiable Exponential Linear Units" by Barron (2017).
+
+    See: https://arxiv.org/abs/1704.07483
 
     .. plot:: ../../examples/elu_variants/celu_example.py
        :include-source:
@@ -101,6 +113,11 @@ def abslu(x: Tensor, a: float = 0.01) -> Tensor:
             z, & z \geq 0, \\
             a|z|, & z < 0,
         \end{cases}
+
+    A variation inspired by research on activation functions in "Deep Learning with Separated Rectified
+    Linear Unit Activation Units" by Xu et al. (2018).
+
+    See: https://arxiv.org/abs/1810.09038
 
     .. plot:: ../../examples/elu_variants/abslu_example.py
        :include-source:

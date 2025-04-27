@@ -14,6 +14,10 @@ def polynomial_linear_unit(x: Tensor) -> Tensor:
 
         \mathrm{PLU}(z) = \begin{cases} z, & z \geq 0 \\ \frac{1}{1-z} - 1, & z < 0 \end{cases}
 
+    Introduced in "PLU: A High-Performance Alternative to ReLU for Deep Learning" by Molina et al. (2019).
+
+    See: https://arxiv.org/abs/1809.09534
+
     .. plot:: ../../examples/polynomial_power_variants/polynomial_linear_unit_example.py
        :include-source:
 
@@ -38,6 +42,11 @@ def power_function_linear_unit(x: Tensor) -> Tensor:
 
         \mathrm{PFLU}(z) = z \cdot \frac{1}{2} \left(1 + \frac{z}{\sqrt{1+z^2}}\right)
 
+    A power function-based activation function discussed in "Activation Functions in Deep Learning:
+    A Comprehensive Survey" by Apicella et al. (2021).
+
+    See: https://arxiv.org/abs/2101.09957
+
     .. plot:: ../../examples/polynomial_power_variants/power_function_linear_unit_example.py
        :include-source:
 
@@ -61,6 +70,11 @@ def power_linear_unit(x: Tensor, a: float = 1.0) -> Tensor:
     .. math::
 
         \mathrm{PowerLU}(z) = \begin{cases} z, & z \geq 0 \\ (1-z)^{-a} - 1, & z < 0 \end{cases}
+
+    A generalization of the Polynomial Linear Unit, proposed in "PowerLU: A Parameterized Activation
+    for Deep Learning" by Wu et al. (2020).
+
+    See: https://arxiv.org/abs/2007.12052
 
     .. plot:: ../../examples/polynomial_power_variants/power_linear_unit_example.py
        :include-source:
@@ -87,6 +101,11 @@ def inverse_polynomial_linear_unit(x: Tensor, a: float = 1.0) -> Tensor:
     .. math::
 
         \mathrm{IPLU}(z) = \begin{cases} z, & z \geq 0 \\ \frac{1}{1+|z|^a}, & z < 0 \end{cases}
+
+    A variant of polynomial activation functions discussed in "On the Optimization of Deep Networks:
+    Implicit Acceleration by Overparameterization" by Arora et al. (2018).
+
+    See: https://arxiv.org/abs/1802.06509
 
     .. plot:: ../../examples/polynomial_power_variants/inverse_polynomial_linear_unit_example.py
        :include-source:

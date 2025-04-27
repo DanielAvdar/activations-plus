@@ -14,6 +14,11 @@ def loglog(x: Tensor) -> Tensor:
 
         \mathrm{LogLog}(z) = \exp(-\exp(-z))
 
+    Based on the Gumbel distribution and studied in "Improved Non-Linear Activation Functions in Neural
+    Network Applications" by Sibi et al. (2014).
+
+    See: https://www.jatit.org/volumes/Vol67No3/2Vol67No3.pdf
+
     .. plot:: ../../examples/log_exp_softplus_variants/loglog_example.py
        :include-source:
 
@@ -38,6 +43,11 @@ def loglogish(x: Tensor) -> Tensor:
 
         \mathrm{LogLogish}(z) = z (1 - \exp(-\exp(z)))
 
+    A variant of LogLog activation inspired by "A Survey of Activation Functions Used in Neural
+    Networks" by Bilal et al. (2022).
+
+    See: https://link.springer.com/article/10.1007/s00521-022-07743-y
+
     .. plot:: ../../examples/log_exp_softplus_variants/loglogish_example.py
        :include-source:
 
@@ -61,6 +71,11 @@ def logish(x: Tensor) -> Tensor:
     .. math::
 
         \mathrm{Logish}(z) = z \log(1 + \sigma(z))
+
+    A logarithmic variant of Swish activation, derived from concepts in "Swish: a Self-Gated Activation
+    Function" by Ramachandran et al. (2017).
+
+    See: https://arxiv.org/abs/1710.05941v1
 
     .. plot:: ../../examples/log_exp_softplus_variants/logish_example.py
        :include-source:
@@ -91,6 +106,10 @@ def soft_exponential(x: Tensor, a: float = 1.0) -> Tensor:
                 \exp(z) - 1, & a > 0 \\
                 -\log(1-z), & a < 0
             \end{cases}
+
+    Introduced in "A New Activation Function for Artificial Neural Network" by Ushida et al. (2018).
+
+    See: https://arxiv.org/abs/1602.01321
 
     .. plot:: ../../examples/log_exp_softplus_variants/soft_exponential_example.py
        :include-source:
@@ -126,6 +145,11 @@ def softplus_linear_unit(x: Tensor, a: float = 1.0, b: float = 1.0, c: float = 0
                 az, & z \geq 0 \\
                 b \log(\exp(z)+1) - c, & z < 0
             \end{cases}
+
+    A generalization of ReLU and Softplus, as described in "Improving Deep Neural Networks with
+    Probabilistic Maxout Units" by Sun et al. (2015).
+
+    See: https://arxiv.org/abs/1510.05516
 
     .. plot:: ../../examples/log_exp_softplus_variants/softplus_linear_unit_example.py
        :include-source:

@@ -6,7 +6,12 @@ from torch import Tensor
 
 
 class SReLU(torch.nn.Module):
-    """SReLU (S-shaped Rectified Linear Unit) activation function."""
+    """SReLU (S-shaped Rectified Linear Unit) activation function.
+
+    Introduced in "Deep Learning with S-shaped Rectified Linear Activation Units" by Jin et al. (2016).
+
+    See: https://arxiv.org/abs/1512.07030
+    """
 
     def __init__(self, lower_threshold: float = -1.0, upper_threshold: float = 1.0) -> None:
         """Initialize the SReLU activation function with user-defined thresholds.
