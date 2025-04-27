@@ -13,12 +13,8 @@ def polynomial_linear_unit(x):
 
         \mathrm{PLU}(z) = \begin{cases} z, & z \geq 0 \\ \frac{1}{1-z} - 1, & z < 0 \end{cases}
 
-    .. plot::
-
-
-       .. literalinclude:: ../../examples/polynomial_power_variants/polynomial_linear_unit_example.py
-          :language: python
-          :caption: Example for polynomial_linear_unit
+    .. plot:: ../../examples/polynomial_power_variants/polynomial_linear_unit_example.py
+       :include-source:
 
     Parameters
     ----------
@@ -41,12 +37,8 @@ def power_function_linear_unit(x):
 
         \mathrm{PFLU}(z) = z \cdot \frac{1}{2} \left(1 + \frac{z}{\sqrt{1+z^2}}\right)
 
-    .. plot::
-
-
-       .. literalinclude:: ../../examples/polynomial_power_variants/power_function_linear_unit_example.py
-          :language: python
-          :caption: Example for power_function_linear_unit
+    .. plot:: ../../examples/polynomial_power_variants/power_function_linear_unit_example.py
+       :include-source:
 
     Parameters
     ----------
@@ -69,12 +61,8 @@ def power_linear_unit(x, a=1.0):
 
         \mathrm{PowerLU}(z) = \begin{cases} z, & z \geq 0 \\ (1-z)^{-a} - 1, & z < 0 \end{cases}
 
-    .. plot::
-
-
-       .. literalinclude:: ../../examples/polynomial_power_variants/power_linear_unit_example.py
-          :language: python
-          :caption: Example for power_linear_unit
+    .. plot:: ../../examples/polynomial_power_variants/power_linear_unit_example.py
+       :include-source:
 
     Parameters
     ----------
@@ -99,12 +87,8 @@ def inverse_polynomial_linear_unit(x, a=1.0):
 
         \mathrm{IPLU}(z) = \begin{cases} z, & z \geq 0 \\ \frac{1}{1+|z|^a}, & z < 0 \end{cases}
 
-    .. plot::
-
-
-       .. literalinclude:: ../../examples/polynomial_power_variants/inverse_polynomial_linear_unit_example.py
-          :language: python
-          :caption: Example for inverse_polynomial_linear_unit
+    .. plot:: ../../examples/polynomial_power_variants/inverse_polynomial_linear_unit_example.py
+       :include-source:
 
     Parameters
     ----------

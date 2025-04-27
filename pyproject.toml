@@ -54,6 +54,7 @@ dev = [
     "setuptools>=67.0.0",
     "numpy",
     "sybil[pytest]",
+    "matplotlib",
 
 
 

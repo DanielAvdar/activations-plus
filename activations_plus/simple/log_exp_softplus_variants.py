@@ -13,12 +13,8 @@ def loglog(x):
 
         \mathrm{LogLog}(z) = \exp(-\exp(-z))
 
-    .. plot::
-
-
-       .. literalinclude:: ../../examples/log_exp_softplus_variants/loglog_example.py
-          :language: python
-          :caption: Example for loglog
+    .. plot:: ../../examples/log_exp_softplus_variants/loglog_example.py
+       :include-source:
 
     Parameters
     ----------
@@ -41,12 +37,8 @@ def loglogish(x):
 
         \mathrm{LogLogish}(z) = z (1 - \exp(-\exp(z)))
 
-    .. plot::
-
-
-       .. literalinclude:: ../../examples/log_exp_softplus_variants/loglogish_example.py
-          :language: python
-          :caption: Example for loglogish
+    .. plot:: ../../examples/log_exp_softplus_variants/loglogish_example.py
+       :include-source:
 
     Parameters
     ----------
@@ -69,12 +61,8 @@ def logish(x):
 
         \mathrm{Logish}(z) = z \log(1 + \sigma(z))
 
-    .. plot::
-
-
-       .. literalinclude:: ../../examples/log_exp_softplus_variants/logish_example.py
-          :language: python
-          :caption: Example for logish
+    .. plot:: ../../examples/log_exp_softplus_variants/logish_example.py
+       :include-source:
 
     Parameters
     ----------
@@ -103,12 +91,8 @@ def soft_exponential(x, a=1.0):
                 -\log(1-z), & a < 0
             \end{cases}
 
-    .. plot::
-
-
-       .. literalinclude:: ../../examples/log_exp_softplus_variants/soft_exponential_example.py
-          :language: python
-          :caption: Example for soft_exponential
+    .. plot:: ../../examples/log_exp_softplus_variants/soft_exponential_example.py
+       :include-source:
 
     Parameters
     ----------
@@ -142,12 +126,8 @@ def softplus_linear_unit(x, a=1.0, b=1.0, c=0.0):
                 b \log(\exp(z)+1) - c, & z < 0
             \end{cases}
 
-    .. plot::
-
-
-       .. literalinclude:: ../../examples/log_exp_softplus_variants/softplus_linear_unit_example.py
-          :language: python
-          :caption: Example for softplus_linear_unit
+    .. plot:: ../../examples/log_exp_softplus_variants/softplus_linear_unit_example.py
+       :include-source:
 
     Parameters
     ----------

@@ -13,12 +13,8 @@ def sigmoid(x):
 
         \sigma(z) = \frac{1}{1 + e^{-z}}
 
-    .. plot::
-
-
-       .. literalinclude:: ../../examples/sigmoid_tanh_variants/sigmoid_example.py
-          :language: python
-          :caption: Example for sigmoid
+    .. plot:: ../../examples/sigmoid_tanh_variants/sigmoid_example.py
+       :include-source:
 
     Parameters
     ----------
@@ -41,12 +37,8 @@ def tanh(x):
 
         \tanh(z) = \frac{e^{z} - e^{-z}}{e^{z} + e^{-z}}
 
-    .. plot::
-
-
-       .. literalinclude:: ../../examples/sigmoid_tanh_variants/tanh_example.py
-          :language: python
-          :caption: Example for tanh
+    .. plot:: ../../examples/sigmoid_tanh_variants/tanh_example.py
+       :include-source:
 
     Parameters
     ----------
@@ -69,12 +61,8 @@ def hardtanh(x, a=-1.0, b=1.0):
 
         \mathrm{HardTanh}(z) = \begin{cases} a, & z < a \\ z, & a \leq z \leq b \\ b, & z > b \end{cases}
 
-    .. plot::
-
-
-       .. literalinclude:: ../../examples/sigmoid_tanh_variants/hardtanh_example.py
-          :language: python
-          :caption: Example for hardtanh
+    .. plot:: ../../examples/sigmoid_tanh_variants/hardtanh_example.py
+       :include-source:
 
     Parameters
     ----------
@@ -101,12 +89,8 @@ def softsign(x):
 
         \mathrm{Softsign}(z) = \frac{z}{1 + |z|}
 
-    .. plot::
-
-
-       .. literalinclude:: ../../examples/sigmoid_tanh_variants/softsign_example.py
-          :language: python
-          :caption: Example for softsign
+    .. plot:: ../../examples/sigmoid_tanh_variants/softsign_example.py
+       :include-source:
 
     Parameters
     ----------
@@ -132,12 +116,8 @@ def sqnl(x):
         z + \frac{z^2}{4}, & -2 \leq z < 0 \\
         -1, & z < -2 \end{cases}
 
-    .. plot::
-
-
-       .. literalinclude:: ../../examples/sigmoid_tanh_variants/sqnl_example.py
-          :language: python
-          :caption: Example for sqnl
+    .. plot:: ../../examples/sigmoid_tanh_variants/sqnl_example.py
+       :include-source:
 
     Parameters
     ----------
@@ -166,12 +146,8 @@ def softplus(x):
 
         \mathrm{Softplus}(z) = \log(1 + e^{z})
 
-    .. plot::
-
-
-       .. literalinclude:: ../../examples/sigmoid_tanh_variants/softplus_example.py
-          :language: python
-          :caption: Example for softplus
+    .. plot:: ../../examples/sigmoid_tanh_variants/softplus_example.py
+       :include-source:
 
     Parameters
     ----------
@@ -194,12 +170,8 @@ def tanh_exp(x):
 
         \mathrm{TanhExp}(z) = z \tanh(e^{z})
 
-    .. plot::
-
-
-       .. literalinclude:: ../../examples/sigmoid_tanh_variants/tanh_exp_example.py
-          :language: python
-          :caption: Example for tanh_exp
+    .. plot:: ../../examples/sigmoid_tanh_variants/tanh_exp_example.py
+       :include-source:
 
     Parameters
     ----------
