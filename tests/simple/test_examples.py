@@ -5,7 +5,7 @@ from unittest import mock
 
 import pytest
 
-EXAMPLES_DIR = pathlib.Path(__file__).parent.parent / "examples"
+EXAMPLES_DIR = pathlib.Path(__file__).parent.parent.parent / "examples"
 
 # Only test actual example scripts, not __init__.py files
 example_files = [f for f in EXAMPLES_DIR.rglob("*.py") if f.name != "__init__.py"]
