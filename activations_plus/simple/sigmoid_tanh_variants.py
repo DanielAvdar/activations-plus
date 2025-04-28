@@ -7,18 +7,21 @@ import torch
 from torch import Tensor
 
 
-def tanh_exp(x: Tensor) -> Tensor:
-    r"""Apply the TanhExp activation.
+def tanh_exp(x: Tensor, a: float = 1.0) -> Tensor:
+    r"""Apply the TanhExp activation function.
 
     .. math::
 
-        \mathrm{TanhExp}(z) = z \tanh(e^{z})
+        \text{TanhExp}(x) = x \tanh(\exp(x))
+
 
 
     Parameters
     ----------
     x : torch.Tensor
         Input tensor.
+    a : float, optional
+        Scaling factor, default is 1.0.
 
     Returns
     -------
@@ -26,11 +29,12 @@ def tanh_exp(x: Tensor) -> Tensor:
         The element-wise TanhExp of the input.
 
 
+
     Source
     ------
     .. seealso::
-        Introduced in "TanhExp: A Smooth Activation Function with High Convergence Speed for Lightweight
-        Neural Networks" by Liu et al. (2020).
+        Introduced in **"TanhExp: A Smooth Activation Function with High Convergence Speed for Lightweight
+        Neural Networks"** by Liu et al. (2020).
 
         `arxiv <https://arxiv.org/abs/2003.09855>`_
 
@@ -42,7 +46,7 @@ def tanh_exp(x: Tensor) -> Tensor:
        :include-source:
 
     """
-    return x * torch.tanh(torch.exp(x))
+    return x * torch.tanh(torch.exp(a * x))
 
 
 def aria2(x: Tensor, alpha: float = 1.5, beta: float = 0.5) -> Tensor:
@@ -71,8 +75,8 @@ def aria2(x: Tensor, alpha: float = 1.5, beta: float = 0.5) -> Tensor:
     Source
     ------
     .. seealso::
-        Introduced in "ARiA: Utilizing Richard's Curve for Controlling the Non-monotonicity
-        of the Activation Function in Deep Neural Nets".
+        Introduced in **"ARiA: Utilizing Richard's Curve for Controlling the Non-monotonicity
+        of the Activation Function in Deep Neural Nets"** by Nader et al.
 
         `arxiv <https://arxiv.org/abs/1805.08878>`_
 
@@ -109,7 +113,7 @@ def isru(x: Tensor, alpha: float = 1.0) -> Tensor:
     Source
     ------
     .. seealso::
-        Proposed in "Improving Deep Neural Networks with New Activation Functions"
+        Proposed in **"Improving Deep Neural Networks with New Activation Functions"**
         by Carlile et al. (2017).
 
         `arxiv <https://arxiv.org/abs/1710.09967>`_

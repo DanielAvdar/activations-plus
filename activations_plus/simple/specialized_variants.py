@@ -109,7 +109,7 @@ def hat(x: Tensor, a: float = 1.0) -> Tensor:
     Returns
     -------
     torch.Tensor
-        The element-wise Hat of the input.
+        The element-wise Hat function of the input.
 
 
     Source

@@ -7,35 +7,36 @@ import torch
 from torch import Tensor
 
 
-def dual_line(x: Tensor, a: float = 1.0, b: float = 0.01, m: float = 0.0) -> Tensor:
-    r"""Apply the Dual Line activation.
+def dual_line(x: Tensor, a: float = 0.5, b: float = 0.5) -> Tensor:
+    r"""Apply the Dual Line activation function.
 
     .. math::
 
-        \mathrm{DualLine}(x) = \begin{cases} a x + m, & x \geq 0 \\ b x + m, & x < 0 \end{cases}
+        \text{DualLine}(x) = \begin{cases}
+            a \cdot x, & \text{if } x < 0 \\
+            b \cdot x, & \text{if } x \geq 0
+        \end{cases}
 
     Parameters
     ----------
     x : torch.Tensor
         Input tensor.
     a : float, optional
-        Slope for x >= 0 (default 1.0).
+        Negative slope coefficient (default 0.5).
     b : float, optional
-        Slope for x < 0 (default 0.01).
-    m : float, optional
-        Offset (default 0.0).
+        Positive slope coefficient (default 0.5).
 
     Returns
     -------
     torch.Tensor
-        The element-wise Dual Line activation of the input.
+        The element-wise Dual Line of the input.
 
 
     Source
     ------
     .. seealso::
-        A generalized linear activation function discussed in "Survey of Activation Functions for Deep Neural
-        Networks" by Nwankpa et al. (2018).
+        A generalized linear activation function discussed in **"Survey of Activation Functions for Deep Neural
+        Networks"** by Nwankpa et al. (2018).
 
         `arxiv <https://arxiv.org/abs/1811.03378>`_
 
@@ -47,4 +48,4 @@ def dual_line(x: Tensor, a: float = 1.0, b: float = 0.01, m: float = 0.0) -> Ten
        :include-source:
 
     """
-    return torch.where(x >= 0, a * x + m, b * x + m)
+    return torch.where(x < 0, a * x, b * x)

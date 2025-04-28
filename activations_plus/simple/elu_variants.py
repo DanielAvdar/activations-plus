@@ -9,10 +9,11 @@ def isrlu(x: Tensor, alpha: float = 1.0) -> Tensor:
 
     .. math::
 
-        \text{ISRLU}(z) = \begin{cases}
-            z, & z \geq 0, \\
-            \frac{z}{\sqrt{1 + \alpha z^2}}, & z < 0,
+        \text{ISRLU}(x) = \begin{cases}
+            x, & x \geq 0 \\
+            \frac{x}{\sqrt{1 + \alpha x^2}}, & x < 0
         \end{cases}
+
 
     Parameters
     ----------
@@ -27,10 +28,11 @@ def isrlu(x: Tensor, alpha: float = 1.0) -> Tensor:
         The element-wise ISRLU of the input.
 
 
+
     Source
     ------
     .. seealso::
-        Proposed in "Improving Deep Neural Networks with New Activation Functions"
+        Proposed in **"Improving Deep Neural Networks with New Activation Functions"**
         by Carlile et al. (2017).
 
         `arxiv <https://arxiv.org/abs/1710.09967>`_
@@ -42,4 +44,4 @@ def isrlu(x: Tensor, alpha: float = 1.0) -> Tensor:
        :include-source:
 
     """
-    return torch.where(x >= 0, x, x / torch.sqrt(1 + alpha * x**2))
+    return torch.where(x >= 0, x, x / torch.sqrt(1 + alpha * x.pow(2)))

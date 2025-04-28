@@ -30,8 +30,8 @@ def penalized_tanh(x: Tensor, a: float = 0.25) -> Tensor:
     Source
     ------
     .. seealso::
-        A variant of tanh activation function proposed in "Activation Functions: Comparison in Neural
-        Network Architecture" by Sharma et al. (2021).
+        A variant of tanh activation function proposed in **"Activation Functions: Comparison in Neural
+        Network Architecture"** by Sharma et al. (2021).
 
         `arxiv <https://arxiv.org/abs/2109.14545>`_
 

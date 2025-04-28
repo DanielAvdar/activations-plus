@@ -23,8 +23,6 @@ __all__ = [
     # GELU/Swish variants
     # Tanh variants
     "penalized_tanh",
-    # Sigmoid variants
-    isrlu,
     # Specialized variants
     "erf_act",
     "hat",
