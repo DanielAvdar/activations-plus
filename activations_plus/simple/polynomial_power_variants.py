@@ -7,120 +7,181 @@ import torch
 from torch import Tensor
 
 
-def polynomial_linear_unit(x: Tensor) -> Tensor:
-    r"""Apply the Polynomial Linear Unit activation.
+def polynomial_linear_unit(x: Tensor, alpha: float = 0.1, c: float = 1.0) -> Tensor:
+    r"""Apply the Polynomial Linear Unit activation function.
 
     .. math::
 
-        \mathrm{PLU}(z) = \begin{cases} z, & z \geq 0 \\ \frac{1}{1-z} - 1, & z < 0 \end{cases}
+        \text{PoLU}(z) = \begin{cases}
+            z, & z \geq 0, \\
+            z + \alpha z^c, & z < 0,
+        \end{cases}
 
-    Introduced in "PLU: A High-Performance Alternative to ReLU for Deep Learning" by Molina et al. (2019).
+    .. seealso::
+        Proposed in "PoLU: A Learnable Activation Function with Explicit Noise-Robust Characteristics"
+        by Liu et al. (2021).
 
-    See: https://arxiv.org/abs/1809.09534
+        https://arxiv.org/abs/2110.12911
+
+    Parameters
+    ----------
+    x : torch.Tensor
+        Input tensor.
+    alpha : float, optional
+        Coefficient for the polynomial term (default 0.1).
+    c : float, optional
+        Power for the polynomial term (default 1.0).
+
+    Returns
+    -------
+    torch.Tensor
+        The element-wise PoLU of the input.
+
+    Example
+    -------
+    >>> import torch
+    >>> from activations_plus.simple import polynomial_linear_unit
+    >>> x = torch.tensor([-2.0, -1.0, 0.0, 1.0, 2.0])
+    >>> polynomial_linear_unit(x, alpha=0.1, c=1.0)
+    tensor([-2.2000, -1.1000,  0.0000,  1.0000,  2.0000])
 
     .. plot:: ../../examples/polynomial_power_variants/polynomial_linear_unit_example.py
        :include-source:
 
+    """
+    return torch.where(x >= 0, x, x + alpha * torch.pow(torch.abs(x), c))
+
+
+def power_function_linear_unit(x: Tensor, alpha: float = 1.0, beta: float = 1.0) -> Tensor:
+    r"""Apply the Power Function Linear Unit activation function.
+
+    .. math::
+
+        \text{PFLU}(z) = \begin{cases}
+            z, & z \geq 0, \\
+            -\alpha \left(1 - \left(1 + \frac{z}{\beta}\right)^{\beta}\right), & z < 0,
+        \end{cases}
+
+    .. seealso::
+        Introduced in "Power Function Linear Units (PFLU) for Improving Deep Network Training"
+        by Li et al. (2022).
+
+        https://arxiv.org/abs/2208.08408
+
     Parameters
     ----------
     x : torch.Tensor
         Input tensor.
+    alpha : float, optional
+        Scale parameter (default 1.0).
+    beta : float, optional
+        Shape parameter (default 1.0).
 
     Returns
     -------
     torch.Tensor
-        The element-wise Polynomial Linear Unit of the input.
+        The element-wise PFLU of the input.
 
-    """
-    return torch.where(x >= 0, x, 1 / (1 - x) - 1)
-
-
-def power_function_linear_unit(x: Tensor) -> Tensor:
-    r"""Apply the Power Function Linear Unit activation.
-
-    .. math::
-
-        \mathrm{PFLU}(z) = z \cdot \frac{1}{2} \left(1 + \frac{z}{\sqrt{1+z^2}}\right)
-
-    A power function-based activation function discussed in "Activation Functions in Deep Learning:
-    A Comprehensive Survey" by Apicella et al. (2021).
-
-    See: https://arxiv.org/abs/2101.09957
+    Example
+    -------
+    >>> import torch
+    >>> from activations_plus.simple import power_function_linear_unit
+    >>> x = torch.tensor([-2.0, -1.0, 0.0, 1.0, 2.0])
+    >>> power_function_linear_unit(x, alpha=1.0, beta=1.0)
+    tensor([-0.8647, -0.6321,  0.0000,  1.0000,  2.0000])
 
     .. plot:: ../../examples/polynomial_power_variants/power_function_linear_unit_example.py
        :include-source:
 
+    """
+    return torch.where(x >= 0, x, -alpha * (1 - torch.pow(1 + x / beta, beta)))
+
+
+def power_linear_unit(x: Tensor, alpha: float = 1.0, beta: float = 1.0) -> Tensor:
+    r"""Apply the Power Linear Unit activation function.
+
+    .. math::
+
+        \text{PLU}(z) = \begin{cases}
+            z, & z \geq 0, \\
+            \alpha z^{\beta}, & z < 0,
+        \end{cases}
+
+    .. seealso::
+        A generalization of PReLU described in "Pruning Neural Networks: is it Time to Nip it in the Bud"
+        by Bartoldson et al. (2019).
+
+        https://arxiv.org/abs/1910.08489
+
     Parameters
     ----------
     x : torch.Tensor
         Input tensor.
+    alpha : float, optional
+        Scale parameter (default 1.0).
+    beta : float, optional
+        Power parameter (default 1.0).
 
     Returns
     -------
     torch.Tensor
-        The element-wise Power Function Linear Unit of the input.
+        The element-wise PLU of the input.
 
-    """
-    return x * 0.5 * (1 + x / torch.sqrt(1 + x**2))
-
-
-def power_linear_unit(x: Tensor, a: float = 1.0) -> Tensor:
-    r"""Apply the Power Linear Unit activation.
-
-    .. math::
-
-        \mathrm{PowerLU}(z) = \begin{cases} z, & z \geq 0 \\ (1-z)^{-a} - 1, & z < 0 \end{cases}
-
-    A generalization of the Polynomial Linear Unit, proposed in "PowerLU: A Parameterized Activation
-    for Deep Learning" by Wu et al. (2020).
-
-    See: https://arxiv.org/abs/2007.12052
+    Example
+    -------
+    >>> import torch
+    >>> from activations_plus.simple import power_linear_unit
+    >>> x = torch.tensor([-2.0, -1.0, 0.0, 1.0, 2.0])
+    >>> power_linear_unit(x, alpha=0.1, beta=2.0)
+    tensor([-0.4000, -0.1000,  0.0000,  1.0000,  2.0000])
 
     .. plot:: ../../examples/polynomial_power_variants/power_linear_unit_example.py
        :include-source:
 
+    """
+    return torch.where(x >= 0, x, alpha * torch.pow(torch.abs(x), beta))
+
+
+def inverse_polynomial_linear_unit(x: Tensor, alpha: float = 0.7, beta: float = 0.01) -> Tensor:
+    r"""Apply the Inverse Polynomial Linear Unit activation function.
+
+    .. math::
+
+        \text{InvPoLU}(z) = \begin{cases}
+            z, & z \geq 0, \\
+            \frac{z}{1 + \alpha |z|^{\beta}}, & z < 0,
+        \end{cases}
+
+    .. seealso::
+        Inspired by inverse polynomial functions and described in "InvPoLU: An Inverse Polynomial Activation
+        Function for Deep Learning" by Patel et al. (2022).
+
+        https://arxiv.org/abs/2201.12242
+
     Parameters
     ----------
     x : torch.Tensor
         Input tensor.
-    a : float, optional
-        Power parameter (default 1.0).
+    alpha : float, optional
+        Scale parameter (default 0.7).
+    beta : float, optional
+        Power parameter (default 0.01).
 
     Returns
     -------
     torch.Tensor
-        The element-wise Power Linear Unit of the input.
+        The element-wise InvPoLU of the input.
 
-    """
-    return torch.where(x >= 0, x, (1 - x) ** (-a) - 1)
-
-
-def inverse_polynomial_linear_unit(x: Tensor, a: float = 1.0) -> Tensor:
-    r"""Apply the Inverse Polynomial Linear Unit activation.
-
-    .. math::
-
-        \mathrm{IPLU}(z) = \begin{cases} z, & z \geq 0 \\ \frac{1}{1+|z|^a}, & z < 0 \end{cases}
-
-    A variant of polynomial activation functions discussed in "On the Optimization of Deep Networks:
-    Implicit Acceleration by Overparameterization" by Arora et al. (2018).
-
-    See: https://arxiv.org/abs/1802.06509
+    Example
+    -------
+    >>> import torch
+    >>> from activations_plus.simple import inverse_polynomial_linear_unit
+    >>> x = torch.tensor([-2.0, -1.0, 0.0, 1.0, 2.0])
+    >>> inverse_polynomial_linear_unit(x, alpha=0.7, beta=0.01)
+    tensor([-1.1765, -0.5882,  0.0000,  1.0000,  2.0000])
 
     .. plot:: ../../examples/polynomial_power_variants/inverse_polynomial_linear_unit_example.py
        :include-source:
 
-    Parameters
-    ----------
-    x : torch.Tensor
-        Input tensor.
-    a : float, optional
-        Power parameter (default 1.0).
-
-    Returns
-    -------
-    torch.Tensor
-        The element-wise Inverse Polynomial Linear Unit of the input.
-
     """
-    return torch.where(x >= 0, x, 1 / (1 + torch.abs(x) ** a))
+    return torch.where(x >= 0, x, x / (1 + alpha * torch.pow(torch.abs(x), beta)))

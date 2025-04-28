@@ -12,14 +12,11 @@ def gelu(x: Tensor) -> Tensor:
 
         \text{GELU}(z) = z \cdot \Phi(z)
 
-    Where \Phi(z) is the cumulative distribution function of the standard normal distribution.
+    .. seealso::
+        Originally proposed in "Gaussian Error Linear Units (GELUs)" by Hendrycks & Gimpel (2016).
+        Where \Phi(z) is the cumulative distribution function of the standard normal distribution.
 
-    Originally proposed in "Gaussian Error Linear Units (GELUs)" by Hendrycks & Gimpel (2016).
-
-    See: https://arxiv.org/abs/1606.08415
-
-    .. plot:: ../../examples/gelu_swish_variants/gelu_example.py
-       :include-source:
+        https://arxiv.org/abs/1606.08415
 
     Parameters
     ----------
@@ -30,6 +27,17 @@ def gelu(x: Tensor) -> Tensor:
     -------
     torch.Tensor
         The element-wise GELU of the input.
+
+    Example
+    -------
+    >>> import torch
+    >>> from activations_plus.simple import gelu
+    >>> x = torch.tensor([-2.0, -1.0, 0.0, 1.0, 2.0])
+    >>> gelu(x)
+    tensor([-0.0455, -0.1587,  0.0000,  0.8413,  1.9545])
+
+    .. plot:: ../../examples/gelu_swish_variants/gelu_example.py
+       :include-source:
 
     """
     return functional.gelu(x)
@@ -42,13 +50,11 @@ def silu(x: Tensor) -> Tensor:
 
         \mathrm{SiLU}(z) = z \cdot \sigma(z) = \frac{z}{1 + e^{-z}}
 
-    Originally introduced in "Fast and Accurate Deep Network Learning by Exponential Linear Units" (2016),
-    popularized in "Exploring the Limits of Weakly Supervised Pretraining" by Mahajan et al. (2018).
+    .. seealso::
+        Originally introduced in "Fast and Accurate Deep Network Learning by Exponential Linear Units" (2016),
+        popularized in "Exploring the Limits of Weakly Supervised Pretraining" by Mahajan et al. (2018).
 
-    See: https://arxiv.org/abs/1905.02244
-
-    .. plot:: ../../examples/gelu_swish_variants/silu_example.py
-       :include-source:
+        https://arxiv.org/abs/1905.02244
 
     Parameters
     ----------
@@ -59,6 +65,17 @@ def silu(x: Tensor) -> Tensor:
     -------
     torch.Tensor
         The element-wise SiLU of the input.
+
+    Example
+    -------
+    >>> import torch
+    >>> from activations_plus.simple import silu
+    >>> x = torch.tensor([-2.0, -1.0, 0.0, 1.0, 2.0])
+    >>> silu(x)
+    tensor([-0.2384, -0.2689,  0.0000,  0.7311,  1.7616])
+
+    .. plot:: ../../examples/gelu_swish_variants/silu_example.py
+       :include-source:
 
     """
     return functional.silu(x)
@@ -71,13 +88,11 @@ def swish(x: Tensor) -> Tensor:
 
         \mathrm{Swish}(z) = z \cdot \sigma(z) = \frac{z}{1 + e^{-z}}
 
-    Introduced in "Searching for Activation Functions" by Ramachandran et al. (2017).
-    Functionally identical to SiLU.
+    .. seealso::
+        Introduced in "Searching for Activation Functions" by Ramachandran et al. (2017).
+        Functionally identical to SiLU.
 
-    See: https://arxiv.org/abs/1710.05941
-
-    .. plot:: ../../examples/gelu_swish_variants/swish_example.py
-       :include-source:
+        https://arxiv.org/abs/1710.05941
 
     Parameters
     ----------
@@ -88,6 +103,17 @@ def swish(x: Tensor) -> Tensor:
     -------
     torch.Tensor
         The element-wise Swish of the input.
+
+    Example
+    -------
+    >>> import torch
+    >>> from activations_plus.simple import swish
+    >>> x = torch.tensor([-2.0, -1.0, 0.0, 1.0, 2.0])
+    >>> swish(x)
+    tensor([-0.2384, -0.2689,  0.0000,  0.7311,  1.7616])
+
+    .. plot:: ../../examples/gelu_swish_variants/swish_example.py
+       :include-source:
 
     """
     return functional.silu(x)
@@ -100,12 +126,10 @@ def hard_sigmoid(x: Tensor) -> Tensor:
 
         \text{HardSigmoid}(x) = \max(0, \min(1, \frac{x + 1}{2}))
 
-    Used in neural networks for mobile and embedded systems, discussed
-    in "Exploring the Limits of Weakly Supervised Pretraining" by
-    Mahajan et al. (2018).
-
-    .. plot:: ../../examples/gelu_swish_variants/hard_sigmoid_example.py
-       :include-source:
+    .. seealso::
+        Used in neural networks for mobile and embedded systems, discussed
+        in "Exploring the Limits of Weakly Supervised Pretraining" by
+        Mahajan et al. (2018).
 
     Parameters
     ----------
@@ -116,6 +140,17 @@ def hard_sigmoid(x: Tensor) -> Tensor:
     -------
     torch.Tensor
         The element-wise Hard Sigmoid activation of the input.
+
+    Example
+    -------
+    >>> import torch
+    >>> from activations_plus.simple import hard_sigmoid
+    >>> x = torch.tensor([-2.0, -1.0, 0.0, 1.0, 2.0])
+    >>> hard_sigmoid(x)
+    tensor([0.0000, 0.0000, 0.5000, 1.0000, 1.0000])
+
+    .. plot:: ../../examples/gelu_swish_variants/hard_sigmoid_example.py
+       :include-source:
 
     """
     return functional.hardsigmoid(x)
@@ -128,12 +163,10 @@ def hard_swish(x: Tensor) -> Tensor:
 
         \text{HardSwish}(z) = z \cdot \text{HardSigmoid}(z)
 
-    Proposed in "Searching for MobileNetV3" by Howard et al. (2019).
+    .. seealso::
+        Proposed in "Searching for MobileNetV3" by Howard et al. (2019).
 
-    See: https://arxiv.org/abs/1905.02244
-
-    .. plot:: ../../examples/gelu_swish_variants/hard_swish_example.py
-       :include-source:
+        https://arxiv.org/abs/1905.02244
 
     Parameters
     ----------
@@ -144,6 +177,17 @@ def hard_swish(x: Tensor) -> Tensor:
     -------
     torch.Tensor
         The element-wise Hard Swish of the input.
+
+    Example
+    -------
+    >>> import torch
+    >>> from activations_plus.simple import hard_swish
+    >>> x = torch.tensor([-3.0, -1.0, 0.0, 1.0, 3.0])
+    >>> hard_swish(x)
+    tensor([-0.0000, -0.0000,  0.0000,  0.6667,  3.0000])
+
+    .. plot:: ../../examples/gelu_swish_variants/hard_swish_example.py
+       :include-source:
 
     """
     return functional.hardswish(x)
@@ -156,12 +200,10 @@ def mish(x: Tensor) -> Tensor:
 
         \text{Mish}(z) = z \cdot \tanh(\text{softplus}(z)) = z \cdot \tanh(\ln(1 + \exp(z)))
 
-    Proposed in "Mish: A Self Regularized Non-Monotonic Activation Function" by Misra (2019).
+    .. seealso::
+        Proposed in "Mish: A Self Regularized Non-Monotonic Activation Function" by Misra (2019).
 
-    See: https://arxiv.org/abs/1908.08681
-
-    .. plot:: ../../examples/gelu_swish_variants/mish_example.py
-       :include-source:
+        https://arxiv.org/abs/1908.08681
 
     Parameters
     ----------
@@ -172,6 +214,17 @@ def mish(x: Tensor) -> Tensor:
     -------
     torch.Tensor
         The element-wise Mish of the input.
+
+    Example
+    -------
+    >>> import torch
+    >>> from activations_plus.simple import mish
+    >>> x = torch.tensor([-2.0, -1.0, 0.0, 1.0, 2.0])
+    >>> mish(x)
+    tensor([-0.2525, -0.3032,  0.0000,  0.8651,  1.9440])
+
+    .. plot:: ../../examples/gelu_swish_variants/mish_example.py
+       :include-source:
 
     """
     return x * torch.tanh(functional.softplus(x))
@@ -184,11 +237,9 @@ def phish(x: Tensor) -> Tensor:
 
         \text{Phish}(x) = x \cdot \tanh(\text{GELU}(x))
 
-    A combination of GELU and tanh functions, inspired by Mish activation
-    and discussed in "Neural Network Activation Functions" by Kunin et al. (2020).
-
-    .. plot:: ../../examples/gelu_swish_variants/phish_example.py
-       :include-source:
+    .. seealso::
+        A combination of GELU and tanh functions, inspired by Mish activation
+        and discussed in "Neural Network Activation Functions" by Kunin et al. (2020).
 
     Parameters
     ----------
@@ -199,6 +250,17 @@ def phish(x: Tensor) -> Tensor:
     -------
     torch.Tensor
         The element-wise Phish activation of the input.
+
+    Example
+    -------
+    >>> import torch
+    >>> from activations_plus.simple import phish
+    >>> x = torch.tensor([-2.0, -1.0, 0.0, 1.0, 2.0])
+    >>> phish(x)
+    tensor([-0.0454, -0.1557,  0.0000,  0.6897,  1.8242])
+
+    .. plot:: ../../examples/gelu_swish_variants/phish_example.py
+       :include-source:
 
     """
     return x * torch.tanh(functional.gelu(x))

@@ -14,13 +14,11 @@ def loglog(x: Tensor) -> Tensor:
 
         \mathrm{LogLog}(z) = \exp(-\exp(-z))
 
-    Based on the Gumbel distribution and studied in "Improved Non-Linear Activation Functions in Neural
-    Network Applications" by Sibi et al. (2014).
+    .. seealso::
+        Based on the Gumbel distribution and studied in "Improved Non-Linear Activation Functions in Neural
+        Network Applications" by Sibi et al. (2014).
 
-    See: https://www.jatit.org/volumes/Vol67No3/2Vol67No3.pdf
-
-    .. plot:: ../../examples/log_exp_softplus_variants/loglog_example.py
-       :include-source:
+        https://www.jatit.org/volumes/Vol67No3/2Vol67No3.pdf
 
     Parameters
     ----------
@@ -31,6 +29,17 @@ def loglog(x: Tensor) -> Tensor:
     -------
     torch.Tensor
         The element-wise LogLog of the input.
+
+    Example
+    -------
+    >>> import torch
+    >>> from activations_plus.simple import loglog
+    >>> x = torch.tensor([-2.0, -1.0, 0.0, 1.0, 2.0])
+    >>> loglog(x)
+    tensor([0.0003, 0.0045, 0.0821, 0.6321, 0.9502])
+
+    .. plot:: ../../examples/log_exp_softplus_variants/loglog_example.py
+       :include-source:
 
     """
     return torch.exp(-torch.exp(-x))
@@ -43,13 +52,11 @@ def loglogish(x: Tensor) -> Tensor:
 
         \mathrm{LogLogish}(z) = z (1 - \exp(-\exp(z)))
 
-    A variant of LogLog activation inspired by "A Survey of Activation Functions Used in Neural
-    Networks" by Bilal et al. (2022).
+    .. seealso::
+        A variant of LogLog activation inspired by "A Survey of Activation Functions Used in Neural
+        Networks" by Bilal et al. (2022).
 
-    See: https://link.springer.com/article/10.1007/s00521-022-07743-y
-
-    .. plot:: ../../examples/log_exp_softplus_variants/loglogish_example.py
-       :include-source:
+        https://link.springer.com/article/10.1007/s00521-022-07743-y
 
     Parameters
     ----------
@@ -60,6 +67,17 @@ def loglogish(x: Tensor) -> Tensor:
     -------
     torch.Tensor
         The element-wise LogLogish of the input.
+
+    Example
+    -------
+    >>> import torch
+    >>> from activations_plus.simple import loglogish
+    >>> x = torch.tensor([-2.0, -1.0, 0.0, 1.0, 2.0])
+    >>> loglogish(x)
+    tensor([-1.9982, -0.9905, -0.0000,  0.6321,  1.9988])
+
+    .. plot:: ../../examples/log_exp_softplus_variants/loglogish_example.py
+       :include-source:
 
     """
     return x * (1 - torch.exp(-torch.exp(x)))
@@ -72,13 +90,11 @@ def logish(x: Tensor) -> Tensor:
 
         \mathrm{Logish}(z) = z \log(1 + \sigma(z))
 
-    A logarithmic variant of Swish activation, derived from concepts in "Swish: a Self-Gated Activation
-    Function" by Ramachandran et al. (2017).
+    .. seealso::
+        A logarithmic variant of Swish activation, derived from concepts in "Swish: a Self-Gated Activation
+        Function" by Ramachandran et al. (2017).
 
-    See: https://arxiv.org/abs/1710.05941v1
-
-    .. plot:: ../../examples/log_exp_softplus_variants/logish_example.py
-       :include-source:
+        https://arxiv.org/abs/1710.05941v1
 
     Parameters
     ----------
@@ -89,6 +105,17 @@ def logish(x: Tensor) -> Tensor:
     -------
     torch.Tensor
         The element-wise Logish of the input.
+
+    Example
+    -------
+    >>> import torch
+    >>> from activations_plus.simple import logish
+    >>> x = torch.tensor([-2.0, -1.0, 0.0, 1.0, 2.0])
+    >>> logish(x)
+    tensor([-0.2536, -0.2020,  0.0000,  0.4016,  1.0730])
+
+    .. plot:: ../../examples/log_exp_softplus_variants/logish_example.py
+       :include-source:
 
     """
     s = torch.sigmoid(x)
@@ -107,13 +134,11 @@ def soft_exponential(x: Tensor, a: float = 1.0) -> Tensor:
                 \frac{e^{az} - 1}{a} + a, & a > 0
             \end{cases}
 
-    Introduced in "A continuum among logarithmic, linear, and exponential functions, and
-    its potential to improve generalization in neural networks" by Godfrey and Gashler (2016).
+    .. seealso::
+        Introduced in "A continuum among logarithmic, linear, and exponential functions, and
+        its potential to improve generalization in neural networks" by Godfrey and Gashler (2016).
 
-    See: https://arxiv.org/abs/1602.01321
-
-    .. plot:: ../../examples/log_exp_softplus_variants/soft_exponential_example.py
-       :include-source:
+        https://arxiv.org/abs/1602.01321
 
     Parameters
     ----------
@@ -126,6 +151,17 @@ def soft_exponential(x: Tensor, a: float = 1.0) -> Tensor:
     -------
     torch.Tensor
         The element-wise Soft Exponential of the input.
+
+    Example
+    -------
+    >>> import torch
+    >>> from activations_plus.simple import soft_exponential
+    >>> x = torch.tensor([-1.0, 0.0, 1.0])
+    >>> soft_exponential(x, a=0.5)
+    tensor([0.1353, 0.5000, 1.7293])
+
+    .. plot:: ../../examples/log_exp_softplus_variants/soft_exponential_example.py
+       :include-source:
 
     """
     if a == 0:
@@ -147,13 +183,11 @@ def softplus_linear_unit(x: Tensor, a: float = 1.0, b: float = 1.0, c: float = 0
                 b \log(\exp(z)+1) - c, & z < 0
             \end{cases}
 
-    A generalization of ReLU and Softplus, as described in "Improving Deep Neural Networks with
-    Probabilistic Maxout Units" by Sun et al. (2015).
+    .. seealso::
+        A generalization of ReLU and Softplus, as described in "Improving Deep Neural Networks with
+        Probabilistic Maxout Units" by Sun et al. (2015).
 
-    See: https://arxiv.org/abs/1510.05516
-
-    .. plot:: ../../examples/log_exp_softplus_variants/softplus_linear_unit_example.py
-       :include-source:
+        https://arxiv.org/abs/1510.05516
 
     Parameters
     ----------
@@ -170,6 +204,17 @@ def softplus_linear_unit(x: Tensor, a: float = 1.0, b: float = 1.0, c: float = 0
     -------
     torch.Tensor
         The element-wise Softplus Linear Unit of the input.
+
+    Example
+    -------
+    >>> import torch
+    >>> from activations_plus.simple import softplus_linear_unit
+    >>> x = torch.tensor([-2.0, -1.0, 0.0, 1.0, 2.0])
+    >>> softplus_linear_unit(x)
+    tensor([0.1269, 0.3133, 0.0000, 1.0000, 2.0000])
+
+    .. plot:: ../../examples/log_exp_softplus_variants/softplus_linear_unit_example.py
+       :include-source:
 
     """
     return torch.where(x >= 0, a * x, b * torch.log(torch.exp(x) + 1) - c)

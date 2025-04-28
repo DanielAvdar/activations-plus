@@ -17,7 +17,9 @@ def test_docstring_standard(
     tags = [
         ".. math::",
         ".. seealso::",
+        "Parameters\n",
         "Returns\n",
+        "Example\n",
         ".. plot::",
     ]
     for tag in tags:
