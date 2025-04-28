@@ -1,7 +1,7 @@
 .. _elu_variants_api:
 
-ELU Variants API Reference
-==========================
+ELU Variants
+===========
 
 .. automodule:: activations_plus.simple.elu_variants
     :members:

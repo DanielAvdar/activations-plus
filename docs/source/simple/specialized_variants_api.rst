@@ -1,7 +1,7 @@
 .. _specialized_variants_api:
 
-Specialized Variants API Reference
-==================================
+Specialized Variants
+================
 
 .. automodule:: activations_plus.simple.specialized_variants
     :members:

@@ -1,7 +1,7 @@
 .. _polynomial_power_variants_api:
 
-Polynomial & Power Variants API Reference
-=========================================
+Polynomial and Power Variants
+==========================
 
 .. automodule:: activations_plus.simple.polynomial_power_variants
     :members:

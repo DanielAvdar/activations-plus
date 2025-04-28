@@ -1,7 +1,7 @@
 .. _tanh_variants_api:
 
-Tanh Variants API Reference
-===========================
+Tanh Variants
+==========
 
 .. automodule:: activations_plus.simple.tanh_variants
     :members:

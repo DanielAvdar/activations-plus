@@ -1,7 +1,7 @@
 .. _relu_variants_api:
 
-ReLU Variants API Reference
-===========================
+ReLU Variants
+==========
 
 .. automodule:: activations_plus.simple.relu_variants
     :members:

@@ -1,7 +1,7 @@
 .. _sigmoid_tanh_variants_api:
 
-Sigmoid & Tanh Variants API Reference
-=====================================
+Sigmoid and Tanh Variants
+======================
 
 .. automodule:: activations_plus.simple.sigmoid_tanh_variants
     :members:
