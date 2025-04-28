@@ -9,7 +9,6 @@ from activations_plus.simple import (
     polynomial_power_variants,
     relu_variants,
     sigmoid_tanh_variants,
-    sigmoid_variants,
     specialized_variants,
     tanh_variants,
 )
@@ -24,12 +23,7 @@ SIMPLE_ACTIVATIONS = [
     (relu_variants.trec, {}),
     (relu_variants.dual_line, {}),
     (relu_variants.mrelu, {}),
-    (sigmoid_tanh_variants.sigmoid, {}),
-    (sigmoid_tanh_variants.tanh, {}),
-    (sigmoid_tanh_variants.hardtanh, {}),
-    (sigmoid_tanh_variants.softsign, {}),
     (sigmoid_tanh_variants.sqnl, {}),
-    (sigmoid_tanh_variants.softplus, {}),
     (sigmoid_tanh_variants.tanh_exp, {}),
     (polynomial_power_variants.polynomial_linear_unit, {}),
     (polynomial_power_variants.power_function_linear_unit, {}),
@@ -58,20 +52,11 @@ SIMPLE_ACTIVATIONS = [
     (tanh_variants.penalized_tanh, {}),
     (tanh_variants.stanhplus, {}),
     (tanh_variants.tanhsig, {}),
-    # New Sigmoid variants
-    (sigmoid_variants.rootsig, {}),
-    (sigmoid_variants.new_sigmoid, {}),
-    (sigmoid_variants.sigmoid_gumbel, {}),
-    (sigmoid_variants.root2sigmoid, {}),
     # Specialized variants (excluding prelu which requires weight parameter)
     (specialized_variants.resp, {}),
     (specialized_variants.suish, {}),
     (specialized_variants.sin_sig, {}),
-    (specialized_variants.gish, {}),
     (specialized_variants.erf_act, {}),
-    (specialized_variants.complementary_log_log, {}),
-    (specialized_variants.exp_expish, {}),
-    (specialized_variants.exp_swish, {}),
     (specialized_variants.hat, {}),
 ]
 

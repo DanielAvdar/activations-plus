@@ -10,14 +10,9 @@ from .polynomial_power_variants import (
     power_linear_unit,
 )
 from .relu_variants import blrelu, dual_line, lrelu, mrelu, relu, rrelu, trec
-from .sigmoid_tanh_variants import aria2, hardtanh, isru, sigmoid, softplus, softsign, sqnl, tanh, tanh_exp
-from .sigmoid_variants import new_sigmoid, root2sigmoid, sigmoid_gumbel
+from .sigmoid_tanh_variants import aria2, isru, sqnl, tanh_exp
 from .specialized_variants import (
-    complementary_log_log,
     erf_act,
-    exp_expish,
-    exp_swish,
-    gish,
     hat,
     prelu,
     resp,
@@ -36,12 +31,7 @@ __all__ = [
     "dual_line",
     "mrelu",
     # Sigmoid/Tanh variants
-    "sigmoid",
-    "tanh",
-    "hardtanh",
-    "softsign",
     "sqnl",
-    "softplus",
     "tanh_exp",
     "isru",
     # Polynomial/Power variants
@@ -74,15 +64,9 @@ __all__ = [
     "tanh_linear_unit",
     "tanhsig",
     # Sigmoid variants
-    "new_sigmoid",
-    "root2sigmoid",
-    "sigmoid_gumbel",
+    isrlu,
     # Specialized variants
-    "complementary_log_log",
     "erf_act",
-    "exp_expish",
-    "exp_swish",
-    "gish",
     "hat",
     "prelu",
     "resp",

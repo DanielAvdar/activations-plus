@@ -77,10 +77,10 @@ def resp(x: Tensor, a: float = 1.0) -> Tensor:
     Source
     ------
     .. seealso::
-        A combination of ReLU and softplus discussed in "Activation Functions in Deep Learning:
-        A Comprehensive Survey and Benchmark" by Dubey et al. (2022).
+        A combination of ReLU and softplus discussed in **"Exploring the Relationship: Transformative Adaptive
+        Activation Functions in Comparison to Other Activation Functions"** (2024).
 
-        `arxiv <https://arxiv.org/abs/2109.14545>`_
+        `arxiv <https://arxiv.org/abs/2402.09249>`_
 
     Example
     -------
@@ -165,42 +165,6 @@ def sin_sig(x: Tensor) -> Tensor:
     return x * torch.sin((torch.pi / 2) * torch.sigmoid(x))
 
 
-def gish(x: Tensor) -> Tensor:
-    r"""Apply the Gish activation function.
-
-    .. math::
-
-        \text{Gish}(z) = z \cdot \ln(2 - \exp(-\exp(z)))
-
-
-    Parameters
-    ----------
-    x : torch.Tensor
-        Input tensor.
-
-    Returns
-    -------
-    torch.Tensor
-        The element-wise Gish of the input.
-
-
-    Source
-    ------
-    .. seealso::
-        A variant of activation function combining elements of GELU and Swish, proposed in
-        "Novel Activation Functions for Neural Networks" by Gupta et al. (2020).
-
-        `arxiv <https://arxiv.org/abs/2004.02967>`_
-
-    Example
-    -------
-    .. plot:: ../../examples/specialized_variants/gish_example.py
-       :include-source:
-
-    """
-    return x * torch.log(2 - torch.exp(-torch.exp(x)))
-
-
 def erf_act(x: Tensor, a: float = 0.5, b: float = 1.0) -> Tensor:
     r"""Apply the ErfAct activation function.
 
@@ -227,10 +191,9 @@ def erf_act(x: Tensor, a: float = 0.5, b: float = 1.0) -> Tensor:
     Source
     ------
     .. seealso::
-        A variant of activation function using the error function, explored in "Error Function
-        Activation-Based Deep Neural Networks" by Li et al. (2019).
-
-        `arxiv <https://arxiv.org/abs/1903.08587>`_
+        A variant of activation function using the error function, explored in
+        **"ErfAct and Pserf: Non-monotonic Smooth Trainable Activation Functions"** (2019).
+        `arxiv <https://arxiv.org/abs/2109.04386>`_
 
     Example
     -------
@@ -239,117 +202,6 @@ def erf_act(x: Tensor, a: float = 0.5, b: float = 1.0) -> Tensor:
 
     """
     return x * torch.erf(a * torch.exp(b * x))
-
-
-def complementary_log_log(x: Tensor) -> Tensor:
-    r"""Apply the Complementary LogLog activation function.
-
-    .. math::
-
-        \text{ComplementaryLogLog}(z) = 1 - \exp(-\exp(-z))
-
-
-    Parameters
-    ----------
-    x : torch.Tensor
-        Input tensor.
-
-    Returns
-    -------
-    torch.Tensor
-        The element-wise Complementary LogLog of the input.
-
-
-    Source
-    ------
-    .. seealso::
-        Based on the Gumbel distribution, explored in "Comparative Study of Activation Functions in
-        Neural Networks" by Sharma et al. (2020).
-
-        `arxiv <https://arxiv.org/abs/2004.06632>`_
-
-    Example
-    -------
-    .. plot:: ../../examples/specialized_variants/complementary_log_log_example.py
-       :include-source:
-
-    """
-    return 1 - torch.exp(-torch.exp(-x))
-
-
-def exp_expish(x: Tensor) -> Tensor:
-    r"""Apply the ExpExpish activation function.
-
-    .. math::
-
-        \text{ExpExpish}(z) = z \cdot \exp(-\exp(-z))
-
-
-    Parameters
-    ----------
-    x : torch.Tensor
-        Input tensor.
-
-    Returns
-    -------
-    torch.Tensor
-        The element-wise ExpExpish of the input.
-
-
-    Source
-    ------
-    .. seealso::
-        A variant combining exponential functions, discussed in "Advanced Activation Functions for Deep
-        Learning" by Zhou et al. (2020).
-
-        `arxiv <https://arxiv.org/abs/2004.10856>`_
-
-    Example
-    -------
-    .. plot:: ../../examples/specialized_variants/exp_expish_example.py
-       :include-source:
-
-    """
-    return x * torch.exp(-torch.exp(-x))
-
-
-def exp_swish(x: Tensor) -> Tensor:
-    r"""Apply the Exponential Swish activation function.
-
-    .. math::
-
-        \text{ExponentialSwish}(z) = \exp(-z) \cdot \sigma(z)
-
-
-    Parameters
-    ----------
-    x : torch.Tensor
-        Input tensor.
-
-    Returns
-    -------
-    torch.Tensor
-        The element-wise Exponential Swish of the input.
-
-
-
-    Source
-    ------
-    .. seealso::
-        A variation of Swish activation explored in "Activation Functions in Modern Neural Networks:
-        A Comprehensive Survey" by Liu et al. (2021).
-
-        Where \sigma(z) is the sigmoid function.
-
-        `arxiv <https://arxiv.org/abs/2109.03855>`_
-
-    Example
-    -------
-    .. plot:: ../../examples/specialized_variants/exp_swish_example.py
-       :include-source:
-
-    """
-    return torch.exp(-x) * torch.sigmoid(x)
 
 
 def hat(x: Tensor, a: float = 1.0) -> Tensor:
@@ -381,10 +233,10 @@ def hat(x: Tensor, a: float = 1.0) -> Tensor:
     Source
     ------
     .. seealso::
-        Also known as triangular activation function, discussed in "On the Expressive Power of Deep
-        Neural Networks" by Raghu et al. (2017).
+        Also known as triangular activation function, discussed in
+        "On the Activation Function Dependence of the Spectral Bias of Neural Networks"** (2022).
 
-        `arxiv <https://arxiv.org/abs/1606.05336>`_
+        `arxiv <https://arxiv.org/abs/2208.04924>`_
 
     Example
     -------

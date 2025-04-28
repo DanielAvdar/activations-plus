@@ -20,6 +20,8 @@ def test_docstring_standard(
         "Returns\n",
         "\n\n\nSource\n",
         ".. seealso::",
+        '**"',
+        '"**',
         "arxiv <",
         # "pdf",
         "Example\n",
