@@ -17,12 +17,6 @@ def polynomial_linear_unit(x: Tensor, alpha: float = 0.1, c: float = 1.0) -> Ten
             z + \alpha z^c, & z < 0,
         \end{cases}
 
-    .. seealso::
-        Proposed in "PoLU: A Learnable Activation Function with Explicit Noise-Robust Characteristics"
-        by Liu et al. (2021).
-
-        https://arxiv.org/abs/2110.12911
-
     Parameters
     ----------
     x : torch.Tensor
@@ -36,6 +30,15 @@ def polynomial_linear_unit(x: Tensor, alpha: float = 0.1, c: float = 1.0) -> Ten
     -------
     torch.Tensor
         The element-wise PoLU of the input.
+
+
+    Source
+    ------
+    .. seealso::
+        Proposed in "PoLU: A Learnable Activation Function with Explicit Noise-Robust Characteristics"
+        by Liu et al. (2021).
+
+        https://arxiv.org/abs/2110.12911
 
     Example
     -------
@@ -62,12 +65,6 @@ def power_function_linear_unit(x: Tensor, alpha: float = 1.0, beta: float = 1.0)
             -\alpha \left(1 - \left(1 + \frac{z}{\beta}\right)^{\beta}\right), & z < 0,
         \end{cases}
 
-    .. seealso::
-        Introduced in "Power Function Linear Units (PFLU) for Improving Deep Network Training"
-        by Li et al. (2022).
-
-        https://arxiv.org/abs/2208.08408
-
     Parameters
     ----------
     x : torch.Tensor
@@ -81,6 +78,15 @@ def power_function_linear_unit(x: Tensor, alpha: float = 1.0, beta: float = 1.0)
     -------
     torch.Tensor
         The element-wise PFLU of the input.
+
+
+    Source
+    ------
+    .. seealso::
+        Introduced in "Power Function Linear Units (PFLU) for Improving Deep Network Training"
+        by Li et al. (2022).
+
+        https://arxiv.org/abs/2208.08408
 
     Example
     -------
@@ -107,12 +113,6 @@ def power_linear_unit(x: Tensor, alpha: float = 1.0, beta: float = 1.0) -> Tenso
             \alpha z^{\beta}, & z < 0,
         \end{cases}
 
-    .. seealso::
-        A generalization of PReLU described in "Pruning Neural Networks: is it Time to Nip it in the Bud"
-        by Bartoldson et al. (2019).
-
-        https://arxiv.org/abs/1910.08489
-
     Parameters
     ----------
     x : torch.Tensor
@@ -126,6 +126,15 @@ def power_linear_unit(x: Tensor, alpha: float = 1.0, beta: float = 1.0) -> Tenso
     -------
     torch.Tensor
         The element-wise PLU of the input.
+
+
+    Source
+    ------
+    .. seealso::
+        A generalization of PReLU described in "Pruning Neural Networks: is it Time to Nip it in the Bud"
+        by Bartoldson et al. (2019).
+
+        https://arxiv.org/abs/1910.08489
 
     Example
     -------
@@ -152,12 +161,6 @@ def inverse_polynomial_linear_unit(x: Tensor, alpha: float = 0.7, beta: float = 
             \frac{z}{1 + \alpha |z|^{\beta}}, & z < 0,
         \end{cases}
 
-    .. seealso::
-        Inspired by inverse polynomial functions and described in "InvPoLU: An Inverse Polynomial Activation
-        Function for Deep Learning" by Patel et al. (2022).
-
-        https://arxiv.org/abs/2201.12242
-
     Parameters
     ----------
     x : torch.Tensor
@@ -172,13 +175,18 @@ def inverse_polynomial_linear_unit(x: Tensor, alpha: float = 0.7, beta: float = 
     torch.Tensor
         The element-wise InvPoLU of the input.
 
+
+    Source
+    ------
+    .. seealso::
+        Inspired by inverse polynomial functions and described in "InvPoLU: An Inverse Polynomial Activation
+        Function for Deep Learning" by Patel et al. (2022).
+
+        https://arxiv.org/abs/2201.12242
+
     Example
     -------
-    >>> import torch
-    >>> from activations_plus.simple import inverse_polynomial_linear_unit
-    >>> x = torch.tensor([-2.0, -1.0, 0.0, 1.0, 2.0])
-    >>> inverse_polynomial_linear_unit(x, alpha=0.7, beta=0.01)
-    tensor([-1.1765, -0.5882,  0.0000,  1.0000,  2.0000])
+
 
     .. plot:: ../../examples/polynomial_power_variants/inverse_polynomial_linear_unit_example.py
        :include-source:

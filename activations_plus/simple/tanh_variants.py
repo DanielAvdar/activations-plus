@@ -11,11 +11,15 @@ def penalized_tanh(x: Tensor, a: float = 0.25) -> Tensor:
 
         \text{PenalizedTanh}(x) = \tanh(x) - a \cdot \tanh^2(x)
 
-    .. seealso::
-        A variant of tanh activation function proposed in "Activation Functions: Comparison in Neural
-        Network Architecture" by Sharma et al. (2021).
+    Source
+    ------
+    A variant of tanh activation function proposed in "Activation Functions: Comparison in Neural
+    Network Architecture" by Sharma et al. (2021).
 
-        https://arxiv.org/abs/2109.14545
+    https://arxiv.org/abs/2109.14545
+
+    .. seealso::
+        Related activation functions in this module.
 
     Parameters
     ----------
@@ -31,11 +35,7 @@ def penalized_tanh(x: Tensor, a: float = 0.25) -> Tensor:
 
     Example
     -------
-    >>> import torch
-    >>> from activations_plus.simple import penalized_tanh
-    >>> x = torch.tensor([-2.0, -1.0, 0.0, 1.0, 2.0])
-    >>> penalized_tanh(x, a=0.25)
-    tensor([-0.8197, -0.6379,  0.0000,  0.6379,  0.8197])
+
 
     .. plot:: ../../examples/tanh_variants/penalized_tanh_example.py
        :include-source:
@@ -75,11 +75,7 @@ def tanh_linear_unit(x: Tensor, a: float = 0.25) -> Tensor:
 
     Example
     -------
-    >>> import torch
-    >>> from activations_plus.simple import tanh_linear_unit
-    >>> x = torch.tensor([-2.0, -1.0, 0.0, 1.0, 2.0])
-    >>> tanh_linear_unit(x)
-    tensor([-0.9640, -0.7616,  0.0000,  1.0000,  2.0000])
+
 
     .. plot:: ../../examples/tanh_variants/tanh_linear_unit_example.py
        :include-source:
@@ -119,11 +115,7 @@ def stanhplus(x: Tensor, a: float = 1.0, b: float = 1.0, alpha: float = 1.0) -> 
 
     Example
     -------
-    >>> import torch
-    >>> from activations_plus.simple import stanhplus
-    >>> x = torch.tensor([-2.0, -1.0, 0.0, 1.0, 2.0])
-    >>> stanhplus(x, a=0.5, b=1.0, alpha=0.5)
-    tensor([-1.4820, -0.8808, -0.0000,  0.8808,  1.4820])
+
 
     .. plot:: ../../examples/tanh_variants/stanhplus_example.py
        :include-source:
@@ -158,11 +150,7 @@ def tanhsig(x: Tensor) -> Tensor:
 
     Example
     -------
-    >>> import torch
-    >>> from activations_plus.simple import tanhsig
-    >>> x = torch.tensor([-2.0, -1.0, 0.0, 1.0, 2.0])
-    >>> tanhsig(x)
-    tensor([-0.0952, -0.1517,  0.0000,  0.5644,  1.4576])
+
 
     .. plot:: ../../examples/tanh_variants/tanhsig_example.py
        :include-source:

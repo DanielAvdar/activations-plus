@@ -15,12 +15,6 @@ def elu(x: Tensor, alpha: float = 1.0) -> Tensor:
             \alpha(\exp(z) - 1), & z < 0,
         \end{cases}
 
-    .. seealso::
-        Proposed in "Fast and Accurate Deep Network Learning by Exponential Linear Units (ELUs)"
-        by Clevert et al. (2015).
-
-        https://arxiv.org/abs/1511.07289
-
     Parameters
     ----------
     x : torch.Tensor
@@ -32,6 +26,15 @@ def elu(x: Tensor, alpha: float = 1.0) -> Tensor:
     -------
     torch.Tensor
         The element-wise ELU of the input.
+
+
+    Source
+    ------
+    .. seealso::
+        Proposed in "Fast and Accurate Deep Network Learning by Exponential Linear Units (ELUs)"
+        by Clevert et al. (2015).
+
+        https://arxiv.org/abs/1511.07289
 
     Example
     -------
@@ -58,12 +61,6 @@ def selu(x: Tensor) -> Tensor:
             \alpha(\exp(z) - 1), & z < 0,
         \end{cases}
 
-    .. seealso::
-        Proposed in "Self-Normalizing Neural Networks" by Klambauer et al. (2017).
-        Where default values are lambda=1.0507 and alpha=1.67326.
-
-        https://arxiv.org/abs/1706.02515
-
     Parameters
     ----------
     x : torch.Tensor
@@ -74,13 +71,18 @@ def selu(x: Tensor) -> Tensor:
     torch.Tensor
         The element-wise SELU of the input.
 
+
+    Source
+    ------
+    .. seealso::
+        Proposed in "Self-Normalizing Neural Networks" by Klambauer et al. (2017).
+        Where default values are lambda=1.0507 and alpha=1.67326.
+
+        https://arxiv.org/abs/1706.02515
+
     Example
     -------
-    >>> import torch
-    >>> from activations_plus.simple import selu
-    >>> x = torch.tensor([-2.0, -1.0, 0.0, 1.0, 2.0])
-    >>> selu(x)
-    tensor([-1.5214, -1.1113,  0.0000,  1.0507,  2.1014])
+
 
     .. plot:: ../../examples/elu_variants/selu_example.py
        :include-source:
@@ -99,11 +101,6 @@ def celu(x: Tensor, alpha: float = 1.0) -> Tensor:
             \alpha \cdot (\exp(z/\alpha) - 1), & z < 0,
         \end{cases}
 
-    .. seealso::
-        Proposed in "CELU: Continuously Differentiable Exponential Linear Units" by Barron (2017).
-
-        https://arxiv.org/abs/1704.07483
-
     Parameters
     ----------
     x : torch.Tensor
@@ -116,13 +113,17 @@ def celu(x: Tensor, alpha: float = 1.0) -> Tensor:
     torch.Tensor
         The element-wise CELU of the input.
 
+
+    Source
+    ------
+    .. seealso::
+        Proposed in "CELU: Continuously Differentiable Exponential Linear Units" by Barron (2017).
+
+        https://arxiv.org/abs/1704.07483
+
     Example
     -------
-    >>> import torch
-    >>> from activations_plus.simple import celu
-    >>> x = torch.tensor([-2.0, -1.0, 0.0, 1.0, 2.0])
-    >>> celu(x, alpha=1.0)
-    tensor([-0.8647, -0.6321,  0.0000,  1.0000,  2.0000])
+
 
     .. plot:: ../../examples/elu_variants/celu_example.py
        :include-source:
@@ -141,12 +142,6 @@ def abslu(x: Tensor, a: float = 0.01) -> Tensor:
             a|z|, & z < 0,
         \end{cases}
 
-    .. seealso::
-        A variation inspired by research on activation functions in "Deep Learning with Separated Rectified
-        Linear Unit Activation Units" by Xu et al. (2018).
-
-        https://arxiv.org/abs/1810.09038
-
     Parameters
     ----------
     x : torch.Tensor
@@ -159,13 +154,18 @@ def abslu(x: Tensor, a: float = 0.01) -> Tensor:
     torch.Tensor
         The element-wise AbsLU of the input.
 
+
+    Source
+    ------
+    .. seealso::
+        A variation inspired by research on activation functions in "Deep Learning with Separated Rectified
+        Linear Unit Activation Units" by Xu et al. (2018).
+
+        https://arxiv.org/abs/1810.09038
+
     Example
     -------
-    >>> import torch
-    >>> from activations_plus.simple import abslu
-    >>> x = torch.tensor([-2.0, -1.0, 0.0, 1.0, 2.0])
-    >>> abslu(x, a=0.01)
-    tensor([-0.0200, -0.0100,  0.0000,  1.0000,  2.0000])
+
 
     .. plot:: ../../examples/elu_variants/abslu_example.py
        :include-source:

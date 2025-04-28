@@ -53,11 +53,7 @@ def resp(x: Tensor, a: float = 1.0) -> Tensor:
             \ln(1 + \exp(z)), & z < 0,
         \end{cases}
 
-    .. seealso::
-        A combination of ReLU and softplus discussed in "Activation Functions in Deep Learning:
-        A Comprehensive Survey and Benchmark" by Dubey et al. (2022).
 
-        https://arxiv.org/abs/2109.14545
 
     Parameters
     ----------
@@ -70,6 +66,16 @@ def resp(x: Tensor, a: float = 1.0) -> Tensor:
     -------
     torch.Tensor
         The element-wise ReSP of the input.
+
+
+    Source
+    ------
+    .. seealso::
+        A combination of ReLU and softplus discussed in "Activation Functions in Deep Learning:
+        A Comprehensive Survey and Benchmark" by Dubey et al. (2022).
+
+        https://arxiv.org/abs/2109.14545
+
     Example
     -------
     .. plot:: ../../examples/specialized_variants/resp_example.py
@@ -86,11 +92,6 @@ def suish(x: Tensor) -> Tensor:
 
         \text{Suish}(z) = \max(z, z \cdot \exp(-|z|))
 
-    .. seealso::
-        Proposed in "Suish: An Activation Function for Improved Learning and Stability in Neural
-        Networks" by Alam et al. (2021).
-
-        https://arxiv.org/abs/2101.04078
 
     Parameters
     ----------
@@ -101,6 +102,16 @@ def suish(x: Tensor) -> Tensor:
     -------
     torch.Tensor
         The element-wise Suish of the input.
+
+
+    Source
+    ------
+    .. seealso::
+        Proposed in "Suish: An Activation Function for Improved Learning and Stability in Neural
+        Networks" by Alam et al. (2021).
+
+        https://arxiv.org/abs/2101.04078
+
     Example
     -------
     .. plot:: ../../examples/specialized_variants/suish_example.py
@@ -117,13 +128,6 @@ def sin_sig(x: Tensor) -> Tensor:
 
         \text{SinSig}(z) = z \cdot \sin\left(\frac{\pi}{2} \sigma(z)\right)
 
-    .. seealso::
-        Introduced in "Trigonometric-Based Activation Functions for Neural Networks"
-        by Ozturkmen et al. (2021).
-
-        Where \sigma(z) is the sigmoid function.
-
-        https://arxiv.org/abs/2102.01478
 
     Parameters
     ----------
@@ -134,6 +138,18 @@ def sin_sig(x: Tensor) -> Tensor:
     -------
     torch.Tensor
         The element-wise SinSig of the input.
+
+
+    Source
+    ------
+    .. seealso::
+        Introduced in "Trigonometric-Based Activation Functions for Neural Networks"
+        by Ozturkmen et al. (2021).
+
+        Where \sigma(z) is the sigmoid function.
+
+        https://arxiv.org/abs/2102.01478
+
     Example
     -------
     .. plot:: ../../examples/specialized_variants/sin_sig_example.py
@@ -150,11 +166,6 @@ def gish(x: Tensor) -> Tensor:
 
         \text{Gish}(z) = z \cdot \ln(2 - \exp(-\exp(z)))
 
-    .. seealso::
-        A variant of activation function combining elements of GELU and Swish, proposed in
-        "Novel Activation Functions for Neural Networks" by Gupta et al. (2020).
-
-        https://arxiv.org/abs/2004.02967
 
     Parameters
     ----------
@@ -165,6 +176,15 @@ def gish(x: Tensor) -> Tensor:
     -------
     torch.Tensor
         The element-wise Gish of the input.
+
+
+    Source
+    ------
+    .. seealso::
+        A variant of activation function combining elements of GELU and Swish, proposed in
+        "Novel Activation Functions for Neural Networks" by Gupta et al. (2020).
+
+        https://arxiv.org/abs/2004.02967
 
     Example
     -------
@@ -182,11 +202,6 @@ def erf_act(x: Tensor, a: float = 0.5, b: float = 1.0) -> Tensor:
 
         \text{ErfAct}(x) = x \cdot \text{erf}(a \cdot \exp(b \cdot x))
 
-    .. seealso::
-        A variant of activation function using the error function, explored in "Error Function
-        Activation-Based Deep Neural Networks" by Li et al. (2019).
-
-        https://arxiv.org/abs/1903.08587
 
     Parameters
     ----------
@@ -201,6 +216,16 @@ def erf_act(x: Tensor, a: float = 0.5, b: float = 1.0) -> Tensor:
     -------
     torch.Tensor
         The element-wise ErfAct of the input.
+
+
+    Source
+    ------
+    .. seealso::
+        A variant of activation function using the error function, explored in "Error Function
+        Activation-Based Deep Neural Networks" by Li et al. (2019).
+
+        https://arxiv.org/abs/1903.08587
+
     Example
     -------
     .. plot:: ../../examples/specialized_variants/erf_act_example.py
@@ -217,11 +242,6 @@ def complementary_log_log(x: Tensor) -> Tensor:
 
         \text{ComplementaryLogLog}(z) = 1 - \exp(-\exp(-z))
 
-    .. seealso::
-        Based on the Gumbel distribution, explored in "Comparative Study of Activation Functions in
-        Neural Networks" by Sharma et al. (2020).
-
-        https://arxiv.org/abs/2004.06632
 
     Parameters
     ----------
@@ -232,6 +252,16 @@ def complementary_log_log(x: Tensor) -> Tensor:
     -------
     torch.Tensor
         The element-wise Complementary LogLog of the input.
+
+
+    Source
+    ------
+    .. seealso::
+        Based on the Gumbel distribution, explored in "Comparative Study of Activation Functions in
+        Neural Networks" by Sharma et al. (2020).
+
+        https://arxiv.org/abs/2004.06632
+
     Example
     -------
     .. plot:: ../../examples/specialized_variants/complementary_log_log_example.py
@@ -248,11 +278,6 @@ def exp_expish(x: Tensor) -> Tensor:
 
         \text{ExpExpish}(z) = z \cdot \exp(-\exp(-z))
 
-    .. seealso::
-        A variant combining exponential functions, discussed in "Advanced Activation Functions for Deep
-        Learning" by Zhou et al. (2020).
-
-        https://arxiv.org/abs/2004.10856
 
     Parameters
     ----------
@@ -264,9 +289,17 @@ def exp_expish(x: Tensor) -> Tensor:
     torch.Tensor
         The element-wise ExpExpish of the input.
 
+
+    Source
+    ------
+    .. seealso::
+        A variant combining exponential functions, discussed in "Advanced Activation Functions for Deep
+        Learning" by Zhou et al. (2020).
+
+        https://arxiv.org/abs/2004.10856
+
     Example
     -------
-
     .. plot:: ../../examples/specialized_variants/exp_expish_example.py
        :include-source:
 
@@ -281,13 +314,6 @@ def exp_swish(x: Tensor) -> Tensor:
 
         \text{ExponentialSwish}(z) = \exp(-z) \cdot \sigma(z)
 
-    .. seealso::
-        A variation of Swish activation explored in "Activation Functions in Modern Neural Networks:
-        A Comprehensive Survey" by Liu et al. (2021).
-
-        Where \sigma(z) is the sigmoid function.
-
-        https://arxiv.org/abs/2109.03855
 
     Parameters
     ----------
@@ -298,6 +324,19 @@ def exp_swish(x: Tensor) -> Tensor:
     -------
     torch.Tensor
         The element-wise Exponential Swish of the input.
+
+
+
+    Source
+    ------
+    .. seealso::
+        A variation of Swish activation explored in "Activation Functions in Modern Neural Networks:
+        A Comprehensive Survey" by Liu et al. (2021).
+
+        Where \sigma(z) is the sigmoid function.
+
+        https://arxiv.org/abs/2109.03855
+
     Example
     -------
     .. plot:: ../../examples/specialized_variants/exp_swish_example.py
@@ -319,11 +358,6 @@ def hat(x: Tensor, a: float = 1.0) -> Tensor:
             0, & x > a,
         \end{cases}
 
-    .. seealso::
-        Also known as triangular activation function, discussed in "On the Expressive Power of Deep
-        Neural Networks" by Raghu et al. (2017).
-
-        https://arxiv.org/abs/1606.05336
 
     Parameters
     ----------
@@ -336,6 +370,16 @@ def hat(x: Tensor, a: float = 1.0) -> Tensor:
     -------
     torch.Tensor
         The element-wise Hat of the input.
+
+
+    Source
+    ------
+    .. seealso::
+        Also known as triangular activation function, discussed in "On the Expressive Power of Deep
+        Neural Networks" by Raghu et al. (2017).
+
+        https://arxiv.org/abs/1606.05336
+
     Example
     -------
     .. plot:: ../../examples/specialized_variants/hat_example.py

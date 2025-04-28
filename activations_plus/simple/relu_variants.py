@@ -50,12 +50,6 @@ def lrelu(x: Tensor, a: float = 0.01) -> Tensor:
 
         \mathrm{LReLU}(z) = \begin{cases} z, & z \geq 0 \\ \frac{z}{a}, & z < 0 \end{cases}
 
-    .. seealso::
-        Introduced in "Rectifier Nonlinearities Improve Neural Network Acoustic Models"
-        by Maas et al. (2013).
-
-        https://ai.stanford.edu/~amaas/papers/relu_hybrid_icml2013_final.pdf
-
     Parameters
     ----------
     x : torch.Tensor
@@ -67,6 +61,15 @@ def lrelu(x: Tensor, a: float = 0.01) -> Tensor:
     -------
     torch.Tensor
         The element-wise Leaky ReLU of the input.
+
+
+    Source
+    ------
+    .. seealso::
+        Introduced in "Rectifier Nonlinearities Improve Neural Network Acoustic Models"
+        by Maas et al. (2013).
+
+        https://ai.stanford.edu/~amaas/papers/relu_hybrid_icml2013_final.pdf
 
     Example
     -------
@@ -90,12 +93,6 @@ def blrelu(x: Tensor, a: float = 0.01, b: float = 1.0, c: float = 0.0) -> Tensor
 
         \mathrm{BLReLU}(z) = \begin{cases} az, & z \leq 0 \\ z, & 0 < z < b \\ az + c, & z \geq b \end{cases}
 
-    .. seealso::
-        Introduced in "Activation Functions in Neural Networks: A Systematic Overview"
-        by Dubey et al. (2022).
-
-        https://arxiv.org/abs/2110.09084
-
     Parameters
     ----------
     x : torch.Tensor
@@ -111,6 +108,15 @@ def blrelu(x: Tensor, a: float = 0.01, b: float = 1.0, c: float = 0.0) -> Tensor
     -------
     torch.Tensor
         The element-wise Bounded Leaky ReLU of the input.
+
+
+    Source
+    ------
+    .. seealso::
+        Introduced in "Activation Functions in Neural Networks: A Systematic Overview"
+        by Dubey et al. (2022).
+
+        https://arxiv.org/abs/2110.09084
 
     Example
     -------
@@ -134,12 +140,6 @@ def rrelu(x: Tensor, a: float = 0.01) -> Tensor:
 
         \mathrm{RReLU}(z) = \begin{cases} z, & z \geq 0 \\ z a, & z < 0 \end{cases}
 
-    .. seealso::
-        Proposed in "Empirical Evaluation of Rectified Activations in Convolutional Network"
-        by Xu et al. (2015).
-
-        https://arxiv.org/abs/1505.00853
-
     Parameters
     ----------
     x : torch.Tensor
@@ -151,6 +151,15 @@ def rrelu(x: Tensor, a: float = 0.01) -> Tensor:
     -------
     torch.Tensor
         The element-wise Randomized Leaky ReLU of the input.
+
+
+    Source
+    ------
+    .. seealso::
+        Proposed in "Empirical Evaluation of Rectified Activations in Convolutional Network"
+        by Xu et al. (2015).
+
+        https://arxiv.org/abs/1505.00853
 
     Example
     -------
@@ -174,12 +183,6 @@ def trec(x: Tensor, a: float = 0.0) -> Tensor:
 
         \mathrm{TRec}(z) = \begin{cases} z, & z > a \\ 0, & z \leq a \end{cases}
 
-    .. seealso::
-        A variant of ReLU with an adjustable threshold, discussed in "Neural Networks with Piecewise
-        Activation Functions" by Zhao & Li (2020).
-
-        https://arxiv.org/abs/2003.01491
-
     Parameters
     ----------
     x : torch.Tensor
@@ -191,6 +194,15 @@ def trec(x: Tensor, a: float = 0.0) -> Tensor:
     -------
     torch.Tensor
         The element-wise Truncated Rectified activation of the input.
+
+
+    Source
+    ------
+    .. seealso::
+        A variant of ReLU with an adjustable threshold, discussed in "Neural Networks with Piecewise
+        Activation Functions" by Zhao & Li (2020).
+
+        https://arxiv.org/abs/2003.01491
 
     Example
     -------
@@ -214,12 +226,6 @@ def dual_line(x: Tensor, a: float = 1.0, b: float = 0.01, m: float = 0.0) -> Ten
 
         \mathrm{DualLine}(x) = \begin{cases} a x + m, & x \geq 0 \\ b x + m, & x < 0 \end{cases}
 
-    .. seealso::
-        A generalized linear activation function discussed in "Survey of Activation Functions for Deep Neural
-        Networks" by Nwankpa et al. (2018).
-
-        https://arxiv.org/abs/1811.03378
-
     Parameters
     ----------
     x : torch.Tensor
@@ -235,6 +241,15 @@ def dual_line(x: Tensor, a: float = 1.0, b: float = 0.01, m: float = 0.0) -> Ten
     -------
     torch.Tensor
         The element-wise Dual Line activation of the input.
+
+
+    Source
+    ------
+    .. seealso::
+        A generalized linear activation function discussed in "Survey of Activation Functions for Deep Neural
+        Networks" by Nwankpa et al. (2018).
+
+        https://arxiv.org/abs/1811.03378
 
     Example
     -------
@@ -258,12 +273,6 @@ def mrelu(x: Tensor) -> Tensor:
 
         \mathrm{mReLU}(z) = \min(\mathrm{ReLU}(1-z), \mathrm{ReLU}(1+z))
 
-    .. seealso::
-        A variant of ReLU discussed in "On Advanced Activation Functions for Deep Learning"
-        by Chen et al. (2020).
-
-        https://arxiv.org/abs/2011.05627
-
     Parameters
     ----------
     x : torch.Tensor
@@ -273,6 +282,15 @@ def mrelu(x: Tensor) -> Tensor:
     -------
     torch.Tensor
         The element-wise Mirrored ReLU of the input.
+
+
+    Source
+    ------
+    .. seealso::
+        A variant of ReLU discussed in "On Advanced Activation Functions for Deep Learning"
+        by Chen et al. (2020).
+
+        https://arxiv.org/abs/2011.05627
 
     Example
     -------
