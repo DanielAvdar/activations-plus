@@ -14,11 +14,6 @@ def relu(x: Tensor) -> Tensor:
 
         \mathrm{ReLU}(z) = \max(0, z)
 
-    .. seealso::
-        First proposed in "Rectified Linear Units Improve Restricted Boltzmann Machines"
-        by Nair & Hinton (2010).
-
-        https://www.cs.toronto.edu/~hinton/absps/reluICML.pdf
 
     Parameters
     ----------
@@ -30,14 +25,17 @@ def relu(x: Tensor) -> Tensor:
     torch.Tensor
         The element-wise ReLU of the input.
 
+
+    Source
+    ------
+    .. seealso::
+        First proposed in "Rectified Linear Units Improve Restricted Boltzmann Machines"
+        by Nair & Hinton (2010).
+
+        https://www.cs.toronto.edu/~hinton/absps/reluICML.pdf
+
     Example
     -------
-    >>> import torch
-    >>> from activations_plus.simple import relu
-    >>> x = torch.tensor([-1.0, 0.0, 1.0, 2.0])
-    >>> relu(x)
-    tensor([0.0000, 0.0000, 1.0000, 2.0000])
-
     .. plot:: ../../examples/relu_variants/relu_example.py
        :include-source:
 

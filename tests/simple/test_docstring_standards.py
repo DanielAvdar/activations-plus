@@ -16,9 +16,10 @@ def test_docstring_standard(
     docstring = inspect.getdoc(func)
     tags = [
         ".. math::",
-        ".. seealso::",
         "Parameters\n",
         "Returns\n",
+        "\n\nSource\n",
+        ".. seealso::",
         "Example\n",
         ".. plot::",
     ]
