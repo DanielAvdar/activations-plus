@@ -85,41 +85,46 @@ def root2sigmoid(x: Tensor) -> Tensor:
     return x / torch.sqrt(1 + x**2)
 
 
-def rootsig(x: Tensor) -> Tensor:
-    r"""Apply the Rootsig activation function.
+def isrlu(x: Tensor, alpha: float = 1.0) -> Tensor:
+    r"""Apply the Inverse Square Root Linear Unit activation function.
 
     .. math::
 
-        \text{Rootsig}(z) = \frac{z}{\sqrt{1 + z^2 / 4}}
+        \text{ISRLU}(z) = \begin{cases}
+            \frac{z}{\sqrt{1 + \alpha z^2}}, & z < 0 \\
+            z, & z \geq 0
+        \end{cases}
 
 
     Parameters
     ----------
     x : torch.Tensor
         Input tensor.
+    alpha : float, optional
+        Scaling parameter (default 1.0).
 
     Returns
     -------
     torch.Tensor
-        The element-wise Rootsig of the input.
+        The element-wise ISRLU activation of the input.
 
 
     Source
     ------
     .. seealso::
-        A variant of sigmoid activation proposed in "Rootsig: A Novel Activation Function
-        for Deep Learning" by Jagtap et al. (2021).
+        Proposed in "Improving Deep Neural Networks with New Activation Functions"
+        by Carlile et al. (2017).
 
-        `arxiv <https://arxiv.org/abs/2203.05633>`_
+        `arxiv <https://arxiv.org/abs/1710.09967>`_
 
     Example
     -------
 
-    .. plot:: ../../examples/sigmoid_variants/rootsig_example.py
+    .. plot:: ../../examples/sigmoid_variants/isrlu_example.py
        :include-source:
 
     """
-    return x / torch.sqrt(1 + x**2 / 4)
+    return torch.where(x >= 0, x, x / torch.sqrt(1 + alpha * x**2))
 
 
 def sigmoid_gumbel(x: Tensor, alpha: float = 1.0) -> Tensor:

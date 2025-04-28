@@ -31,7 +31,7 @@ def loglog(x: Tensor) -> Tensor:
         Based on the Gumbel distribution and studied in "Improved Non-Linear Activation Functions in Neural
         Network Applications" by Sibi et al. (2014).
 
-        `arxiv <https://www.jatit.org/volumes/Vol67No3/2Vol67No3>`_
+        `arxiv <https://arxiv.org/abs/1811.03378>`_
 
     Example
     -------
@@ -66,7 +66,7 @@ def loglogish(x: Tensor) -> Tensor:
         A variant of LogLog activation inspired by "A Survey of Activation Functions Used in Neural
         Networks" by Bilal et al. (2022).
 
-        `arxiv <https://link.springer.com/article/10.1007/s00521-022-07743-y>`_
+        `arxiv <https://arxiv.org/abs/2110.09084>`_
 
     Example
     -------

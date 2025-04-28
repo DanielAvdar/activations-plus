@@ -1,6 +1,6 @@
 """Simple activation functions and their variants for neural networks."""
 
-from .elu_variants import abslu, celu, elu, selu
+from .elu_variants import abslu, celu, elu, isrlu, selu
 from .gelu_swish_variants import gelu, hard_sigmoid, hard_swish, mish, phish, silu
 from .log_exp_softplus_variants import logish, loglog, loglogish, soft_exponential, softplus_linear_unit
 from .polynomial_power_variants import (
@@ -10,8 +10,8 @@ from .polynomial_power_variants import (
     power_linear_unit,
 )
 from .relu_variants import blrelu, dual_line, lrelu, mrelu, relu, rrelu, trec
-from .sigmoid_tanh_variants import aria2, hardtanh, sigmoid, softplus, softsign, sqnl, tanh, tanh_exp
-from .sigmoid_variants import new_sigmoid, root2sigmoid, rootsig, sigmoid_gumbel
+from .sigmoid_tanh_variants import aria2, hardtanh, isru, sigmoid, softplus, softsign, sqnl, tanh, tanh_exp
+from .sigmoid_variants import new_sigmoid, root2sigmoid, sigmoid_gumbel
 from .specialized_variants import (
     complementary_log_log,
     erf_act,
@@ -43,6 +43,7 @@ __all__ = [
     "sqnl",
     "softplus",
     "tanh_exp",
+    "isru",
     # Polynomial/Power variants
     "polynomial_linear_unit",
     "power_function_linear_unit",
@@ -59,6 +60,7 @@ __all__ = [
     "celu",
     "elu",
     "selu",
+    "isrlu",
     # GELU/Swish variants
     "gelu",
     "hard_sigmoid",
@@ -74,7 +76,6 @@ __all__ = [
     # Sigmoid variants
     "new_sigmoid",
     "root2sigmoid",
-    "rootsig",
     "sigmoid_gumbel",
     # Specialized variants
     "complementary_log_log",

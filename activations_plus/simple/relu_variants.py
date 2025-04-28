@@ -32,7 +32,7 @@ def relu(x: Tensor) -> Tensor:
         First proposed in "Rectified Linear Units Improve Restricted Boltzmann Machines"
         by Nair & Hinton (2010).
 
-        `arxiv <https://www.cs.toronto.edu/~hinton/absps/reluICML>`_
+        `arxiv <https://arxiv.org/abs/1906.06723>`_
 
     Example
     -------
@@ -69,7 +69,7 @@ def lrelu(x: Tensor, a: float = 0.01) -> Tensor:
         Introduced in "Rectifier Nonlinearities Improve Neural Network Acoustic Models"
         by Maas et al. (2013).
 
-        `arxiv <https://ai.stanford.edu/~amaas/papers/relu_hybrid_icml2013_final>`_
+        `arxiv <https://arxiv.org/abs/1803.08375>`_
 
     Example
     -------
