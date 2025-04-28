@@ -1,7 +1,7 @@
 """Simple activation functions and their variants for neural networks."""
 
 from .elu_variants import abslu, celu, elu, selu
-from .gelu_swish_variants import gelu, hard_sigmoid, hard_swish, mish, phish, silu, swish
+from .gelu_swish_variants import gelu, hard_sigmoid, hard_swish, mish, phish, silu
 from .log_exp_softplus_variants import logish, loglog, loglogish, soft_exponential, softplus_linear_unit
 from .polynomial_power_variants import (
     inverse_polynomial_linear_unit,
@@ -10,7 +10,7 @@ from .polynomial_power_variants import (
     power_linear_unit,
 )
 from .relu_variants import blrelu, dual_line, lrelu, mrelu, relu, rrelu, trec
-from .sigmoid_tanh_variants import hardtanh, sigmoid, softplus, softsign, sqnl, tanh, tanh_exp
+from .sigmoid_tanh_variants import aria2, hardtanh, sigmoid, softplus, softsign, sqnl, tanh, tanh_exp
 from .sigmoid_variants import new_sigmoid, root2sigmoid, rootsig, sigmoid_gumbel
 from .specialized_variants import (
     complementary_log_log,
@@ -66,7 +66,6 @@ __all__ = [
     "mish",
     "phish",
     "silu",
-    "swish",
     # Tanh variants
     "penalized_tanh",
     "stanhplus",
@@ -88,4 +87,5 @@ __all__ = [
     "resp",
     "sin_sig",
     "suish",
+    "aria2",
 ]

@@ -42,7 +42,7 @@ def gelu(x: Tensor) -> Tensor:
 
 
 def silu(x: Tensor) -> Tensor:
-    r"""Apply the Sigmoid Linear Unit (SiLU) activation.
+    r"""Apply the Sigmoid Linear Unit (SiLU) activation. also known as Swish-1.
 
     .. math::
 
@@ -71,43 +71,6 @@ def silu(x: Tensor) -> Tensor:
     -------
 
     .. plot:: ../../examples/gelu_swish_variants/silu_example.py
-       :include-source:
-
-    """
-    return functional.silu(x)
-
-
-def swish(x: Tensor) -> Tensor:
-    r"""Apply the Swish activation function (same as SiLU).
-
-    .. math::
-
-        \mathrm{Swish}(z) = z \cdot \sigma(z) = \frac{z}{1 + e^{-z}}
-
-    Parameters
-    ----------
-    x : torch.Tensor
-        Input tensor.
-
-    Returns
-    -------
-    torch.Tensor
-        The element-wise Swish of the input.
-
-
-    Source
-    ------
-    .. seealso::
-        Introduced in "Searching for Activation Functions" by Ramachandran et al. (2017).
-        Functionally identical to SiLU.
-
-        https://arxiv.org/abs/1710.05941
-
-    Example
-    -------
-
-
-    .. plot:: ../../examples/gelu_swish_variants/swish_example.py
        :include-source:
 
     """

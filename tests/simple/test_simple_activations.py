@@ -49,7 +49,6 @@ SIMPLE_ACTIVATIONS = [
     # New GELU/Swish variants
     (gelu_swish_variants.gelu, {}),
     (gelu_swish_variants.silu, {}),
-    (gelu_swish_variants.swish, {}),
     (gelu_swish_variants.hard_sigmoid, {}),
     (gelu_swish_variants.hard_swish, {}),
     (gelu_swish_variants.mish, {}),
