@@ -7,52 +7,6 @@ import torch
 from torch import Tensor
 
 
-def sqnl(x: Tensor) -> Tensor:
-    r"""Apply the SQNL (Square Non-Linear) activation.
-
-    .. math::
-
-        \mathrm{SQNL}(z) = \begin{cases} 1, & z > 2 \\
-        z - \frac{z^2}{4}, & 0 \leq z \leq 2 \\
-        z + \frac{z^2}{4}, & -2 \leq z < 0 \\
-        -1, & z < -2 \end{cases}
-
-
-
-    Parameters
-    ----------
-    x : torch.Tensor
-        Input tensor.
-
-    Returns
-    -------
-    torch.Tensor
-        The element-wise SQNL of the input.
-
-
-    Source
-    ------
-    .. seealso::
-        Proposed in "SQNL: A New Computationally Efficient Activation Function" by Wuraola and Patel (2018).
-
-        `arxiv <https://arxiv.org/abs/1803.07318>`_
-
-    Example
-    -------
-
-    .. plot:: ../../examples/sigmoid_tanh_variants/sqnl_example.py
-       :include-source:
-
-    """
-    return torch.where(
-        x > 2,
-        torch.ones_like(x),
-        torch.where(
-            (x >= 0) & (x <= 2), x - (x**2) / 4, torch.where((x >= -2) & (x < 0), x + (x**2) / 4, -torch.ones_like(x))
-        ),
-    )
-
-
 def tanh_exp(x: Tensor) -> Tensor:
     r"""Apply the TanhExp activation.
 
