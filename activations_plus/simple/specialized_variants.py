@@ -116,7 +116,7 @@ def hat(x: Tensor, a: float = 1.0) -> Tensor:
     ------
     .. seealso::
         Also known as triangular activation function, discussed in
-        "On the Activation Function Dependence of the Spectral Bias of Neural Networks"** (2022).
+        **"On the Activation Function Dependence of the Spectral Bias of Neural Networks"** (2022).
 
         `arxiv <https://arxiv.org/abs/2208.04924>`_
 
