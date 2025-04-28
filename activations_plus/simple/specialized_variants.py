@@ -15,13 +15,7 @@ def prelu(x: Tensor, weight: Tensor) -> Tensor:
             az, & z < 0,
         \end{cases}
 
-    .. seealso::
-        Introduced in "Delving Deep into Rectifiers: Surpassing Human-Level Performance on ImageNet
-        Classification" by He et al. (2015).
 
-        Where a is a learnable parameter.
-
-        https://arxiv.org/abs/1502.01852
 
     Parameters
     ----------
@@ -34,6 +28,18 @@ def prelu(x: Tensor, weight: Tensor) -> Tensor:
     -------
     torch.Tensor
         The element-wise PReLU of the input.
+
+
+    Source
+    ------
+    .. seealso::
+        Introduced in "Delving Deep into Rectifiers: Surpassing Human-Level Performance on ImageNet
+        Classification" by He et al. (2015).
+
+        Where a is a learnable parameter.
+
+        https://arxiv.org/abs/1502.01852
+
     Example
     -------
     .. plot:: ../../examples/specialized_variants/prelu_example.py

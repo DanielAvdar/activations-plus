@@ -11,15 +11,7 @@ def penalized_tanh(x: Tensor, a: float = 0.25) -> Tensor:
 
         \text{PenalizedTanh}(x) = \tanh(x) - a \cdot \tanh^2(x)
 
-    Source
-    ------
-    A variant of tanh activation function proposed in "Activation Functions: Comparison in Neural
-    Network Architecture" by Sharma et al. (2021).
 
-    https://arxiv.org/abs/2109.14545
-
-    .. seealso::
-        Related activation functions in this module.
 
     Parameters
     ----------
@@ -33,10 +25,18 @@ def penalized_tanh(x: Tensor, a: float = 0.25) -> Tensor:
     torch.Tensor
         The element-wise Penalized Tanh of the input.
 
+
+
+    Source
+    ------
+    .. seealso::
+        A variant of tanh activation function proposed in "Activation Functions: Comparison in Neural
+        Network Architecture" by Sharma et al. (2021).
+
+        https://arxiv.org/abs/2109.14545
+
     Example
     -------
-
-
     .. plot:: ../../examples/tanh_variants/penalized_tanh_example.py
        :include-source:
 
@@ -55,11 +55,6 @@ def tanh_linear_unit(x: Tensor, a: float = 0.25) -> Tensor:
             \tanh(x), & x < 0,
         \end{cases}
 
-    .. seealso::
-        Combines tanh and linear functions, proposed in "TanhSoft: A Smooth Activation Function
-        with High Convergence Speed for Lightweight Neural Networks" by Zhao et al. (2021).
-
-        https://arxiv.org/abs/2104.02639
 
     Parameters
     ----------
@@ -73,10 +68,17 @@ def tanh_linear_unit(x: Tensor, a: float = 0.25) -> Tensor:
     torch.Tensor
         The element-wise TanhLinearUnit of the input.
 
+
+    Source
+    ------
+    .. seealso::
+        Combines tanh and linear functions, proposed in "TanhSoft: A Smooth Activation Function
+        with High Convergence Speed for Lightweight Neural Networks" by Zhao et al. (2021).
+
+        https://arxiv.org/abs/2104.02639
+
     Example
     -------
-
-
     .. plot:: ../../examples/tanh_variants/tanh_linear_unit_example.py
        :include-source:
 
@@ -91,11 +93,6 @@ def stanhplus(x: Tensor, a: float = 1.0, b: float = 1.0, alpha: float = 1.0) -> 
 
         \text{STanhPlus}(x) = a \tanh(bx) + \alpha x
 
-    .. seealso::
-        A variant of tanh activation with a learnable scale, discussed in "TanhPlus:
-        A Modified Activation Function with Less Computation Cost" by Yan et al. (2020).
-
-        https://arxiv.org/abs/2011.00055
 
     Parameters
     ----------
@@ -112,6 +109,15 @@ def stanhplus(x: Tensor, a: float = 1.0, b: float = 1.0, alpha: float = 1.0) -> 
     -------
     torch.Tensor
         The element-wise Scaled TanhPlus of the input.
+
+
+    Source
+    ------
+    .. seealso::
+        A variant of tanh activation with a learnable scale, discussed in "TanhPlus:
+        A Modified Activation Function with Less Computation Cost" by Yan et al. (2020).
+
+        https://arxiv.org/abs/2011.00055
 
     Example
     -------
@@ -131,12 +137,6 @@ def tanhsig(x: Tensor) -> Tensor:
 
         \text{TanhSig}(x) = x \cdot \tanh\left(\frac{2\pi}{3} \sigma(x)\right)
 
-    .. seealso::
-        Introduced in "TanhSig: A hybrid activation function" by Prajapati et al. (2021).
-
-        Where \sigma(x) is the sigmoid function.
-
-        https://doi.org/10.1016/j.neucom.2021.02.035
 
     Parameters
     ----------
@@ -147,6 +147,16 @@ def tanhsig(x: Tensor) -> Tensor:
     -------
     torch.Tensor
         The element-wise TanhSig of the input.
+
+
+    Source
+    ------
+    .. seealso::
+        Introduced in "TanhSig: A hybrid activation function" by Prajapati et al. (2021).
+
+        Where \sigma(x) is the sigmoid function.
+
+        https://doi.org/10.1016/j.neucom.2021.02.035
 
     Example
     -------

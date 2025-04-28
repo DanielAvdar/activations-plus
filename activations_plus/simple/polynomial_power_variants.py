@@ -42,11 +42,7 @@ def polynomial_linear_unit(x: Tensor, alpha: float = 0.1, c: float = 1.0) -> Ten
 
     Example
     -------
-    >>> import torch
-    >>> from activations_plus.simple import polynomial_linear_unit
-    >>> x = torch.tensor([-2.0, -1.0, 0.0, 1.0, 2.0])
-    >>> polynomial_linear_unit(x, alpha=0.1, c=1.0)
-    tensor([-2.2000, -1.1000,  0.0000,  1.0000,  2.0000])
+
 
     .. plot:: ../../examples/polynomial_power_variants/polynomial_linear_unit_example.py
        :include-source:
@@ -90,11 +86,6 @@ def power_function_linear_unit(x: Tensor, alpha: float = 1.0, beta: float = 1.0)
 
     Example
     -------
-    >>> import torch
-    >>> from activations_plus.simple import power_function_linear_unit
-    >>> x = torch.tensor([-2.0, -1.0, 0.0, 1.0, 2.0])
-    >>> power_function_linear_unit(x, alpha=1.0, beta=1.0)
-    tensor([-0.8647, -0.6321,  0.0000,  1.0000,  2.0000])
 
     .. plot:: ../../examples/polynomial_power_variants/power_function_linear_unit_example.py
        :include-source:
@@ -138,11 +129,7 @@ def power_linear_unit(x: Tensor, alpha: float = 1.0, beta: float = 1.0) -> Tenso
 
     Example
     -------
-    >>> import torch
-    >>> from activations_plus.simple import power_linear_unit
-    >>> x = torch.tensor([-2.0, -1.0, 0.0, 1.0, 2.0])
-    >>> power_linear_unit(x, alpha=0.1, beta=2.0)
-    tensor([-0.4000, -0.1000,  0.0000,  1.0000,  2.0000])
+
 
     .. plot:: ../../examples/polynomial_power_variants/power_linear_unit_example.py
        :include-source:

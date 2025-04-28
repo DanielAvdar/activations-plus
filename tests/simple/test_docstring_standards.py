@@ -23,7 +23,7 @@ def test_docstring_standard(
         "Example\n",
         ".. plot::",
     ]
-    assert ">>>>" not in docstring, f"Docstring for {func.__name__} should use plot source code, not >>>>."
+    assert ">>>" not in docstring, f"Docstring for {func.__name__} should use plot source code, not >>>>."
     for tag in tags:
         assert tag in docstring, f"Docstring for {func.__name__} does not contain the required tag: {tag}"
         docstring = docstring.split(tag, 1)[-1]

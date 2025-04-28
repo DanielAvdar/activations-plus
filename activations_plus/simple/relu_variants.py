@@ -73,11 +73,7 @@ def lrelu(x: Tensor, a: float = 0.01) -> Tensor:
 
     Example
     -------
-    >>> import torch
-    >>> from activations_plus.simple import lrelu
-    >>> x = torch.tensor([-2.0, -1.0, 0.0, 1.0, 2.0])
-    >>> lrelu(x, a=0.01)
-    tensor([-0.0200, -0.0100,  0.0000,  1.0000,  2.0000])
+
 
     .. plot:: ../../examples/relu_variants/lrelu_example.py
        :include-source:
@@ -120,11 +116,7 @@ def blrelu(x: Tensor, a: float = 0.01, b: float = 1.0, c: float = 0.0) -> Tensor
 
     Example
     -------
-    >>> import torch
-    >>> from activations_plus.simple import blrelu
-    >>> x = torch.tensor([-1.0, 0.0, 0.5, 1.0, 2.0])
-    >>> blrelu(x, a=0.1, b=1.0, c=0.0)
-    tensor([-0.1000,  0.0000,  0.5000,  1.0000,  0.2000])
+
 
     .. plot:: ../../examples/relu_variants/blrelu_example.py
        :include-source:
@@ -163,11 +155,7 @@ def rrelu(x: Tensor, a: float = 0.01) -> Tensor:
 
     Example
     -------
-    >>> import torch
-    >>> from activations_plus.simple import rrelu
-    >>> x = torch.tensor([-2.0, -1.0, 0.0, 1.0, 2.0])
-    >>> rrelu(x, a=0.01)
-    tensor([-0.0200, -0.0100,  0.0000,  1.0000,  2.0000])
+
 
     .. plot:: ../../examples/relu_variants/rrelu_example.py
        :include-source:
@@ -206,11 +194,6 @@ def trec(x: Tensor, a: float = 0.0) -> Tensor:
 
     Example
     -------
-    >>> import torch
-    >>> from activations_plus.simple import trec
-    >>> x = torch.tensor([-1.0, 0.0, 0.5, 1.0, 2.0])
-    >>> trec(x, a=0.5)
-    tensor([0.0000, 0.0000, 0.0000, 1.0000, 2.0000])
 
     .. plot:: ../../examples/relu_variants/trec_example.py
        :include-source:
@@ -253,11 +236,7 @@ def dual_line(x: Tensor, a: float = 1.0, b: float = 0.01, m: float = 0.0) -> Ten
 
     Example
     -------
-    >>> import torch
-    >>> from activations_plus.simple import dual_line
-    >>> x = torch.tensor([-2.0, -1.0, 0.0, 1.0, 2.0])
-    >>> dual_line(x, a=1.0, b=0.1, m=0.5)
-    tensor([0.3000, 0.4000, 0.5000, 1.5000, 2.5000])
+
 
     .. plot:: ../../examples/relu_variants/dual_line_example.py
        :include-source:
@@ -294,11 +273,7 @@ def mrelu(x: Tensor) -> Tensor:
 
     Example
     -------
-    >>> import torch
-    >>> from activations_plus.simple import mrelu
-    >>> x = torch.tensor([-2.0, -1.0, 0.0, 1.0, 2.0])
-    >>> mrelu(x)
-    tensor([0.0000, 0.0000, 1.0000, 0.0000, 0.0000])
+
 
     .. plot:: ../../examples/relu_variants/mrelu_example.py
        :include-source:

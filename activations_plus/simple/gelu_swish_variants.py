@@ -33,11 +33,6 @@ def gelu(x: Tensor) -> Tensor:
 
     Example
     -------
-    >>> import torch
-    >>> from activations_plus.simple import gelu
-    >>> x = torch.tensor([-2.0, -1.0, 0.0, 1.0, 2.0])
-    >>> gelu(x)
-    tensor([-0.0455, -0.1587,  0.0000,  0.8413,  1.9545])
 
     .. plot:: ../../examples/gelu_swish_variants/gelu_example.py
        :include-source:
@@ -74,11 +69,6 @@ def silu(x: Tensor) -> Tensor:
 
     Example
     -------
-    >>> import torch
-    >>> from activations_plus.simple import silu
-    >>> x = torch.tensor([-2.0, -1.0, 0.0, 1.0, 2.0])
-    >>> silu(x)
-    tensor([-0.2384, -0.2689,  0.0000,  0.7311,  1.7616])
 
     .. plot:: ../../examples/gelu_swish_variants/silu_example.py
        :include-source:
@@ -115,11 +105,7 @@ def swish(x: Tensor) -> Tensor:
 
     Example
     -------
-    >>> import torch
-    >>> from activations_plus.simple import swish
-    >>> x = torch.tensor([-2.0, -1.0, 0.0, 1.0, 2.0])
-    >>> swish(x)
-    tensor([-0.2384, -0.2689,  0.0000,  0.7311,  1.7616])
+
 
     .. plot:: ../../examples/gelu_swish_variants/swish_example.py
        :include-source:
@@ -155,11 +141,6 @@ def hard_sigmoid(x: Tensor) -> Tensor:
 
     Example
     -------
-    >>> import torch
-    >>> from activations_plus.simple import hard_sigmoid
-    >>> x = torch.tensor([-2.0, -1.0, 0.0, 1.0, 2.0])
-    >>> hard_sigmoid(x)
-    tensor([0.0000, 0.0000, 0.5000, 1.0000, 1.0000])
 
     .. plot:: ../../examples/gelu_swish_variants/hard_sigmoid_example.py
        :include-source:
@@ -195,11 +176,7 @@ def hard_swish(x: Tensor) -> Tensor:
 
     Example
     -------
-    >>> import torch
-    >>> from activations_plus.simple import hard_swish
-    >>> x = torch.tensor([-3.0, -1.0, 0.0, 1.0, 3.0])
-    >>> hard_swish(x)
-    tensor([-0.0000, -0.0000,  0.0000,  0.6667,  3.0000])
+
 
     .. plot:: ../../examples/gelu_swish_variants/hard_swish_example.py
        :include-source:

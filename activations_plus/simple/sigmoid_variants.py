@@ -28,6 +28,7 @@ def new_sigmoid(x: Tensor, a: float = 0.5) -> Tensor:
     torch.Tensor
         The element-wise New Sigmoid of the input.
 
+
     Source
     ------
     .. seealso::
@@ -101,6 +102,7 @@ def rootsig(x: Tensor) -> Tensor:
     -------
     torch.Tensor
         The element-wise Rootsig of the input.
+
 
     Source
     ------

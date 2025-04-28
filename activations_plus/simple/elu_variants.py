@@ -38,11 +38,6 @@ def elu(x: Tensor, alpha: float = 1.0) -> Tensor:
 
     Example
     -------
-    >>> import torch
-    >>> from activations_plus.simple import elu
-    >>> x = torch.tensor([-2.0, -1.0, 0.0, 1.0, 2.0])
-    >>> elu(x, alpha=1.0)
-    tensor([-0.8647, -0.6321,  0.0000,  1.0000,  2.0000])
 
     .. plot:: ../../examples/elu_variants/elu_example.py
        :include-source:
