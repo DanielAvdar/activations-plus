@@ -32,7 +32,7 @@ def relu(x: Tensor) -> Tensor:
         First proposed in "Rectified Linear Units Improve Restricted Boltzmann Machines"
         by Nair & Hinton (2010).
 
-        https://www.cs.toronto.edu/~hinton/absps/reluICML.pdf
+        `arxiv <https://www.cs.toronto.edu/~hinton/absps/reluICML>`_
 
     Example
     -------
@@ -69,7 +69,7 @@ def lrelu(x: Tensor, a: float = 0.01) -> Tensor:
         Introduced in "Rectifier Nonlinearities Improve Neural Network Acoustic Models"
         by Maas et al. (2013).
 
-        https://ai.stanford.edu/~amaas/papers/relu_hybrid_icml2013_final.pdf
+        `arxiv <https://ai.stanford.edu/~amaas/papers/relu_hybrid_icml2013_final>`_
 
     Example
     -------
@@ -112,7 +112,7 @@ def blrelu(x: Tensor, a: float = 0.01, b: float = 1.0, c: float = 0.0) -> Tensor
         Introduced in "Activation Functions in Neural Networks: A Systematic Overview"
         by Dubey et al. (2022).
 
-        https://arxiv.org/abs/2110.09084
+        `arxiv <https://arxiv.org/abs/2110.09084>`_
 
     Example
     -------
@@ -151,7 +151,7 @@ def rrelu(x: Tensor, a: float = 0.01) -> Tensor:
         Proposed in "Empirical Evaluation of Rectified Activations in Convolutional Network"
         by Xu et al. (2015).
 
-        https://arxiv.org/abs/1505.00853
+        `arxiv <https://arxiv.org/abs/1505.00853>`_
 
     Example
     -------
@@ -190,7 +190,7 @@ def trec(x: Tensor, a: float = 0.0) -> Tensor:
         A variant of ReLU with an adjustable threshold, discussed in "Neural Networks with Piecewise
         Activation Functions" by Zhao & Li (2020).
 
-        https://arxiv.org/abs/2003.01491
+        `arxiv <https://arxiv.org/abs/2003.01491>`_
 
     Example
     -------
@@ -232,7 +232,7 @@ def dual_line(x: Tensor, a: float = 1.0, b: float = 0.01, m: float = 0.0) -> Ten
         A generalized linear activation function discussed in "Survey of Activation Functions for Deep Neural
         Networks" by Nwankpa et al. (2018).
 
-        https://arxiv.org/abs/1811.03378
+        `arxiv <https://arxiv.org/abs/1811.03378>`_
 
     Example
     -------
@@ -269,7 +269,7 @@ def mrelu(x: Tensor) -> Tensor:
         A variant of ReLU discussed in "On Advanced Activation Functions for Deep Learning"
         by Chen et al. (2020).
 
-        https://arxiv.org/abs/2011.05627
+        `arxiv <https://arxiv.org/abs/2011.05627>`_
 
     Example
     -------

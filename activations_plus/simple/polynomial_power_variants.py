@@ -38,7 +38,7 @@ def polynomial_linear_unit(x: Tensor, alpha: float = 0.1, c: float = 1.0) -> Ten
         Proposed in "PoLU: A Learnable Activation Function with Explicit Noise-Robust Characteristics"
         by Liu et al. (2021).
 
-        https://arxiv.org/abs/2110.12911
+        `arxiv <https://arxiv.org/abs/2110.12911>`_
 
     Example
     -------
@@ -82,7 +82,7 @@ def power_function_linear_unit(x: Tensor, alpha: float = 1.0, beta: float = 1.0)
         Introduced in "Power Function Linear Units (PFLU) for Improving Deep Network Training"
         by Li et al. (2022).
 
-        https://arxiv.org/abs/2208.08408
+        `arxiv <https://arxiv.org/abs/2208.08408>`_
 
     Example
     -------
@@ -125,7 +125,7 @@ def power_linear_unit(x: Tensor, alpha: float = 1.0, beta: float = 1.0) -> Tenso
         A generalization of PReLU described in "Pruning Neural Networks: is it Time to Nip it in the Bud"
         by Bartoldson et al. (2019).
 
-        https://arxiv.org/abs/1910.08489
+        `arxiv <https://arxiv.org/abs/1910.08489>`_
 
     Example
     -------
@@ -169,7 +169,7 @@ def inverse_polynomial_linear_unit(x: Tensor, alpha: float = 0.7, beta: float = 
         Inspired by inverse polynomial functions and described in "InvPoLU: An Inverse Polynomial Activation
         Function for Deep Learning" by Patel et al. (2022).
 
-        https://arxiv.org/abs/2201.12242
+        `arxiv <https://arxiv.org/abs/2201.12242>`_
 
     Example
     -------

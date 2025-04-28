@@ -38,7 +38,7 @@ def prelu(x: Tensor, weight: Tensor) -> Tensor:
 
         Where a is a learnable parameter.
 
-        https://arxiv.org/abs/1502.01852
+        `arxiv <https://arxiv.org/abs/1502.01852>`_
 
     Example
     -------
@@ -80,7 +80,7 @@ def resp(x: Tensor, a: float = 1.0) -> Tensor:
         A combination of ReLU and softplus discussed in "Activation Functions in Deep Learning:
         A Comprehensive Survey and Benchmark" by Dubey et al. (2022).
 
-        https://arxiv.org/abs/2109.14545
+        `arxiv <https://arxiv.org/abs/2109.14545>`_
 
     Example
     -------
@@ -116,7 +116,7 @@ def suish(x: Tensor) -> Tensor:
         Proposed in "Suish: An Activation Function for Improved Learning and Stability in Neural
         Networks" by Alam et al. (2021).
 
-        https://arxiv.org/abs/2101.04078
+        `arxiv <https://arxiv.org/abs/2101.04078>`_
 
     Example
     -------
@@ -154,7 +154,7 @@ def sin_sig(x: Tensor) -> Tensor:
 
         Where \sigma(z) is the sigmoid function.
 
-        https://arxiv.org/abs/2102.01478
+        `arxiv <https://arxiv.org/abs/2102.01478>`_
 
     Example
     -------
@@ -190,7 +190,7 @@ def gish(x: Tensor) -> Tensor:
         A variant of activation function combining elements of GELU and Swish, proposed in
         "Novel Activation Functions for Neural Networks" by Gupta et al. (2020).
 
-        https://arxiv.org/abs/2004.02967
+        `arxiv <https://arxiv.org/abs/2004.02967>`_
 
     Example
     -------
@@ -230,7 +230,7 @@ def erf_act(x: Tensor, a: float = 0.5, b: float = 1.0) -> Tensor:
         A variant of activation function using the error function, explored in "Error Function
         Activation-Based Deep Neural Networks" by Li et al. (2019).
 
-        https://arxiv.org/abs/1903.08587
+        `arxiv <https://arxiv.org/abs/1903.08587>`_
 
     Example
     -------
@@ -266,7 +266,7 @@ def complementary_log_log(x: Tensor) -> Tensor:
         Based on the Gumbel distribution, explored in "Comparative Study of Activation Functions in
         Neural Networks" by Sharma et al. (2020).
 
-        https://arxiv.org/abs/2004.06632
+        `arxiv <https://arxiv.org/abs/2004.06632>`_
 
     Example
     -------
@@ -302,7 +302,7 @@ def exp_expish(x: Tensor) -> Tensor:
         A variant combining exponential functions, discussed in "Advanced Activation Functions for Deep
         Learning" by Zhou et al. (2020).
 
-        https://arxiv.org/abs/2004.10856
+        `arxiv <https://arxiv.org/abs/2004.10856>`_
 
     Example
     -------
@@ -341,7 +341,7 @@ def exp_swish(x: Tensor) -> Tensor:
 
         Where \sigma(z) is the sigmoid function.
 
-        https://arxiv.org/abs/2109.03855
+        `arxiv <https://arxiv.org/abs/2109.03855>`_
 
     Example
     -------
@@ -384,7 +384,7 @@ def hat(x: Tensor, a: float = 1.0) -> Tensor:
         Also known as triangular activation function, discussed in "On the Expressive Power of Deep
         Neural Networks" by Raghu et al. (2017).
 
-        https://arxiv.org/abs/1606.05336
+        `arxiv <https://arxiv.org/abs/1606.05336>`_
 
     Example
     -------

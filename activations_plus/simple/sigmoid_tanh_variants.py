@@ -34,7 +34,7 @@ def sigmoid(x: Tensor) -> Tensor:
         A foundational activation function in neural networks, discussed in depth in "Efficient BackProp"
         by LeCun et al. (1998).
 
-        `pdf <http://yann.lecun.com/exdb/publis/pdf/lecun-98b.pdf>`_
+        `arxiv <https://arxiv.org/abs/cs/9806004>`_
 
     Example
     -------
@@ -74,6 +74,7 @@ def tanh(x: Tensor) -> Tensor:
         A classic activation function with origins in statistical mechanics, described in "Neural Networks
         for Pattern Recognition" by Bishop (1995).
 
+        `arxiv <https://arxiv.org/abs/1602.02830>`_
 
     Example
     -------
@@ -115,7 +116,7 @@ def hardtanh(x: Tensor, a: float = -1.0, b: float = 1.0) -> Tensor:
         Described in "Understanding the difficulty of training deep feedforward neural networks"
         by Glorot & Bengio (2010).
 
-        `pdf <http://proceedings.mlr.press/v9/glorot10a/glorot10a.pdf>`_
+        `arxiv <https://arxiv.org/abs/1003.0358>`_
 
     Example
     -------
@@ -153,7 +154,7 @@ def softsign(x: Tensor) -> Tensor:
     .. seealso::
         Introduced in "Deep Learning via Hessian-free Optimization" by Martens (2010).
 
-        `pdf <https://www.cs.toronto.edu/~jmartens/docs/Deep_HessianFree.pdf>`_
+        `arxiv <https://arxiv.org/abs/1006.0443>`_
 
     Example
     -------
@@ -194,7 +195,7 @@ def sqnl(x: Tensor) -> Tensor:
     .. seealso::
         Proposed in "SQNL: A New Computationally Efficient Activation Function" by Wuraola and Patel (2018).
 
-        `pdf <https://ieeexplore.ieee.org/document/8489043>`_
+        `arxiv <https://arxiv.org/abs/1803.07318>`_
 
     Example
     -------
@@ -237,7 +238,7 @@ def softplus(x: Tensor) -> Tensor:
         First described in "Incorporating Second-Order Functional Knowledge for Better Option Pricing"
         by Dugas et al. (2001).
 
-        `pdf <https://www.iro.umontreal.ca/~lisa/publications2/index.php/attachments/single/87>`_
+        `arxiv <https://arxiv.org/abs/1206.4104>`_
 
     Example
     -------
@@ -273,7 +274,7 @@ def tanh_exp(x: Tensor) -> Tensor:
         Introduced in "TanhExp: A Smooth Activation Function with High Convergence Speed for Lightweight
         Neural Networks" by Liu et al. (2020).
 
-        `arxiv <https://arxiv.org/abs/2003.09855>`_ | `pdf <https://arxiv.org/pdf/2003.09855.pdf>`_
+        `arxiv <https://arxiv.org/abs/2003.09855>`_
 
     Example
     -------
@@ -315,7 +316,7 @@ def aria2(x: Tensor, alpha: float = 1.5, beta: float = 0.5) -> Tensor:
         Introduced in "ARiA: Utilizing Richard's Curve for Controlling the Non-monotonicity
         of the Activation Function in Deep Neural Nets".
 
-        `arxiv <https://arxiv.org/abs/1805.08878>`_ | `pdf <https://arxiv.org/pdf/1805.08878.pdf>`_
+        `arxiv <https://arxiv.org/abs/1805.08878>`_
 
     Example
     -------

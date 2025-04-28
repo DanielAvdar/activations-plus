@@ -31,7 +31,7 @@ def loglog(x: Tensor) -> Tensor:
         Based on the Gumbel distribution and studied in "Improved Non-Linear Activation Functions in Neural
         Network Applications" by Sibi et al. (2014).
 
-        https://www.jatit.org/volumes/Vol67No3/2Vol67No3.pdf
+        `arxiv <https://www.jatit.org/volumes/Vol67No3/2Vol67No3>`_
 
     Example
     -------
@@ -66,7 +66,7 @@ def loglogish(x: Tensor) -> Tensor:
         A variant of LogLog activation inspired by "A Survey of Activation Functions Used in Neural
         Networks" by Bilal et al. (2022).
 
-        https://link.springer.com/article/10.1007/s00521-022-07743-y
+        `arxiv <https://link.springer.com/article/10.1007/s00521-022-07743-y>`_
 
     Example
     -------
@@ -102,7 +102,7 @@ def logish(x: Tensor) -> Tensor:
         A logarithmic variant of Swish activation, derived from concepts in "Swish: a Self-Gated Activation
         Function" by Ramachandran et al. (2017).
 
-        https://arxiv.org/abs/1710.05941v1
+        `arxiv <https://arxiv.org/abs/1710.05941v1>`_
 
     Example
     -------
@@ -147,7 +147,7 @@ def soft_exponential(x: Tensor, a: float = 1.0) -> Tensor:
         Introduced in "A continuum among logarithmic, linear, and exponential functions, and
         its potential to improve generalization in neural networks" by Godfrey and Gashler (2016).
 
-        https://arxiv.org/abs/1602.01321
+        `arxiv <https://arxiv.org/abs/1602.01321>`_
 
     Example
     -------
@@ -198,7 +198,7 @@ def softplus_linear_unit(x: Tensor, a: float = 1.0, b: float = 1.0, c: float = 0
         A generalization of ReLU and Softplus, as described in "Improving Deep Neural Networks with
         Probabilistic Maxout Units" by Sun et al. (2015).
 
-        https://arxiv.org/abs/1510.05516
+        `arxiv <https://arxiv.org/abs/1510.05516>`_
 
     Example
     -------

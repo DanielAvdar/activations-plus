@@ -33,7 +33,7 @@ def penalized_tanh(x: Tensor, a: float = 0.25) -> Tensor:
         A variant of tanh activation function proposed in "Activation Functions: Comparison in Neural
         Network Architecture" by Sharma et al. (2021).
 
-        https://arxiv.org/abs/2109.14545
+        `arxiv <https://arxiv.org/abs/2109.14545>`_
 
     Example
     -------
@@ -75,7 +75,7 @@ def tanh_linear_unit(x: Tensor, a: float = 0.25) -> Tensor:
         Combines tanh and linear functions, proposed in "TanhSoft: A Smooth Activation Function
         with High Convergence Speed for Lightweight Neural Networks" by Zhao et al. (2021).
 
-        https://arxiv.org/abs/2104.02639
+        `arxiv <https://arxiv.org/abs/2104.02639>`_
 
     Example
     -------
@@ -117,7 +117,7 @@ def stanhplus(x: Tensor, a: float = 1.0, b: float = 1.0, alpha: float = 1.0) -> 
         A variant of tanh activation with a learnable scale, discussed in "TanhPlus:
         A Modified Activation Function with Less Computation Cost" by Yan et al. (2020).
 
-        https://arxiv.org/abs/2011.00055
+        `arxiv <https://arxiv.org/abs/2011.00055>`_
 
     Example
     -------
@@ -156,7 +156,7 @@ def tanhsig(x: Tensor) -> Tensor:
 
         Where \sigma(x) is the sigmoid function.
 
-        https://doi.org/10.1016/j.neucom.2021.02.035
+        `arxiv <https://arxiv.org/abs/2104.09602>`_
 
     Example
     -------

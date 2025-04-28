@@ -29,7 +29,7 @@ def gelu(x: Tensor) -> Tensor:
         Originally proposed in "Gaussian Error Linear Units (GELUs)" by Hendrycks & Gimpel (2016).
         Where \Phi(z) is the cumulative distribution function of the standard normal distribution.
 
-        https://arxiv.org/abs/1606.08415
+        `arxiv <https://arxiv.org/abs/1606.08415>`_
 
     Example
     -------
@@ -65,7 +65,7 @@ def silu(x: Tensor) -> Tensor:
         Originally introduced in "Fast and Accurate Deep Network Learning by Exponential Linear Units" (2016),
         popularized in "Exploring the Limits of Weakly Supervised Pretraining" by Mahajan et al. (2018).
 
-        https://arxiv.org/abs/1905.02244
+        `arxiv <https://arxiv.org/abs/1905.02244>`_
 
     Example
     -------
@@ -102,6 +102,8 @@ def hard_sigmoid(x: Tensor) -> Tensor:
         in "Exploring the Limits of Weakly Supervised Pretraining" by
         Mahajan et al. (2018).
 
+        `arxiv <https://arxiv.org/abs/1805.00932>`_
+
     Example
     -------
 
@@ -135,7 +137,7 @@ def hard_swish(x: Tensor) -> Tensor:
     .. seealso::
         Proposed in "Searching for MobileNetV3" by Howard et al. (2019).
 
-        https://arxiv.org/abs/1905.02244
+        `arxiv <https://arxiv.org/abs/1905.02244>`_
 
     Example
     -------
@@ -171,7 +173,7 @@ def mish(x: Tensor) -> Tensor:
     .. seealso::
         Proposed in "Mish: A Self Regularized Non-Monotonic Activation Function" by Misra (2019).
 
-        https://arxiv.org/abs/1908.08681
+        `arxiv <https://arxiv.org/abs/1908.08681>`_
 
     Example
     -------
@@ -207,6 +209,8 @@ def phish(x: Tensor) -> Tensor:
     .. seealso::
         A combination of GELU and tanh functions, inspired by Mish activation
         and discussed in "Neural Network Activation Functions" by Kunin et al. (2020).
+
+        `arxiv <https://arxiv.org/abs/2010.09458>`_
 
     Example
     -------

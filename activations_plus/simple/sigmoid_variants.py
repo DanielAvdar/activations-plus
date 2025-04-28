@@ -34,7 +34,7 @@ def new_sigmoid(x: Tensor, a: float = 0.5) -> Tensor:
     .. seealso::
         Proposed in "New Sigmoid-Like Activation Function for Neural Networks" by Hu et al. (2023).
 
-        https://arxiv.org/abs/2302.01931
+        `arxiv <https://arxiv.org/abs/2302.01931>`_
 
 
     Example
@@ -74,7 +74,7 @@ def root2sigmoid(x: Tensor) -> Tensor:
         A root-based variation of the sigmoid function, analyzed in "An Alternative
         to the Sigmoid Function" by Schert et al. (2020).
 
-        https://arxiv.org/abs/2008.07861
+        `arxiv <https://arxiv.org/abs/2008.07861>`_
 
     Example
     -------
@@ -110,7 +110,7 @@ def rootsig(x: Tensor) -> Tensor:
         A variant of sigmoid activation proposed in "Rootsig: A Novel Activation Function
         for Deep Learning" by Jagtap et al. (2021).
 
-        https://arxiv.org/abs/2203.05633
+        `arxiv <https://arxiv.org/abs/2203.05633>`_
 
     Example
     -------
@@ -152,7 +152,7 @@ def sigmoid_gumbel(x: Tensor, alpha: float = 1.0) -> Tensor:
         "Novel Activation Functions for Enhanced Neural Network Performance"
         by Kumar et al. (2020).
 
-        https://arxiv.org/abs/2012.07431
+        `arxiv <https://arxiv.org/abs/2012.07431>`_
 
     Example
     -------
