@@ -34,7 +34,7 @@ def sigmoid(x: Tensor) -> Tensor:
         A foundational activation function in neural networks, discussed in depth in "Efficient BackProp"
         by LeCun et al. (1998).
 
-        http://yann.lecun.com/exdb/publis/pdf/lecun-98b.pdf
+        `pdf <http://yann.lecun.com/exdb/publis/pdf/lecun-98b.pdf>`_
 
     Example
     -------
@@ -115,7 +115,7 @@ def hardtanh(x: Tensor, a: float = -1.0, b: float = 1.0) -> Tensor:
         Described in "Understanding the difficulty of training deep feedforward neural networks"
         by Glorot & Bengio (2010).
 
-        http://proceedings.mlr.press/v9/glorot10a/glorot10a.pdf
+        `pdf <http://proceedings.mlr.press/v9/glorot10a/glorot10a.pdf>`_
 
     Example
     -------
@@ -153,7 +153,7 @@ def softsign(x: Tensor) -> Tensor:
     .. seealso::
         Introduced in "Deep Learning via Hessian-free Optimization" by Martens (2010).
 
-        https://www.cs.toronto.edu/~jmartens/docs/Deep_HessianFree.pdf
+        `pdf <https://www.cs.toronto.edu/~jmartens/docs/Deep_HessianFree.pdf>`_
 
     Example
     -------
@@ -194,7 +194,7 @@ def sqnl(x: Tensor) -> Tensor:
     .. seealso::
         Proposed in "SQNL: A New Computationally Efficient Activation Function" by Wuraola and Patel (2018).
 
-        https://ieeexplore.ieee.org/document/8489043
+        `pdf <https://ieeexplore.ieee.org/document/8489043>`_
 
     Example
     -------
@@ -237,7 +237,7 @@ def softplus(x: Tensor) -> Tensor:
         First described in "Incorporating Second-Order Functional Knowledge for Better Option Pricing"
         by Dugas et al. (2001).
 
-        https://www.iro.umontreal.ca/~lisa/publications2/index.php/attachments/single/87
+        `pdf <https://www.iro.umontreal.ca/~lisa/publications2/index.php/attachments/single/87>`_
 
     Example
     -------
@@ -273,7 +273,7 @@ def tanh_exp(x: Tensor) -> Tensor:
         Introduced in "TanhExp: A Smooth Activation Function with High Convergence Speed for Lightweight
         Neural Networks" by Liu et al. (2020).
 
-        https://arxiv.org/abs/2003.09855
+        `arxiv <https://arxiv.org/abs/2003.09855>`_ | `pdf <https://arxiv.org/pdf/2003.09855.pdf>`_
 
     Example
     -------
@@ -286,18 +286,22 @@ def tanh_exp(x: Tensor) -> Tensor:
     return x * torch.tanh(torch.exp(x))
 
 
-def aria2(x: Tensor) -> Tensor:
-    r"""Apply the ARiA2 activation function.
+def aria2(x: Tensor, alpha: float = 1.5, beta: float = 0.5) -> Tensor:
+    r"""Apply the ARiA2 activation function based on Richard's curve.
 
     .. math::
 
-        \mathrm{ARiA2}(z) = \frac{1 + a \tanh^2(z)}{1 + b \tanh^2(z)}
+        \mathrm{ARiA2}(z) = \frac{1}{(1 + e^{-\alpha z})^{1/\beta}}
 
 
     Parameters
     ----------
     x : torch.Tensor
         Input tensor.
+    alpha : float, optional
+        Alpha parameter controlling the steepness (default 1.5).
+    beta : float, optional
+        Beta parameter controlling the asymptotic behavior (default 0.5).
 
     Returns
     -------
@@ -308,19 +312,16 @@ def aria2(x: Tensor) -> Tensor:
     Source
     ------
     .. seealso::
-        An adaptive rational activation function proposed in "ARiA: Adaptive Rational
-        Activation Functions for Convergence Speed for Lightweight Neural Networks"
-        by Liu et al. (2020).
+        Introduced in "ARiA: Utilizing Richard's Curve for Controlling the Non-monotonicity
+        of the Activation Function in Deep Neural Nets".
 
-        https://arxiv.org/abs/2004.03485
+        `arxiv <https://arxiv.org/abs/1805.08878>`_ | `pdf <https://arxiv.org/pdf/1805.08878.pdf>`_
 
     Example
     -------
-
-
 
     .. plot:: ../../examples/sigmoid_tanh_variants/aria2_example.py
        :include-source:
 
     """
-    return (1 + 1.5 * torch.tanh(x) ** 2) / (1 + 0.5 * torch.tanh(x) ** 2)
+    return torch.pow(1 + torch.exp(-alpha * x), -1 / beta)
