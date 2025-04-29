@@ -1,4 +1,4 @@
-.. _relu_variants_api:
+.. _relu_variants:
 
 ReLU Variants
 ==========

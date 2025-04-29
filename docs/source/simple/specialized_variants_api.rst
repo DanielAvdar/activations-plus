@@ -1,4 +1,4 @@
-.. _specialized_variants_api:
+.. _specialized_variants:
 
 Specialized Variants
 ================

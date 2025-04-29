@@ -68,7 +68,11 @@ To install activations-plus, use pip:
    :maxdepth: 2
    :caption: Simple Activation Functions
 
-   simple/api
+   simple/relu_variants_api
+   simple/sigmoid_tanh_variants_api
+   simple/elu_variants_api
+   simple/tanh_variants_api
+   simple/specialized_variants_api
 
 .. toctree::
    :maxdepth: 2
