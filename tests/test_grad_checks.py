@@ -3,19 +3,13 @@ import torch
 from torch.autograd import gradcheck, gradgradcheck
 
 from activations_plus import Entmax
-from activations_plus.bent_identity import BentIdentity
-from activations_plus.elish import ELiSH
 from activations_plus.soft_clipping import SoftClipping
 from activations_plus.sparsemax import Sparsemax
-from activations_plus.srelu import SReLU
 
 activation_params = [
     (Sparsemax, {"dim": -1}),
-    (BentIdentity, {}),
-    (ELiSH, {}),
     # (Maxout, {"num_pieces": 2}),
     (SoftClipping, {}),
-    (SReLU, {}),
 ]
 activation_params_all = [
     (Entmax, {"dim": -1}),
