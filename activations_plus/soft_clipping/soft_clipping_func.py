@@ -11,6 +11,12 @@ class SoftClipping(torch.nn.Module):
     This activation function smoothly limits the range of activations, preventing extreme values
     without hard truncation. It is particularly useful for stabilizing neural network training.
 
+    This approach was discussed in "Good Practices for Training Recurrent Neural Networks for Language
+    Modeling" by Pascanu et al. (2013) and further developed in "Recurrent Neural Network Regularization"
+    by Zaremba et al. (2014).
+
+    See: https://arxiv.org/abs/1211.5063 (Pascanu et al.)
+    See: https://arxiv.org/abs/1409.2329 (Zaremba et al.)
     """
 
     def __init__(self, x_min: float = -1.0, x_max: float = 1.0, clip_func: Callable = torch.sigmoid):

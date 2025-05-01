@@ -58,11 +58,18 @@ To install activations-plus, use pip:
 
    activations/entmax
    activations/sparsemax
-   activations/bent_identity
-   activations/elish
    activations/maxout
    activations/soft_clipping
-   activations/srelu
+
+.. toctree::
+   :maxdepth: 2
+   :caption: Simple Activation Functions
+
+   simple/relu_variants_api
+   simple/sigmoid_tanh_variants_api
+   simple/elu_variants_api
+   simple/tanh_variants_api
+   simple/specialized_variants_api
 
 .. toctree::
    :maxdepth: 2

@@ -1,6 +1,7 @@
 # Activations Plus
 
-Activations Plus is a Python package designed to provide a collection of advanced activation functions for machine learning and deep learning models. These activation functions are implemented to enhance the performance of neural networks by addressing specific challenges such as sparsity, non-linearity, and gradient flow.
+Activations Plus is a Python package designed to provide a collection of
+activation functions which are not implemented in PyTorch.
 
 [![PyPI - Python Version](https://img.shields.io/pypi/pyversions/activations-plus)](https://pypi.org/project/activations-plus/)
 [![version](https://img.shields.io/pypi/v/activations-plus)](https://img.shields.io/pypi/v/activations-plus)
@@ -16,13 +17,11 @@ Activations Plus is a Python package designed to provide a collection of advance
 
 ## Features
 
+
 - **Entmax**: Sparse activation function for probabilistic models.
 - **Sparsemax**: Sparse alternative to softmax.
-- **Bent Identity**: Smooth approximation of the identity function. *(Experimental feature require review)*
-- **ELiSH (Exponential Linear Squared Hyperbolic)**: Combines exponential and linear properties. *(Experimental feature require review)*
-- **Maxout**: Learns piecewise linear functions. *(Experimental feature require review)*
-- **Soft Clipping**: Smoothly clips values to a range. *(Experimental feature require review)*
-- **SReLU (S-shaped Rectified Linear Unit)**: Combines linear and non-linear properties. *(Experimental feature require review)*
+
+some experimental features:
 
 ## Installation
 
@@ -60,15 +59,10 @@ These examples demonstrate how to use Sparsemax and Entmax activation functions 
 
 Comprehensive documentation is available [documentation](https://activations-plus.readthedocs.io/en/latest/).
 
-## Supported Activation Functions
+## Supported Advanced Activation Functions
 
 1. **Entmax**: Sparse activation function for probabilistic models. [Reference Paper](https://arxiv.org/abs/1905.05702)
 2. **Sparsemax**: Sparse alternative to softmax for probabilistic outputs. [Reference Paper](https://arxiv.org/abs/1602.02068)
-3. **Bent Identity**: A smooth approximation of the identity function. *(Experimental feature require review)* [reference missing]()
-4. **ELiSH**: Combines exponential and linear properties for better gradient flow. *(Experimental feature require review)* [Reference Paper](https://arxiv.org/abs/1808.00783)
-6. **Maxout**: Learns piecewise linear functions for better expressiveness. *(Experimental feature require review)* [Reference Paper](https://arxiv.org/abs/1302.4389)
-7. **Soft Clipping**: Smoothly clips values to a range to avoid extreme outputs. *(Experimental feature require review)* [Reference Paper](https://arxiv.org/abs/2406.16640)
-8. **SReLU**: Combines linear and non-linear properties for better flexibility. *(Experimental feature require review)* [Reference Paper](https://arxiv.org/abs/1512.07030)
 
 ## Contributing
 

@@ -31,14 +31,15 @@ dependencies = [
     "torch",
 ]
 
+
 [[tool.uv.index]]
-name = "cu124"
-url = "https://download.pytorch.org/whl/cu124"
+name = "cu128"
+url = "https://download.pytorch.org/whl/cu128"
 explicit = true
 
 [tool.uv.sources]
 torch = [
-  { index = "cu124", marker = "platform_system != 'Darwin'"},
+  { index = "cu128", marker = "platform_system != 'Darwin'"},
 ]
 
 [dependency-groups]
@@ -54,6 +55,7 @@ dev = [
     "setuptools>=67.0.0",
     "numpy",
     "sybil[pytest]",
+    "matplotlib",
 
 
 
@@ -62,6 +64,8 @@ docs = [
     "sphinx>=8.2.0; python_version >= '3.11'",
     "sphinx>=7.0.0; python_version < '3.11'",
     "sphinx-rtd-theme>=3.0.2",
+    "matplotlib",
+
 ]
 [tool.hatch.build.targets.sdist]
 only-include = ["activations_plus",]
@@ -94,6 +98,7 @@ fixable = ["ALL"]
 [tool.ruff.lint.per-file-ignores]
 "tests/*" = ["D", "DOC"]
 "docs/*" = ["D", "DOC"]
+"examples/*" = ["D", "DOC"]
 [tool.ruff.lint.isort]
 combine-as-imports = true
 [tool.mypy]
