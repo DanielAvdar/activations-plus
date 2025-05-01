@@ -2,28 +2,14 @@ import pytest
 import torch
 from torch.autograd import gradcheck, gradgradcheck
 
+import activations_plus.simple as simple
 from activations_plus.simple import (
-    relu_variants,
-    sigmoid_tanh_variants,
-    specialized_variants,
-    tanh_variants,
+    __all__ as all_simple,
 )
 
-# List of (function, kwargs) for parameterized testing
-SIMPLE_ACTIVATIONS = [
-    # Original activation functions
-    (relu_variants.dual_line, {}),
-    (sigmoid_tanh_variants.tanh_exp, {}),
-    # (log_exp_softplus_variants.soft_exponential, {"a": -1}),
-    # New ELU variants
-    # New GELU/Swish variants
-    # New Tanh variants
-    (tanh_variants.penalized_tanh, {}),
-    # Specialized variants (excluding prelu which requires weight parameter)
-    (specialized_variants.resp, {}),
-    (specialized_variants.erf_act, {}),
-    (specialized_variants.hat, {}),
-]
+all_simple_functions = [getattr(simple, func_name) for func_name in all_simple]
+
+SIMPLE_ACTIVATIONS = [(func, {}) for func in all_simple_functions]
 
 
 @pytest.mark.parametrize("func, kwargs", SIMPLE_ACTIVATIONS)
