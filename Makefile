@@ -22,6 +22,10 @@ test:
 check:
 	uv run pre-commit run --all-files
 
+cov:
+	uv run pytest --cov=activations_plus --cov-report=term-missing
+
+
 coverage:
 	uv run pytest --cov=activations_plus --cov-report=xml
 

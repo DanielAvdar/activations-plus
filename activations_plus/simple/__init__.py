@@ -1,6 +1,7 @@
 """Simple activation functions and their variants for neural networks."""
 
-from .elu_variants import isrlu
+from .elu_variants import isrlu, pelu
+from .gelu_swish_variants import swish
 from .relu_variants import dual_line
 from .sigmoid_tanh_variants import aria2, isru, tanh_exp
 from .specialized_variants import (
@@ -21,7 +22,9 @@ __all__ = [
     # Log/Exp/Softplus variants
     # ELU variants
     "isrlu",
+    "pelu",
     # GELU/Swish variants
+    "swish",
     # Tanh variants
     "penalized_tanh",
     # Specialized variants
