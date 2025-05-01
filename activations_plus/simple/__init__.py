@@ -6,6 +6,7 @@ from .sigmoid_tanh_variants import aria2, isru, tanh_exp
 from .specialized_variants import (
     erf_act,
     hat,
+    pserf,
     resp,
 )
 from .tanh_variants import penalized_tanh
@@ -28,4 +29,5 @@ __all__ = [
     "hat",
     "resp",
     "aria2",
+    "pserf",
 ]

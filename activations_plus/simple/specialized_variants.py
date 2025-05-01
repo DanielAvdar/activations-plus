@@ -86,6 +86,45 @@ def erf_act(x: Tensor, a: float = 0.5, b: float = 1.0) -> Tensor:
     return x * torch.erf(a * torch.exp(b * x))
 
 
+def pserf(x: Tensor, gamma: float = 1.25, delta: float = 0.85) -> Tensor:
+    r"""Apply the Pserf (Parametric Serf) activation function.
+
+    .. math::
+
+        \text{Pserf}(x) = x \cdot \text{erf}(\gamma \cdot \ln(1 + \exp(\delta \cdot x)))
+
+
+    Parameters
+    ----------
+    x : torch.Tensor
+        Input tensor.
+    gamma : float, optional
+        Scale parameter (default 1.25).
+    delta : float, optional
+        Exponent parameter (default 0.85).
+
+    Returns
+    -------
+    torch.Tensor
+        The element-wise Pserf of the input.
+
+
+    Source
+    ------
+    .. seealso::
+        A parametric version of the Serf activation function, introduced in
+        **"ErfAct and Pserf: Non-monotonic Smooth Trainable Activation Functions"** (2022).
+        `arxiv <https://arxiv.org/abs/2109.04386>`_
+
+    Example
+    -------
+    .. plot:: ../../examples/specialized_variants/pserf_example.py
+       :include-source:
+
+    """
+    return x * torch.erf(gamma * torch.log(1 + torch.exp(delta * x)))
+
+
 def hat(x: Tensor, a: float = 1.0) -> Tensor:
     r"""Apply the Hat activation function.
 
