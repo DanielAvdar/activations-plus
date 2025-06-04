@@ -45,3 +45,18 @@ exclude_patterns = []
 html_theme = "pydata_sphinx_theme"
 master_doc = "index"
 html_static_path = ["_static"]
+
+# Theme options
+html_theme_options = {
+    "github_url": "https://github.com/DanielAvdar/activations-plus",
+    "use_edit_page_button": True,
+    "show_toc_level": 2,
+    "navbar_align": "left",
+}
+
+html_context = {
+    "github_user": "DanielAvdar",
+    "github_repo": "activations-plus",
+    "github_version": "main",
+    "doc_path": "docs/source",
+}
