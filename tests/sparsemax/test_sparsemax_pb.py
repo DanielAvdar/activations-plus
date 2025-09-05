@@ -91,7 +91,6 @@ def test_sparsemax_backward_pb(random_data, dim):
     ),
     dim=st.integers(min_value=-1, max_value=0),
 )
-@pytest.mark.skip
 def test_sparsemax_v2_threshold_and_support(random_data, dim):
     x = torch.tensor(random_data, dtype=torch.double)
     tau, support_size = SparsemaxFunction._threshold_and_support(x, dim=dim)
@@ -112,7 +111,6 @@ def test_sparsemax_v2_threshold_and_support(random_data, dim):
         elements=st.floats(min_value=-1000, max_value=1000, allow_nan=False, allow_infinity=False),
     ),
 )
-@pytest.mark.skip
 def test_compare_with_original(random_data):
     x = torch.tensor(random_data, dtype=torch.double, requires_grad=True)
     for dim in range(-1, x.dim()):
