@@ -2,6 +2,7 @@ import pytest
 import torch
 
 from activations_plus.sparsemax import SparsemaxFunction
+from activations_plus.sparsemax.utils import flatten_all_but_nth_dim, unflatten_all_but_nth_dim
 
 
 def test_sparsemax_forward_valid_input():
@@ -115,3 +116,42 @@ def test_sparsemax_backward_parametrized(x):
     assert torch.allclose(grad_sum, torch.zeros_like(grad_sum), atol=1e-5), (
         "Gradients should sum to zero along the projection dimension"
     )
+
+
+def test_flatten_all_but_nth_dim():
+    x = torch.randn(2, 3, 4, 5)
+    ctx = type('', (), {})()  # Create an empty context object
+    ctx.dim = 1
+    ctx, flattened_x = flatten_all_but_nth_dim(ctx, x)
+    assert flattened_x.shape == (3, 40), "Flattened shape is incorrect"
+    assert ctx.original_size == x.size(), "Original size not saved correctly in context"
+
+
+def test_unflatten_all_but_nth_dim():
+    x = torch.randn(3, 40)
+    ctx = type('', (), {})()  # Create an empty context object
+    ctx.dim = 1
+    ctx.original_size = (2, 3, 4, 5)
+    ctx, unflattened_x = unflatten_all_but_nth_dim(ctx, x)
+    assert unflattened_x.shape == (2, 3, 4, 5), "Unflattened shape is incorrect"
+
+
+def test_threshold_and_support():
+    x = torch.tensor([[1.0, 2.0, 3.0], [0.5, 0.5, 0.5]], dtype=torch.float32)
+    ctx = type('', (), {})()  # Create an empty context object
+    ctx.dim = 1
+    output, ctx = SparsemaxFunction._threshold_and_support(ctx, x, ctx.dim)
+    assert output is not None, "Output should not be None"
+    assert output.shape == x.shape, "Output shape should match input shape"
+    assert torch.all(output >= 0), "Output should have non-negative values"
+
+
+def test_compute_gradient():
+    grad_output = torch.tensor([[1.0, 2.0, 3.0], [0.5, 0.5, 0.5]], dtype=torch.float32)
+    output = torch.tensor([[0.2, 0.3, 0.5], [0.1, 0.1, 0.3]], dtype=torch.float32)
+    ctx = type('', (), {})()  # Create an empty context object
+    ctx.dim = 1
+    grad_input = SparsemaxFunction._compute_gradient(ctx, grad_output, output, ctx.dim)
+    assert grad_input is not None, "Gradient input should not be None"
+    assert grad_input.shape == grad_output.shape, "Gradient input shape should match grad output shape"
+    assert torch.all(torch.isfinite(grad_input)), "Gradient input should not contain NaN or Inf"
